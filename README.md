@@ -15,8 +15,8 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| Lothar Narins | lnarins@mail.sfsu.edu | MooOfDoom |
-| member2      |               |                 |
+| member1      |               |                 |
+| Allyson Leung | aleung4@mail.sfsu.edu| alleung|
 | member3      |               |                 |
 | member4      |               |                 |
 | Wilson Young | wyoung@mail.sfsu.edu | KaiiYoung |
