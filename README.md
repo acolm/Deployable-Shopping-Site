@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      |               |                 |
+| Lothar Narins | lnarins@mail.sfsu.edu | MooOfDoom |
 | member2      |               |                 |
 | member3      |               |                 |
 | member4      |               |                 |
