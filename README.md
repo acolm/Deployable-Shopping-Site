@@ -17,7 +17,7 @@
 |    :---:     |     :---:     |     :---:       |
 | Lothar Narins | lnarins@mail.sfsu.edu | MooOfDoom |
 | Allyson Leung| aleung4@mail.sfsu.edu |alleung|
-| member3      |               |                 |
+| Saloni Bhatia|sbhatia@mail.sfsu.edu|saloni124|
 | Kevin Nunura | knunura@mail.sfsu.edu| knunura  |
 | Wilson Young | wyoung@mail.sfsu.edu | KaiiYoung |
 | Aaron Colmenares | acolmenares@mail.sfsu.edu | acolm |
