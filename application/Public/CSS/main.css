@@ -107,3 +107,18 @@
 #contact .icon_style:hover{
     background-color: blanchedalmond;
 }
+
+a:link{
+    color: white;
+    text-decoration: none;
+}
+
+a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+a:link:hover{
+    color: white;
+    text-decoration: none;
+}
