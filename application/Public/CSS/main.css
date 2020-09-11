@@ -108,17 +108,17 @@
     background-color: blanchedalmond;
 }
 
-a:link{
+.btn a:link{
     color: white;
     text-decoration: none;
 }
 
-a:visited{
+.btn a:visited{
     color: white;
     text-decoration: none;
 }
 
-a:link:hover{
+.btn a:link:hover{
     color: white;
     text-decoration: none;
 }
