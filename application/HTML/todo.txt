@@ -1,0 +1,4 @@
+1) Update about us carousel info
+2) update about us carousel images
+3) update team photo resolutions in about us page
+4) add San Francisco message in website
