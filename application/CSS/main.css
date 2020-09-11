@@ -35,7 +35,7 @@
     position: absolute;
     content: '';
     border-radius: 50% !important;    
-    width: 100%;
+    width: 110%;
     height: 200%;
     background:rgb(27, 72, 179, .6);
     top: -50%;
