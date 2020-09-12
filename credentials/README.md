@@ -40,5 +40,10 @@
 4. Browse the location of the key and select it
 5. Clicking open will grant you access to the aws server
 
+### Connecting to database
+1. In the command line, sudo mysql -u root
+2. If it asks for password: csc648
+3. In mysql shell, show databases;
+
 ## Getting to website in browser
 ec2-3-17-4-139.us-east-2.compute.amazonaws.com:3000 in address bar
