@@ -25,13 +25,13 @@
 
 ------------------------------------------------------------------
 
-1.Server URL: ec2-3-17-4-139.us-east-2.compute.amazonaws.com
-2.SSH username: ubuntu
-3.SSH key: in folder
-4.Database URL: 80
-5.Database username: 
-6.Database password: csc648
-7.Database name:
+1. Server URL: ec2-3-17-4-139.us-east-2.compute.amazonaws.com
+2. SSH username: ubuntu
+3. SSH key: in folder
+4. Database URL: 80
+5. Database username: 
+6. Database password: csc648
+7. Database name:
 
 # Connecting to server from windows
 1. Open Putty and make sure ssh is selected
