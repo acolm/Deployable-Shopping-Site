@@ -23,13 +23,15 @@
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
 ## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
 
-Server URL: ec2-3-17-4-139.us-east-2.compute.amazonaws.com
-SSH username: ubuntu
-SSH key: in folder
-Database URL: 80
-Database username: 
-Database password: csc648
-Database name:
+------------------------------------------------------------------
+
+1.Server URL: ec2-3-17-4-139.us-east-2.compute.amazonaws.com
+2.SSH username: ubuntu
+3.SSH key: in folder
+4.Database URL: 80
+5.Database username: 
+6.Database password: csc648
+7.Database name:
 
 # Connecting to server from windows
 1. Open Putty and make sure ssh is selected
@@ -37,3 +39,6 @@ Database name:
 3. In the menu on the left, expand SSH and click on Auth
 4. Browse the location of the key and select it
 5. Clicking open will grant you access to the aws server
+
+## Getting to website in browser
+ec2-3-17-4-139.us-east-2.compute.amazonaws.com:3000 in address bar
