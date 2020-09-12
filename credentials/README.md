@@ -28,7 +28,7 @@
 1. Server URL: ec2-3-17-4-139.us-east-2.compute.amazonaws.com
 2. SSH username: ubuntu
 3. SSH key: in folder
-4. Database URL: 80
+4. Database Port: 3306
 5. Database username: root
 6. Database password: csc648
 7. Database name: notebay
