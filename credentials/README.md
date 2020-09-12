@@ -29,9 +29,9 @@
 2. SSH username: ubuntu
 3. SSH key: in folder
 4. Database URL: 80
-5. Database username: 
+5. Database username: root
 6. Database password: csc648
-7. Database name:
+7. Database name: notebay
 
 # Connecting to server from windows
 1. Open Putty and make sure ssh is selected
