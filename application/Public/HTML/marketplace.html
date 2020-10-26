@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/search.css">
+    <!--Font awesomesearch icons-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- [navbar] [theme] [backrgound theme]-->
+    <h5>SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only</h5>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a href="/" class="navbar-brand">GatorMart</a>
+        <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+            <div class="input-group">
+                <select class="form-control search-slt col-sm-3" id="category" name="category">
+                    <option id="All" name="cats">All</option>
+                    <option id="Books" name="cats">Books</option>
+                    <option id="Textbooks" name="cats">Textbooks</option>
+                    <option id="Furniture" name="cats">Furniture</option>
+                    <option id="Supplies" name="cats">Supplies</option>
+                </select>
+                <input class="form-control" type="text" placeholder="Search for items" id="searchtext" name="searchtext">
+                <button type="submit" id="nav-bar-go" class="btn btn-outline-secondary">GO</button>
+            </div>
+        </form>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Wishlist</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Start body of page with a container and small gap from navbar-->
+    <div class="container my-1">
+        <div class="row">
+            <!--Filters COL div-->
+            <div class="col-sm-2">
+                <div class="border filters-card">
+                    <h6>Filters</h6>
+                    <hr class="featurette-divider my-0">
+                    <!--Filters-->
+                    <div class="form-horizontal my-2">
+                        <div class="form-group" id="search-type">
+                            <label for="typeLabel">Type</label>
+                            <select class="form-control" onchange="filterSelection('false')">
+                                <option id="All" name="options">All</option>
+                                <option id="For-Sale" name="options">For Sale</option>
+                                <option id="Request" name="options">Item Request</option>
+                                <option id="Resource" name="options">Class Resources</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="classLabel">Class ID</label>
+                            <input type="text" class="form-control" id="classLabel" placeholder="i.e. CSC648">
+                            <button onclick="filterSelection(true)" class="form-control">GO</button>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="priceLabel">Price</label>
+                            <input type="text" class="form-control" id="priceLabel" placeholder="Min"> 
+                            To                         
+                            <input type="text" class="form-control" id="priceLabel" placeholder="Max"> 
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!--Results COL div-->
+            <div class="col-sm-10">
+                <!-- <div class="border results-card">
+                    <h6 class="mx-2 d-inline-block">Results</h6>
+                    <button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Low Price to High Price</a>
+                        <a class="dropdown-item" href="#">High Price to Low Price</a>
+                    </div>
+                </div> -->
+                <div class="main-content" id="main-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createCard(data){
+            return `<a id="post-${data.id}" class="test-card-wrapper"> \
+                <div class="test-card-body"> \
+                    <div class="test-card-top"> \
+                        <div class="test-card-image-wrapper"> \
+                            <img class="card-image" src="${data.thumbnail}" /> \
+                        </div> \
+                    </div> \
+                    <div class="test-card-bottom"> \
+                        <span class="test-card-title">${data.title}</span> \
+                        <div class="test-card-price-wrapper">
+                            <span class="test-card-price">$${data.price}</span> \
+                        </div> \
+                        <span class="test-card-date">${data.created}</span> \
+                    </div> \
+                </div> \
+            </a>`;
+        }
+        function runSearch(val) {
+            let searchTerm = document.getElementById('searchtext').value;
+            let searchURL = 'http://localhost:3000/posts/search/'+searchTerm+"/"+val;
+            console.log(searchURL);
+            fetch(searchURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                console.log(dataAsObject);
+                let _html = "";
+                dataAsObject.forEach((post) => {
+                    _html += createCard(post);
+                })
+                document.getElementById('main-content').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+    }
+
+    function runFilterSearch(x, val) {
+            let searchTerm = document.getElementById('searchtext').value;
+            let searchURL = 'http://localhost:3000/posts/searchType/'+searchTerm+"/"+x+"/"+val;
+            console.log(searchURL);
+            fetch(searchURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                console.log(dataAsObject);
+                let _html = "";
+                dataAsObject.forEach((post) => {
+                    _html += createCard(post);
+                })
+                document.getElementById('main-content').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+    }
+
+    function BIGsearch(x, val, cherry){
+        let searchTerm = document.getElementById('searchtext').value;
+        let searchURL = 'http://localhost:3000/posts/BIGsearch/'+searchTerm+"/"+x+"/"+val+"/"+cherry;
+        console.log(searchURL);
+        fetch(searchURL)
+        .then((data) => data.json())
+        .then((dataAsObject) => {
+            console.log(dataAsObject);
+            let _html = "";
+            dataAsObject.forEach((post) => {
+                _html += createCard(post);
+            })
+            document.getElementById('main-content').innerHTML = _html;
+        })
+        .catch((err) => console.log(err));
+    }
+    
+    function parse(){
+        var url = document.location.href,
+            params = url.split('?')[1].split('&'),
+            data = {}, tmp;
+        for (var i = 0, l = params.length; i < l; i++) {
+            tmp = params[i].split('=');
+            data[tmp[0]] = tmp[1];
+            tmp[1] =tmp[1].replace(/\+/g," ");
+            //console.log(tmp[0]);
+            setStuff(tmp[0], tmp[1]);
+        }
+        var val;
+        var holder = document.getElementsByName("cats");
+        for(i =0;i<holder.length;i++){
+                if(holder[i].selected === true){
+                    console.log(holder[i].getAttribute("id"));
+                    val = holder[i].getAttribute("id");
+                }
+            }
+        runSearch(val);
+    }
+    function setStuff(name, val){
+        if(name == "category"){
+            document.getElementById(val).selected = "true";
+        }
+        else{
+            var holder = document.getElementById(name);
+            holder.value = val;
+        }
+    }
+    window.onload = parse();
+
+    function filterSelection(decide){
+        var val;
+        var x, i;
+        var holder = document.getElementsByName("options");
+        console.log(holder);
+        for(i =0;i<holder.length;i++){
+            if(holder[i].selected === true){
+                console.log(holder[i].getAttribute("id"));
+                val = holder[i].getAttribute("id");
+            }
+        }
+        console.log(val);
+        var holder2 = document.getElementsByName("cats");
+        for(i =0;i<holder2.length;i++){
+            if(holder2[i].selected === true){
+                console.log(holder2[i].getAttribute("id"));
+                x = holder2[i].getAttribute("id");
+            }
+        }
+        if(decide === 'false') {
+            runFilterSearch(x,val);
+        }
+        else{
+            var cherry = document.getElementById('classLabel').value;
+            console.log(cherry);
+            BIGsearch(x,val, cherry);
+        }
+    }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
