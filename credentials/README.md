@@ -25,7 +25,7 @@
 
 ------------------------------------------------------------------
 
-1. Server URL: ec2-3-17-4-139.us-east-2.compute.amazonaws.com
+1. Server URL: ec2-3-134-115-31.us-east-2.compute.amazonaws.com
 2. SSH username: ubuntu
 3. SSH key: in folder
 4. Database Port: 3306
