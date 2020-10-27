@@ -9,15 +9,41 @@ router.get('/search/:searchTerm/:searchCategory', (req, resp, next) => {
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE title LIKE ?';
-    searchTerm = "%"+searchTerm+"%";
-    var arguments = [searchTerm];
-    if(searchCategory !== "All"){
-        _sql += ' AND category LIKE ?;';
-        arguments.push(searchCategory);
+    var check = [0,0];
+    var arguments;
+    if(searchTerm === "noValue"){
+        _sql = `SELECT * FROM posts p`;
+        check[0] =1;
+        if(searchCategory !== "All"){
+            _sql += " WHERE category LIKE ?";
+            searchCategory = "%"+searchCategory+"%";
+            check[1] =1;
+        }
     }
     else{
-        _sql +=';';
+        searchTerm = "%"+searchTerm+"%";
+        if(searchCategory !== "All"){
+            _sql += ' AND category LIKE ?';
+            check[1] =1;
+        }
     }
+    if(check[0] === 0){
+        if(check[1] === 1){
+            arguments = [searchTerm, searchCategory];
+        }
+        else{
+            arguments = [searchTerm];
+        }
+    }
+    else{
+        if(check[1] === 1){
+            arguments = [searchCategory];
+        }
+    }
+
+
+
+    _sql += ";";
     db.query(_sql, arguments)
     .then(([results, fields]) => {
         resp.json(results);
@@ -76,8 +102,6 @@ router.get('/BIGsearch/:searchTerm/:searchCategory/:searchType/:searchClass', (r
         arguments.push(searchClass);
     }
     _sql +=';';
-    console.log(searchClass);
-    console.log(_sql);
 
     db.query(_sql, arguments)
     .then(([results, fields]) => {
