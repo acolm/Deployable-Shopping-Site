@@ -146,6 +146,9 @@
 
     function runFilterSearch(x, val) {
             let searchTerm = document.getElementById('searchtext').value;
+            if(searchTerm === ""){
+                searchTerm = "noValue";
+            }
             let searchURL = 'http://localhost:3000/posts/searchType/'+searchTerm+"/"+x+"/"+val;
             fetch(searchURL)
             .then((data) => data.json())
@@ -161,6 +164,9 @@
 
     function BIGsearch(x, val, cherry){
         let searchTerm = document.getElementById('searchtext').value;
+        if(searchTerm === ""){
+                searchTerm = "noValue";
+            }
         let searchURL = 'http://localhost:3000/posts/BIGsearch/'+searchTerm+"/"+x+"/"+val+"/"+cherry;
         fetch(searchURL)
         .then((data) => data.json())
