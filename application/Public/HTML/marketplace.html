@@ -128,12 +128,13 @@
         }
         function runSearch(val) {
             let searchTerm = document.getElementById('searchtext').value;
+            if(searchTerm === ""){
+                searchTerm = "noValue";
+            }
             let searchURL = 'http://localhost:3000/posts/search/'+searchTerm+"/"+val;
-            console.log(searchURL);
             fetch(searchURL)
             .then((data) => data.json())
             .then((dataAsObject) => {
-                console.log(dataAsObject);
                 let _html = "";
                 dataAsObject.forEach((post) => {
                     _html += createCard(post);
@@ -145,12 +146,13 @@
 
     function runFilterSearch(x, val) {
             let searchTerm = document.getElementById('searchtext').value;
+            if(searchTerm === ""){
+                searchTerm = "noValue";
+            }
             let searchURL = 'http://localhost:3000/posts/searchType/'+searchTerm+"/"+x+"/"+val;
-            console.log(searchURL);
             fetch(searchURL)
             .then((data) => data.json())
             .then((dataAsObject) => {
-                console.log(dataAsObject);
                 let _html = "";
                 dataAsObject.forEach((post) => {
                     _html += createCard(post);
@@ -162,12 +164,13 @@
 
     function BIGsearch(x, val, cherry){
         let searchTerm = document.getElementById('searchtext').value;
+        if(searchTerm === ""){
+                searchTerm = "noValue";
+            }
         let searchURL = 'http://localhost:3000/posts/BIGsearch/'+searchTerm+"/"+x+"/"+val+"/"+cherry;
-        console.log(searchURL);
         fetch(searchURL)
         .then((data) => data.json())
         .then((dataAsObject) => {
-            console.log(dataAsObject);
             let _html = "";
             dataAsObject.forEach((post) => {
                 _html += createCard(post);
@@ -192,7 +195,7 @@
         var holder = document.getElementsByName("cats");
         for(i =0;i<holder.length;i++){
                 if(holder[i].selected === true){
-                    console.log(holder[i].getAttribute("id"));
+                    //console.log(holder[i].getAttribute("id"));
                     val = holder[i].getAttribute("id");
                 }
             }
@@ -213,18 +216,18 @@
         var val;
         var x, i;
         var holder = document.getElementsByName("options");
-        console.log(holder);
+        //console.log(holder);
         for(i =0;i<holder.length;i++){
             if(holder[i].selected === true){
-                console.log(holder[i].getAttribute("id"));
+                //console.log(holder[i].getAttribute("id"));
                 val = holder[i].getAttribute("id");
             }
         }
-        console.log(val);
+        //console.log(val);
         var holder2 = document.getElementsByName("cats");
         for(i =0;i<holder2.length;i++){
             if(holder2[i].selected === true){
-                console.log(holder2[i].getAttribute("id"));
+                //console.log(holder2[i].getAttribute("id"));
                 x = holder2[i].getAttribute("id");
             }
         }
@@ -233,7 +236,7 @@
         }
         else{
             var cherry = document.getElementById('classLabel').value;
-            console.log(cherry);
+            //console.log(cherry);
             BIGsearch(x,val, cherry);
         }
     }

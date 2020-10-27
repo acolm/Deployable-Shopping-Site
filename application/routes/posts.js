@@ -1,3 +1,4 @@
+const e = require('express');
 var express = require('express');
 var router = express.Router();
 const db = require("../config/database");
@@ -9,15 +10,26 @@ router.get('/search/:searchTerm/:searchCategory', (req, resp, next) => {
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE title LIKE ?';
-    searchTerm = "%"+searchTerm+"%";
-    var arguments = [searchTerm];
-    if(searchCategory !== "All"){
-        _sql += ' AND category LIKE ?;';
-        arguments.push(searchCategory);
+    var check = 0;
+    var arguments = [" "];
+    if(searchTerm === "noValue"){
+        _sql = 'SELECT * FROM posts p';
+        if(searchCategory !=="All"){
+            _sql += ' WHERE';
+            check =1;
+        }
     }
     else{
-        _sql +=';';
+        searchTerm = "%"+searchTerm+"%";
+        arguments.push(searchTerm);
     }
+    if(searchCategory !== "All"){
+        if(check ===0){_sql += ' AND'};
+        _sql += ' category LIKE ?';
+        arguments.push(searchCategory);
+    }
+    _sql += ';';
+    arguments.shift();
     db.query(_sql, arguments)
     .then(([results, fields]) => {
         resp.json(results);
@@ -33,18 +45,32 @@ router.get('/searchType/:searchTerm/:searchCategory/:searchType', (req, resp, ne
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE title LIKE ?';
-    searchTerm = "%"+searchTerm+"%";
-    var arguments = [searchTerm];
+    var arguments = [" "];
+    var check = [0, 0];
+    if(searchTerm === "noValue"){
+        _sql = 'SELECT * FROM posts p';
+        if(searchCategory !=="All" || searchType !=="All"){
+            _sql += ' WHERE';
+            check[0] =1;
+        }
+    }
+    else{
+        searchTerm = "%"+searchTerm+"%";
+        arguments.push(searchTerm);
+    }
     if(searchCategory !== "All"){
-        _sql += ' AND category LIKE ?';
+        if(check[0] ===0){_sql += ' AND'};
+        _sql += ' category LIKE ?';
         arguments.push(searchCategory);
+        check[1] = 1;
     }
     if(searchType !== "All"){
-        _sql += ' AND type LIKE ?';
+        if(check[0] ===0 || check[1] ===1){_sql += ' AND'};
+        _sql += ' type LIKE ?';
         arguments.push(searchType);
     }
     _sql +=';';
-
+    arguments.shift();
     db.query(_sql, arguments)
     .then(([results, fields]) => {
         resp.json(results);
@@ -61,24 +87,38 @@ router.get('/BIGsearch/:searchTerm/:searchCategory/:searchType/:searchClass', (r
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE title LIKE ?';
-    searchTerm = "%"+searchTerm+"%";
-    var arguments = [searchTerm];
+    var check = [0,0,0];
+    var arguments = [" "];
+    if(searchTerm === "noValue"){
+        _sql = 'SELECT * FROM posts p';
+        if(searchClass !== "" || searchCategory !=="All" || searchType !=="All"){
+            _sql += ' WHERE';
+            check[0] =1;
+        }
+    }
+    else{
+        searchTerm = "%"+searchTerm+"%";
+        arguments.push(searchTerm);
+    }
     if(searchCategory !== "All"){
-        _sql += ' AND category LIKE ?';
+        if(check[0] ===0){_sql += ' AND'};
+        _sql += ' category LIKE ?';
         arguments.push(searchCategory);
+        check[1] = 1;
     }
     if(searchType !== "All"){
-        _sql += ' AND type LIKE ?';
+        if(check[0] ===0 || check[1]===1){_sql += ' AND'};
+        _sql += ' type LIKE ?';
         arguments.push(searchType);
+        check[2] = 1;
     }
     if(searchClass !== ""){
-        _sql += ' AND class LIKE ?';
+        if(check ===0 || check[1] ===1 || check[2] === 1){_sql += ' AND'};
+        _sql += ' class LIKE ?';
         arguments.push(searchClass);
     }
     _sql +=';';
-    console.log(searchClass);
-    console.log(_sql);
-
+    arguments.shift();
     db.query(_sql, arguments)
     .then(([results, fields]) => {
         resp.json(results);
