@@ -2,48 +2,73 @@
 <html lang="en">
 
 <head>
-    <title>About Me - Lothar Narins</title>
+    <title>Home</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+    <!--Font awesomesearch icons-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 
 <body>
+    <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <!-- [navbar] [theme] [backrgound theme]-->
-        <a href="#" class="navbar-brand">Logo</a>
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+        <!--Collapse navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarMenu">
-            <!--Collapse navbar on smaller screens-->
-            <form class="mx-5 d-inline w-100">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search marketplace">
-                    <span class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">GO</button>
-                    </span>
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
+            
+            <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Marketplace</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Account</a>
+                    <a href="#" class="nav-link">Wishlist</a>
                 </li>
                 <li class="nav-item">
                     <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
                 </li>
             </ul>
         </div>
@@ -54,53 +79,67 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="../Images/AboutUs/AboutLothar/lothar_headshot.jpg">
+                        <img src="../Images/AboutLothar/lothar_headshot.jpg">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-text">
                         <h1>Who I am</h1>
-                        <p>I am originally from Austria, but moved to San Francisco with my family when I was eight years old.
-                            I studied mathematics as an undergrad at San Francisco State University and went on to get a PhD in
-                            mathematics at the Free University of Berlin. After a postdoctoral fellowship in Waterloo, Ontario,
-                            I decided to change career paths from mathematics to computer science and pursued a masters degree
-                            at my old alma mater. I am currently a second semester graduate student in the department of computer
-                            science at SFSU, where I am involved in research regarding the automated generation of video captions
+                        <p>I am originally from Austria, but moved to San Francisco with my family when I was eight
+                            years old.
+                            I studied mathematics as an undergrad at San Francisco State University and went on to get a
+                            PhD in
+                            mathematics at the Free University of Berlin. After a postdoctoral fellowship in Waterloo,
+                            Ontario,
+                            I decided to change career paths from mathematics to computer science and pursued a masters
+                            degree
+                            at my old alma mater. I am currently a second semester graduate student in the department of
+                            computer
+                            science at SFSU, where I am involved in research regarding the automated generation of video
+                            captions
                             for visually impaired users.</p>
                     </div>
                 </div>
             </div>
-            <br><hr class="featurette-divider my-5"><br>
+            <br>
+            <hr class="featurette-divider my-5"><br>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-text">
                         <h1>My Experience</h1>
-                        <p>I taught myself programming in middle school from a "Learn to Program BASIC" cd-rom I got through a
-                            book order. I had always wanted to create games as a kid, and so through middle and high school, I worked
-                            on building role playing games using the RPG Toolkit, which came with its own scripting language called
-                            RPG Code. In college, I learned C++ from various online tutorials, and took university courses in Java and
+                        <p>I taught myself programming in middle school from a "Learn to Program BASIC" cd-rom I got
+                            through a
+                            book order. I had always wanted to create games as a kid, and so through middle and high
+                            school, I worked
+                            on building role playing games using the RPG Toolkit, which came with its own scripting
+                            language called
+                            RPG Code. In college, I learned C++ from various online tutorials, and took university
+                            courses in Java and
                             C++.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="../Images/AboutUs/AboutLothar/mountainconcept.gif">
+                        <img src="../Images/AboutLothar/mountainconcept.gif">
                     </div>
                 </div>
             </div>
-            <br><hr class="featurette-divider my-5"><br>
+            <br>
+            <hr class="featurette-divider my-5"><br>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="..//Images/AboutUs/AboutLothar/lothar_alaska.jpg">
+                        <img src="..//Images/AboutLothar/lothar_alaska.jpg">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 ">
                     <div class="showcase-text">
                         <h1>Beyond Programming</h1>
-                        <p>When I am not holed up in my room basking in the glow of my laptop, I can be found doing international
+                        <p>When I am not holed up in my room basking in the glow of my laptop, I can be found doing
+                            international
                             folk dancing. I love the wide variety of beautiful music as well as the feeling of community
-                            it creates. I also enjoy travelling. Among my favorite trips were taking an RV through Alaska, and living
+                            it creates. I also enjoy travelling. Among my favorite trips were taking an RV through
+                            Alaska, and living
                             at a Buddhist temple in Japan for six months.</p>
                     </div>
                 </div>
@@ -111,10 +150,12 @@
 
     <section id="contact">
         <div class="container my-1">
-            <div class ="row my-5">
+            <div class="row my-5">
                 <div class="images">
-                    <a href="https://github.com/MooOfDoom"><img src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png" class="icon_style"></a>
-                    <a href="https://www.linkedin.com/in/lothar-narins/"><img src="../Images/BrandIcons/LI-In-Bug.png" class="icon_style"></a>
+                    <a href="https://github.com/MooOfDoom"><img
+                            src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png" class="icon_style"></a>
+                    <a href="https://www.linkedin.com/in/lothar-narins/"><img src="../Images/BrandIcons/LI-In-Bug.png"
+                            class="icon_style"></a>
                 </div>
             </div>
             <div class="row">
@@ -144,7 +185,8 @@
 
     <!-- <hr class="featurette-divider "> -->
 
-    <footer class="container">
+    <footer class="container my-0">
+        <hr class="featurette-divider">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>

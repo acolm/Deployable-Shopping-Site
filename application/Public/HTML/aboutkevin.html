@@ -2,48 +2,73 @@
 <html lang="en">
 
 <head>
-    <title>About Me - Kevin Nunura</title>
+    <title>Home</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+    <!--Font awesomesearch icons-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 
 <body>
+    <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <!-- [navbar] [theme] [backrgound theme]-->
-        <a href="#" class="navbar-brand">Logo</a>
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+        <!--Collapse navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarMenu">
-            <!--Collapse navbar on smaller screens-->
-            <form class="mx-5 d-inline w-100">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search marketplace">
-                    <span class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">GO</button>
-                    </span>
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
+            
+            <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Marketplace</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Account</a>
+                    <a href="#" class="nav-link">Wishlist</a>
                 </li>
                 <li class="nav-item">
                     <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
                 </li>
             </ul>
         </div>
@@ -54,57 +79,75 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="../Images/AboutUs/AboutKevin/kevin1.jpg">
+                        <img src="../Images/AboutKevin/kevin1.jpg">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-text">
                         <h1>Who I am</h1>
-                        <p>I am a 24-year-old Hispanic veteran born in Lima, Peru. I spent the majority of my preadolescence days living and
-                            studying in my country of origin alongside my siblings. In 2004, I traveled to the United States seeking better
-                            economic and educational opportunities otherwise not easily available in Peru. I learned English and took on a
-                            newfound hobby in playing classical music with my flute until my 2014 graduation from Carlmont High School located
+                        <p>I am a 24-year-old Hispanic veteran born in Lima, Peru. I spent the majority of my
+                            preadolescence days living and
+                            studying in my country of origin alongside my siblings. In 2004, I traveled to the United
+                            States seeking better
+                            economic and educational opportunities otherwise not easily available in Peru. I learned
+                            English and took on a
+                            newfound hobby in playing classical music with my flute until my 2014 graduation from
+                            Carlmont High School located
                             in Belmont, CA</p>
                     </div>
                 </div>
             </div>
-            <br><hr class="featurette-divider my-5"><br>
+            <br>
+            <hr class="featurette-divider my-5"><br>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-text">
                         <h1>My Experience</h1>
-                        <p>I enlisted in the U.S. Marine Corps at the age of 18. My original military occupation specialty was Supply
-                            Administration Specialist. However, I spent my military contract working in various areas including in the
-                            maintenance of weapons, as a Customer Service representative, a Quality Assurance supervisor, an Additive
-                            Manufacturing supervisor, and a Supply and Warehouse manager. However, my most valuable experience in the military
-                            was during an overseas deployment while being the team lead of a group of Engineers to be the Security Forces for Camp
-                            Manion at Al-Taqaddum Air Base, Iraq. This role was a new and dangerous position for the team,
-                            including myself, but we were able to successfully accomplish our mission with the mentorship and assistance of our
+                        <p>I enlisted in the U.S. Marine Corps at the age of 18. My original military occupation
+                            specialty was Supply
+                            Administration Specialist. However, I spent my military contract working in various areas
+                            including in the
+                            maintenance of weapons, as a Customer Service representative, a Quality Assurance
+                            supervisor, an Additive
+                            Manufacturing supervisor, and a Supply and Warehouse manager. However, my most valuable
+                            experience in the military
+                            was during an overseas deployment while being the team lead of a group of Engineers to be
+                            the Security Forces for Camp
+                            Manion at Al-Taqaddum Air Base, Iraq. This role was a new and dangerous position for the
+                            team,
+                            including myself, but we were able to successfully accomplish our mission with the
+                            mentorship and assistance of our
                             leaders and comrades. I finished my military contract as of July of 2019.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="../Images/AboutUs/AboutKevin/kevin2.jpg">
+                        <img src="../Images/AboutKevin/kevin2.jpg">
                     </div>
                 </div>
             </div>
-            <br><hr class="featurette-divider my-5"><br>
+            <br>
+            <hr class="featurette-divider my-5"><br>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="..//Images/AboutUs/AboutKevin/kevin3.jpg">
+                        <img src="..//Images/AboutKevin/kevin3.jpg">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 ">
                     <div class="showcase-text">
                         <h1>Where I am now</h1>
-                        <p>I am currently a student in San Francisco State University’s B.S. in Computer Science program. As a former student in
-                            Healthcare Management, I decided to switch to this competitive field because it aligned the closest to my passion
-                            and excitement for new and evolving technology in our current Technological Era. I have been blessed to acquire my
-                            first set of computer and technological devices using a portion of my saved income from the military which has only
+                        <p>I am currently a student in San Francisco State University’s B.S. in Computer Science
+                            program. As a former student in
+                            Healthcare Management, I decided to switch to this competitive field because it aligned the
+                            closest to my passion
+                            and excitement for new and evolving technology in our current Technological Era. I have been
+                            blessed to acquire my
+                            first set of computer and technological devices using a portion of my saved income from the
+                            military which has only
                             fueled my excitement in the computer science field. I am currently set to graduate in May of
-                            2021 and am currently seeking for internship opportunities as a software developer to gain experience in this
+                            2021 and am currently seeking for internship opportunities as a software developer to gain
+                            experience in this
                             competitive field. </p>
                     </div>
                 </div>
@@ -115,11 +158,14 @@
 
     <section id="contact">
         <div class="container my-1">
-            <div class ="row my-5">
+            <div class="row my-5">
                 <div class="images">
-                    <a href="https://www.facebook.com/knunura/git"><img src="../Images/BrandIcons/f_logo_RGB-Blue_1024.png" class="icon_style"></a>
-                    <a href="https://github.com/knunura"><img src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png" class="icon_style"></a>
-                    <a href="https://www.linkedin.com/in/knunura/"><img src="../Images/BrandIcons/LI-In-Bug.png" class="icon_style"></a>
+                    <a href="https://www.facebook.com/knunura/git"><img
+                            src="../Images/BrandIcons/f_logo_RGB-Blue_1024.png" class="icon_style"></a>
+                    <a href="https://github.com/knunura"><img
+                            src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png" class="icon_style"></a>
+                    <a href="https://www.linkedin.com/in/knunura/"><img src="../Images/BrandIcons/LI-In-Bug.png"
+                            class="icon_style"></a>
                 </div>
             </div>
             <div class="row">
@@ -149,7 +195,8 @@
 
     <!-- <hr class="featurette-divider "> -->
 
-    <footer class="container">
+    <footer class="container my-0">
+        <hr class="featurette-divider">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>

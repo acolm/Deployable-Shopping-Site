@@ -2,48 +2,73 @@
 <html lang="en">
 
 <head>
-    <title>About Me - Wilson Young</title>
+    <title>Home</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+    <!--Font awesomesearch icons-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 
 <body>
+    <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <!-- [navbar] [theme] [backrgound theme]-->
-        <a href="#" class="navbar-brand">Logo</a>
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+        <!--Collapse navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarMenu">
-            <!--Collapse navbar on smaller screens-->
-            <form class="mx-5 d-inline w-100">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search marketplace">
-                    <span class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">GO</button>
-                    </span>
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
+            
+            <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Marketplace</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Account</a>
+                    <a href="#" class="nav-link">Wishlist</a>
                 </li>
                 <li class="nav-item">
                     <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
                 </li>
             </ul>
         </div>
@@ -54,51 +79,63 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="../Images/AboutUs/AboutWilson/Me.jpg">
+                        <img src="../Images/AboutWilson/Me.jpg">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-text">
                         <h1>Who I am</h1>
-                        <p>I am a 22 year old student here at SF State, I am currently working towards my B.S in Computer Science. I have lived in
-                            San Francisco my whole life and I haven't done too much traveling, but I want to go explore the other side of the world one day.
-                            My interests include video games, reading, and coding on the side. I was initially interested in CS because of video games so I want to 
+                        <p>I am a 22 year old student here at SF State, I am currently working towards my B.S in
+                            Computer Science. I have lived in
+                            San Francisco my whole life and I haven't done too much traveling, but I want to go explore
+                            the other side of the world one day.
+                            My interests include video games, reading, and coding on the side. I was initially
+                            interested in CS because of video games so I want to
                             go into the video game industry in the future after I graduate.
                         </p>
                     </div>
                 </div>
             </div>
-            <br><hr class="featurette-divider my-5"><br>
+            <br>
+            <hr class="featurette-divider my-5"><br>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-text">
                         <h1>My Experience</h1>
-                        <p>I don't have too much expeience in CS other than what I've done at SF State, but one of my proudest accomplishments was
-                            designing and coding my own game. In CSC 413, we were tasked with creating two games as our final project, those were the firs two 
-                            games I coded and they were some of the most enjoyablet hings I've coded. The two games weren't very complicated or especially well coded,
-                            but I had a lot on interest and passion when making them, hopefully in the future I'll be able to create more games and improve upon my skills.
+                        <p>I don't have too much expeience in CS other than what I've done at SF State, but one of my
+                            proudest accomplishments was
+                            designing and coding my own game. In CSC 413, we were tasked with creating two games as our
+                            final project, those were the firs two
+                            games I coded and they were some of the most enjoyablet hings I've coded. The two games
+                            weren't very complicated or especially well coded,
+                            but I had a lot on interest and passion when making them, hopefully in the future I'll be
+                            able to create more games and improve upon my skills.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="../Images/AboutUs/AboutWilson/Game.jpg">
+                        <img src="../Images/AboutWilson/Game.jpg">
                     </div>
                 </div>
             </div>
-            <br><hr class="featurette-divider my-5"><br>
+            <br>
+            <hr class="featurette-divider my-5"><br>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="showcase-image">
-                        <img src="..//Images/AboutUs/AboutWilson/Bungie.jpg">
+                        <img src="..//Images/AboutWilson/Bungie.jpg">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 ">
                     <div class="showcase-text">
                         <h1>Where I am now</h1>
-                        <p>I am currently a student in San Francisco State University’s B.S. in Computer Science program. I will hopefully graduate within the next semster
-                            and begin my journey in the CS field. I am aspiring to become a game designer or developer and work on pursuing my passion of one day
-                        creating my own video game. I want to be able to do something to either make people happy or help others with my knowledge and skills. </p>
+                        <p>I am currently a student in San Francisco State University’s B.S. in Computer Science
+                            program. I will hopefully graduate within the next semster
+                            and begin my journey in the CS field. I am aspiring to become a game designer or developer
+                            and work on pursuing my passion of one day
+                            creating my own video game. I want to be able to do something to either make people happy or
+                            help others with my knowledge and skills. </p>
                     </div>
                 </div>
             </div>
@@ -108,10 +145,11 @@
 
     <section id="contact">
         <div class="container my-1">
-            <div class ="row my-5">
+            <div class="row my-5">
                 <div class="images">
-                   <img src="../Images/BrandIcons/f_logo_RGB-Blue_1024.png" class="icon_style">
-                    <a href="https://github.com/KaiiYoung"><img src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png" class="icon_style"></a>
+                    <img src="../Images/BrandIcons/f_logo_RGB-Blue_1024.png" class="icon_style">
+                    <a href="https://github.com/KaiiYoung"><img
+                            src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png" class="icon_style"></a>
                     <img src="../Images/BrandIcons/LI-In-Bug.png" class="icon_style">
                 </div>
             </div>
@@ -141,8 +179,8 @@
     </section>
 
     <!-- <hr class="featurette-divider "> -->
-
-    <footer class="container">
+    <footer class="container my-0">
+        <hr class="featurette-divider">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
