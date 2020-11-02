@@ -2,110 +2,143 @@
 <html lang="en">
 
 <head>
-    <title>About Me - Allyson Leung</title>
+    <title>Home</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+    <!--Font awesomesearch icons-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
     <!-- [navbar] [theme] [backrgound theme]-->
-    <a href="#" class="navbar-brand">Logo</a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarMenu">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
         <!--Collapse navbar on smaller screens-->
-        <form class="mx-5 d-inline w-100">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search marketplace">
-                <span class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">GO</button>
-                    </span>
-            </div>
-        </form>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Marketplace</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Account</a>
-            </li>
-            <li class="nav-item">
-                <a href="../HTML/aboutus.html" class="nav-link">About</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<section id="showcase">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="showcase-image">
-                    <img src="../Images/AboutUs/AboutAllyson/allyson1.JPG">
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                <div class="input-group">
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="showcase-text">
-                    <h1>Who I am</h1>
-                    <p>I am a 22 year old Chinese American born and raised in San Francisco. One of the reasons why I chose
-                        to go to SF State is because I didn't want to move away from home. Outside of being a student, I
-                         am a really big baseball fan so I try to watch just about every Giants game.
-                    </p>
-                </div>
-            </div>
+            </form>
+            
+            <!-- Nav items code-->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Wishlist</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
+                </li>
+            </ul>
         </div>
-        <br><hr class="featurette-divider my-5"><br>
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="showcase-text">
-                    <h1>My Experience</h1>
-                    <p> Most of my programming experience comes from school. When I started coding in high school I was
-                        mostly doing web design (HTML and CSS). When I got to college, I started to learn a few more
-                        languages such as Java, C/C++ and Python (although still learning that one). Some of the projects
-                        that I have worked on include designing a couple games and making a MBTI type predictor.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="showcase-image">
-                    <img src="../Images/AboutUs/AboutAllyson/laptop.jpg">
-                </div>
-            </div>
-        </div>
-        <br><hr class="featurette-divider my-5"><br>
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="showcase-image">
-                   <img src="../Images/AboutUs/AboutAllyson/allyson2.JPG">
-                 </div>
-             </div>
-             <div class="col-md-6 col-sm-6 ">
-                 <div class="showcase-text">
-                     <h1>Where I am now</h1>
-                     <p>I am currently a student at SF State, working on my BS in Computer Science. I am hoping to graduate
-                     at the end of this semester, so I am trying to figure out what my life will be like after college
-                     </p>
-                 </div>
-             </div>
-         </div>
-         <hr class="featurette-divider my-5">
-     </div>
- </section>
+    </nav>
 
- <!--
+    <section id="showcase">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="showcase-image">
+                        <img src="../Images/AboutAllyson/allyson1.JPG">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="showcase-text">
+                        <h1>Who I am</h1>
+                        <p>I am a 22 year old Chinese American born and raised in San Francisco. One of the reasons why
+                            I chose
+                            to go to SF State is because I didn't want to move away from home. Outside of being a
+                            student, I
+                            am a really big baseball fan so I try to watch just about every Giants game.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr class="featurette-divider my-5"><br>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="showcase-text">
+                        <h1>My Experience</h1>
+                        <p> Most of my programming experience comes from school. When I started coding in high school I
+                            was
+                            mostly doing web design (HTML and CSS). When I got to college, I started to learn a few more
+                            languages such as Java, C/C++ and Python (although still learning that one). Some of the
+                            projects
+                            that I have worked on include designing a couple games and making a MBTI type predictor.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="showcase-image">
+                        <img src="../Images/AboutAllyson/laptop.jpg">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr class="featurette-divider my-5"><br>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="showcase-image">
+                        <img src="../Images/AboutAllyson/allyson2.JPG">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 ">
+                    <div class="showcase-text">
+                        <h1>Where I am now</h1>
+                        <p>I am currently a student at SF State, working on my BS in Computer Science. I am hoping to
+                            graduate
+                            at the end of this semester, so I am trying to figure out what my life will be like after
+                            college
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- <hr class="featurette-divider my-5"> -->
+        </div>
+    </section>
+
+    <!--
  <section id="contact">
      <div class="container my-1">
          <div class ="row my-5">
@@ -140,18 +173,19 @@
      </div>
  </section>
  -->
-<!-- <hr class="featurette-divider "> -->
+    <!-- <hr class="featurette-divider "> -->
 
-<footer class="container">
-    <p class="float-right">
-        <a href="#">Back to top</a>
-    </p>
-    <p>
-        © 2020-2021 Team 06 ・
-        <a href="#">Privacy</a>
-        <a href="#">・ Terms</a>
-    </p>
-</footer>
+    <footer class="container my-5">
+        <hr class="featurette-divider">
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>
+            © 2020-2021 Team 06 ・
+            <a href="#">Privacy</a>
+            <a href="#">・ Terms</a>
+        </p>
+    </footer>
 
     <!--Scrpt-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>

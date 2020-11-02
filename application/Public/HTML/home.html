@@ -16,9 +16,10 @@
 </head>
 
 <body>
+    <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <!--Logo-->
-        <a class="navbar-brand" href="#">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
             <i class="fa fa-cube wid" aria-hidden="true"></i>
             GatorMart
             <!--Below is for GatorMart actual logo when available-->
@@ -26,50 +27,48 @@
                 class="d-inline-block align-top" alt="">
             GatorMart -->
         </a>
-        <!--Hamburger icon-->
+
+        <!-- Hamburger icon -->
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+
         <!--Collapse navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarMenu">
-            <!-- Search bar on nav-->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 w-50 navbar-search">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <button class="border btn btn-light dropdown-toggle" type="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">All</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Books</a>
-                        <a class="dropdown-item" href="#">Supplies</a>
-                        <a class="dropdown-item" href="#">Tutoring</a>
-                    </div>
-
-                    <!---->
-
-                    <input type="text" class="form-control border-0 small" placeholder="Search item...">
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
                     </div>
                 </div>
             </form>
-            <!--Nav items-->
+            
+            <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
-                <!--Nav Links-->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Post</a>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Wishlist</a>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Wishlist</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">About</a>
+                <li class="nav-item">
+                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
                 </li>
-                <li class="nav-item active">
-                    <button class="btn btn-sm btn-outline-secondary" type="button">
-                        <a class="nav-link" href="#">Login/Register</a>
-                    </button>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
                 </li>
             </ul>
         </div>

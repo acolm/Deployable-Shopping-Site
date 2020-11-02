@@ -8,40 +8,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+        <!--Font awesomesearch icons-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
+    <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <!-- [navbar] [theme] [backrgound theme]-->
-        <a href="#" class="navbar-brand">Logo</a>
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+        <!--Collapse navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarMenu">
-            <!--Collapse navbar on smaller screens-->
-            <form class="mx-5 d-inline w-100">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search marketplace">
-                    <span class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">GO</button>
-                    </span>
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
+            
+            <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Marketplace</a>
+                    <a href="#" class="nav-link">Wishlist</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Account</a>
+                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
                 </li>
             </ul>
         </div>
@@ -57,10 +84,10 @@
                 <img class="d-block img-fluid" src="../Images/AboutUs/carousel1.jpg" alt="First Slide">
                 <div class="carousel-caption">
                     <h3>About Team</h3>
-                    <p>The team behind this website is composed of San Francisco State University Juniors and 
-                        Seniors in the Computer Science Department. This project was constructed 100% virtually 
+                    <p>The team behind this website is composed of San Francisco State University Juniors and
+                        Seniors in the Computer Science Department. This project was constructed 100% virtually
                         due to the COVID-19 pandemic. Our team heavily relied on communication and resources such
-                        as GitHub and Zoom video-conferencing.  </p>
+                        as GitHub and Zoom video-conferencing. </p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -68,7 +95,7 @@
                 <div class="carousel-caption">
                     <h3>About Website</h3>
                     <p>This project website is designed to be an online marketplace for San Francisco State University
-                        students, staff, and alumni only. The purpose behnd this project is to provide an easy and 
+                        students, staff, and alumni only. The purpose behnd this project is to provide an easy and
                         efficient way for members to sell and purchase items in a safe and secure manner
                         with as little physical contact as possible.
                     </p>
@@ -85,102 +112,90 @@
             </a>
         </div>
     </div>
-
-    <div class="container">
-        <div class="row bg-light">
-            <div class="col">
-                <h4 class="text-center">Software Engineering class SFSU - Fall 2020 - Section 3 - Team 06</h1>
+    <div class="row border alert alert-light d-flex justify-content-center" role="alert">
+        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    </div>
+    <div class="container my-0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center text-uppercase">The Team</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <h1 class="text-center text-uppercase">The Team</h1>
-                <div class="row my-md-5">
 
-                    <div class="col">
-                        <div class="card">
-                            <img src="../Images/AboutUs/AboutLothar/lothar_headshot.jpg" alt="">
-                            <div class="card-text">
-                                <h3>Lothar Narins</h3>
-                                <h5>Team Lead</h5>
-                                <button class="btn btn-info" type="button"><a href="../HTML/aboutlothar.html">Learn More</a></button>
-                            </div>
-                        </div>
+        <div class="row my-5">
+            <div class="col-sm-4">
+                <div class="card my-2 shadow-sm" style="width:300px">
+                    <img class="card-img-top" src="../Images/AboutUs/Lothar.jpg" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Lothar Narins</h4>
+                            <h6 class="card-title">Team Lead</h6>
+                            <a href="../HTML/aboutlothar.html" class="btn btn-light border">Learn More</a>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col">
-                        <div class="card">
-                            <img src="../Images/AboutUs/AboutAaron/aaron.jpg" alt="">
-                            <div class="card-text">
-                                <h3>Aaron Colmenares</h3>
-                                <h5>Backend Lead</h5>
-                                <button class="btn btn-info" type="button"><a href="../HTML/about_aaron.html">Learn More</a></button>
-                            </div>
-                        </div>
+            <div class="col-sm-4">
+                <div class="card my-2 shadow-sm" style="width:300px">
+                    <img class="card-img-top" src="../Images/AboutUs/Aaron.jpg" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Aaron Colmenares</h4>
+                            <h6 class="card-title">Backend Lead</h6>
+                            <a href="../HTML/about_aaron.html" class="btn btn-light border">Learn More</a>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col">
-                        <div class="card">
-                            <img src="../Images/AboutUs/AboutAllyson/allyson1.JPG" alt="">
-                            <div class="card-text">
-                                <h3>Allyson Leung</h3>
-                                <h5>Frontend Lead</h5>
-                                <button class="btn btn-info" type="button"><a href="../HTML/aboutallyson.html">Learn More</a></button>
-                            </div>
-                        </div>
+            <div class="col-sm-4">
+                <div class="card my-2 shadow-sm" style="width:300px">
+                    <img class="card-img-top" src="../Images/AboutUs/Allyson.jpg" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Allyson Leung</h4>
+                            <h6 class="card-title">Frontend Lead</h6>
+                            <a href="../HTML/aboutallyson.html" class="btn btn-light border">Learn More</a>
                     </div>
-
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col">
-                <div class="row">
-
-                    <div class="col">
-                        <div class="card">
-                            <img src="../Images/AboutUs/WilsonYoung.jpg" alt="">
-                            <div class="card-text">
-                                <h3>Wilson Young</h3>
-                                <h5>GitHub Master</h5>
-                                <button class="btn btn-info" type="button"><a href="../HTML/aboutwilson.html">Learn More</a></button>
-                            </div>
-                        </div>
+            <div class="col-sm-4">
+                <div class="card my-2 shadow-sm" style="width:300px">
+                    <img class="card-img-top" src="../Images/AboutUs/Wilson.jpg" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Wilson Young</h4>
+                            <h6 class="card-title">GitHub Master</h6>
+                            <a href="../HTML/aboutwilson.html" class="btn btn-light border">Learn More</a>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col">
-                        <div class="card">
-                            <img src="../Images/AboutUs/saloni.jpeg" alt="">
-                            <div class="card-text">
-                                <h3>Saloni Bhatia</h3>
-                                <h5>Backend</h5>
-                                <button class="btn btn-info" type="button"><a href="../HTML/aboutsaloni.html">Learn More</a></button>
-                            </div>
-                        </div>
+            <div class="col-sm-4">
+                <div class="card my-2 shadow-sm" style="width:300px">
+                    <img class="card-img-top" src="../Images/AboutUs/Saloni.jpeg" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Saloni Bhatia</h4>
+                            <h6 class="card-title">Backend</h6>
+                            <a href="../HTML/aboutsaloni.html" class="btn btn-light border">Learn More</a>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col">
-                        <div class="card">
-                            <img src="../Images/AboutUs/KevinNunura.jpg" alt="">
-                            <div class="card-text">
-                                <h3>Kevin Nunura</h3>
-                                <h5>Frontend</h5>
-                                <button class="btn btn-info" type="button"><a href="../HTML/aboutkevin.html">Learn More</a></button>
-                            </div>
-                        </div>
+            <div class="col-sm-4">
+                <div class="card my-2 shadow-sm" style="width:300px">
+                    <img class="card-img-top" src="../Images/AboutUs/Kevin.jpg" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">Kevin Nunura</h4>
+                            <h6 class="card-title">Frontend</h6>
+                            <a href="../HTML/aboutkevin.html" class="btn btn-light border">Learn More</a>
                     </div>
-
                 </div>
             </div>
         </div>
 
     </div>
 
-
-    <div class="container"></div>
-    <hr class="featurette-divider">
-
     <footer class="container">
+        <hr class="featurette-divider">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>

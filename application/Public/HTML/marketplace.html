@@ -18,26 +18,46 @@
 
 <body>
     <!-- [navbar] [theme] [backrgound theme]-->
-    <h5>SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only</h5>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a href="/" class="navbar-brand">GatorMart</a>
-        <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
-            <div class="input-group">
-                <select class="form-control search-slt col-sm-3" id="category" name="category">
-                    <option id="All" name="cats">All</option>
-                    <option id="Books" name="cats">Books</option>
-                    <option id="Textbooks" name="cats">Textbooks</option>
-                    <option id="Furniture" name="cats">Furniture</option>
-                    <option id="Supplies" name="cats">Supplies</option>
-                </select>
-                <input class="form-control" type="text" placeholder="Search for items" id="searchtext" name="searchtext">
-                <button type="submit" id="nav-bar-go" class="btn btn-outline-secondary">GO</button>
-            </div>
-        </form>
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+        <!--Collapse navbar on smaller screens-->
         <div class="collapse navbar-collapse" id="navbarMenu">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                <div class="input-group">
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <button class="btn btn-outline-secondary" type="button">Post</button>
@@ -57,10 +77,13 @@
 
     <!-- Start body of page with a container and small gap from navbar-->
     <div class="container my-1">
+        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
         <div class="row">
             <!--Filters COL div-->
             <div class="col-sm-2">
-                <div class="border filters-card">
+                <div class="border filters-card shadow-sm">
                     <h6>Filters</h6>
                     <hr class="featurette-divider my-0">
                     <!--Filters-->
@@ -91,7 +114,7 @@
             </div>
             <!--Results COL div-->
             <div class="col-sm-10">
-                <!-- <div class="border results-card">
+                <div class="border results-card shadow-sm">
                     <h6 class="mx-2 d-inline-block">Results</h6>
                     <button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By</button>
@@ -99,7 +122,7 @@
                         <a class="dropdown-item" href="#">Low Price to High Price</a>
                         <a class="dropdown-item" href="#">High Price to Low Price</a>
                     </div>
-                </div> -->
+                </div>
                 <div class="main-content" id="main-content">
 
                 </div>
@@ -108,7 +131,7 @@
     </div>
 
     <script>
-        function createCard(data){
+        function createCard(data) {
             return `<a id="post-${data.id}" class="test-card-wrapper"> \
                 <div class="test-card-body"> \
                     <div class="test-card-top"> \
@@ -128,118 +151,118 @@
         }
         function runSearch(val) {
             let searchTerm = document.getElementById('searchtext').value;
-            if(searchTerm === ""){
+            if (searchTerm === "") {
                 searchTerm = "noValue";
             }
-            let searchURL = 'http://localhost:3000/posts/search/'+searchTerm+"/"+val;
+            let searchURL = 'http://localhost:3000/posts/search/' + searchTerm + "/" + val;
             fetch(searchURL)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((post) => {
-                    _html += createCard(post);
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createCard(post);
+                    })
+                    document.getElementById('main-content').innerHTML = _html;
                 })
-                document.getElementById('main-content').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
-    }
-
-    function runFilterSearch(x, val) {
-            let searchTerm = document.getElementById('searchtext').value;
-            if(searchTerm === ""){
-                searchTerm = "noValue";
-            }
-            let searchURL = 'http://localhost:3000/posts/searchType/'+searchTerm+"/"+x+"/"+val;
-            fetch(searchURL)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((post) => {
-                    _html += createCard(post);
-                })
-                document.getElementById('main-content').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
-    }
-
-    function BIGsearch(x, val, cherry){
-        let searchTerm = document.getElementById('searchtext').value;
-        if(searchTerm === ""){
-                searchTerm = "noValue";
-            }
-        let searchURL = 'http://localhost:3000/posts/BIGsearch/'+searchTerm+"/"+x+"/"+val+"/"+cherry;
-        fetch(searchURL)
-        .then((data) => data.json())
-        .then((dataAsObject) => {
-            let _html = "";
-            dataAsObject.forEach((post) => {
-                _html += createCard(post);
-            })
-            document.getElementById('main-content').innerHTML = _html;
-        })
-        .catch((err) => console.log(err));
-    }
-    
-    function parse(){
-        var url = document.location.href,
-            params = url.split('?')[1].split('&'),
-            data = {}, tmp;
-        for (var i = 0, l = params.length; i < l; i++) {
-            tmp = params[i].split('=');
-            data[tmp[0]] = tmp[1];
-            tmp[1] =tmp[1].replace(/\+/g," ");
-            //console.log(tmp[0]);
-            setStuff(tmp[0], tmp[1]);
+                .catch((err) => console.log(err));
         }
-        var val;
-        var holder = document.getElementsByName("cats");
-        for(i =0;i<holder.length;i++){
-                if(holder[i].selected === true){
+
+        function runFilterSearch(x, val) {
+            let searchTerm = document.getElementById('searchtext').value;
+            if (searchTerm === "") {
+                searchTerm = "noValue";
+            }
+            let searchURL = 'http://localhost:3000/posts/searchType/' + searchTerm + "/" + x + "/" + val;
+            fetch(searchURL)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createCard(post);
+                    })
+                    document.getElementById('main-content').innerHTML = _html;
+                })
+                .catch((err) => console.log(err));
+        }
+
+        function BIGsearch(x, val, cherry) {
+            let searchTerm = document.getElementById('searchtext').value;
+            if (searchTerm === "") {
+                searchTerm = "noValue";
+            }
+            let searchURL = 'http://localhost:3000/posts/BIGsearch/' + searchTerm + "/" + x + "/" + val + "/" + cherry;
+            fetch(searchURL)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createCard(post);
+                    })
+                    document.getElementById('main-content').innerHTML = _html;
+                })
+                .catch((err) => console.log(err));
+        }
+
+        function parse() {
+            var url = document.location.href,
+                params = url.split('?')[1].split('&'),
+                data = {}, tmp;
+            for (var i = 0, l = params.length; i < l; i++) {
+                tmp = params[i].split('=');
+                data[tmp[0]] = tmp[1];
+                tmp[1] = tmp[1].replace(/\+/g, " ");
+                //console.log(tmp[0]);
+                setStuff(tmp[0], tmp[1]);
+            }
+            var val;
+            var holder = document.getElementsByName("cats");
+            for (i = 0; i < holder.length; i++) {
+                if (holder[i].selected === true) {
                     //console.log(holder[i].getAttribute("id"));
                     val = holder[i].getAttribute("id");
                 }
             }
-        runSearch(val);
-    }
-    function setStuff(name, val){
-        if(name == "category"){
-            document.getElementById(val).selected = "true";
+            runSearch(val);
         }
-        else{
-            var holder = document.getElementById(name);
-            holder.value = val;
+        function setStuff(name, val) {
+            if (name == "category") {
+                document.getElementById(val).selected = "true";
+            }
+            else {
+                var holder = document.getElementById(name);
+                holder.value = val;
+            }
         }
-    }
-    window.onload = parse();
+        window.onload = parse();
 
-    function filterSelection(decide){
-        var val;
-        var x, i;
-        var holder = document.getElementsByName("options");
-        //console.log(holder);
-        for(i =0;i<holder.length;i++){
-            if(holder[i].selected === true){
-                //console.log(holder[i].getAttribute("id"));
-                val = holder[i].getAttribute("id");
+        function filterSelection(decide) {
+            var val;
+            var x, i;
+            var holder = document.getElementsByName("options");
+            //console.log(holder);
+            for (i = 0; i < holder.length; i++) {
+                if (holder[i].selected === true) {
+                    //console.log(holder[i].getAttribute("id"));
+                    val = holder[i].getAttribute("id");
+                }
+            }
+            //console.log(val);
+            var holder2 = document.getElementsByName("cats");
+            for (i = 0; i < holder2.length; i++) {
+                if (holder2[i].selected === true) {
+                    //console.log(holder2[i].getAttribute("id"));
+                    x = holder2[i].getAttribute("id");
+                }
+            }
+            if (decide === 'false') {
+                runFilterSearch(x, val);
+            }
+            else {
+                var cherry = document.getElementById('classLabel').value;
+                //console.log(cherry);
+                BIGsearch(x, val, cherry);
             }
         }
-        //console.log(val);
-        var holder2 = document.getElementsByName("cats");
-        for(i =0;i<holder2.length;i++){
-            if(holder2[i].selected === true){
-                //console.log(holder2[i].getAttribute("id"));
-                x = holder2[i].getAttribute("id");
-            }
-        }
-        if(decide === 'false') {
-            runFilterSearch(x,val);
-        }
-        else{
-            var cherry = document.getElementById('classLabel').value;
-            //console.log(cherry);
-            BIGsearch(x,val, cherry);
-        }
-    }
     </script>
 
     <!-- Optional JavaScript -->
