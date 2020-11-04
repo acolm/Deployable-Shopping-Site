@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Item Page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/search.css">
+    <!--Font awesomesearch icons-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- [navbar] [theme] [backrgound theme]-->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./home.html">
+            <i class="fa fa-cube wid" aria-hidden="true"></i>
+            GatorMart
+            <!--Below is for GatorMart actual logo when available-->
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            GatorMart -->
+        </a>
+
+        <!-- Hamburger icon -->
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <!--Collapse navbar on smaller screens-->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <!-- Search bar code -->
+            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                <div class="input-group">
+                    <select class="form-control search-slt col-sm-3" id="category" name="category">
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                        name="searchtext">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Nav items code-->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Post</button>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Wishlist</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary" type="button">Login/Register</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Start body of page with a container and small gap from navbar-->
+    <div class="container my-1">
+        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
+
+        <!-- Gotta take off border radius from CSS and use bootstrap "Border" instead on all pages for future -->
+        <div class="border shadow-sm rounded offwhite">
+            <div class="row mx-5 my-3">
+                <button class="btn" type="button">
+                    <div class="sellerImage rounded"></div>
+                </button>
+            </div>
+
+            <div class="row mx-5 my-3">
+                <!-- Item image of left side of post card-->
+                <div class="col-sm-6">
+                    <div class="itemImage rounded"></div>
+                </div>
+
+                <!-- Item information on right side of post card-->
+                <div class="col-sm-6">
+                    <!-- Header information (TITLE and POST DATE) -->
+                    <div>
+                        <h4 class="d-inline-block">Textbook for MATH400</h4>
+                        <p class="float-right">DD/MM/YYY</p>
+                    </div>
+                    <hr class="featurette-divider my-0">
+                    <!-- Row 1: Price and Save to wishlist-->
+                    <div class="my-3 d-flex space">
+                        <!-- Price -->
+                        <div>
+                            <h3><span class="badge badge-warning sfsu-text-colors">$50.00</span></h3>
+                        </div>
+                        <!-- Wishlist -->
+                        <div class="font-weight-bold d-flex">
+                            <input type="image" src="../Images/Icons/heart-icon.png" width="45" height="30">
+                            Save to Wishlist
+                        </div>
+                    </div>
+                    <!-- Row 2: Type, Category, Class ID) -->
+                    <div class="d-flex">
+                        <div>
+                            <h6 class="font-weight-bold">Type</h6>
+                            <p>For sale</p>
+                        </div>
+
+                        <div class="mx-5">
+                            <h6 class="font-weight-bold">Category</h6>
+                            <p>Books</p>
+                        </div>
+
+                        <div>
+                            <h6 class="font-weight-bold">Class ID</h6>
+                            <p>MATH400</p>
+                        </div>
+                    </div>
+                    <!-- Row 3: Item description -->
+                    <div>
+                        <h6 class="font-weight-bold">Description</h6>
+                        <div class="item-description border rounded">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit corrupti quis hic!
+                        </div>
+                    </div>
+                    <!-- Row 4: Message seller and Send button -->
+                    <div>
+                        <h6 class="font-weight-bold my-3">Message</h6>
+                        <textarea class="form-control"
+                            placeholder="Send seller your contact information (max 600 characters)..."></textarea>
+                        <button class="btn btn-success float-right my-2">Send</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container">
+        <hr class="featurette-divider">
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>
+            © 2020-2021 Team 06 ・
+            <a href="#">Privacy</a>
+            <a href="#">・ Terms</a>
+        </p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
