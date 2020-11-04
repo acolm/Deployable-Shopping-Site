@@ -200,3 +200,32 @@ float: left;
     border-radius: 5px;
     padding: 5px;
 }
+
+/* Item Image */
+.sellerImage{
+    height: 50px;
+    width: 50px;
+    background-color: grey;
+}
+
+.itemImage{
+    height: 500px;
+    width: 100%;
+    background-color: black;
+}
+
+.item-description{
+    height: 150px;
+}
+
+.sfsu-text-colors{
+    background-color: #800080 !important;
+    color: #FFFF00 !important;
+}
+.space{ /* have to figure out a way to get rid of this and find a bootstrap alternative*/
+    justify-content: space-between;
+}
+
+/* .offwhite{
+    background-color: #f8f8ff !important;
+} */
