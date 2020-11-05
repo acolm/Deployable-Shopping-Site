@@ -151,7 +151,7 @@ a{
 
 /* Marketplace */
 .filters-card{
-    height: 260px;
+    /*height: 260px;*/
     border-radius: 5px;
     padding: 10px;
     border-right: 2px dashed #333;

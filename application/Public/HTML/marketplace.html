@@ -90,7 +90,7 @@
                     <div class="form-horizontal my-2">
                         <div class="form-group" id="search-type">
                             <label for="typeLabel">Type</label>
-                            <select class="form-control" onchange="filterSelection('false')">
+                            <select class="form-control" id="typeSelect" onchange="filteredSearch();">
                                 <option id="All" name="options">All</option>
                                 <option id="For-Sale" name="options">For Sale</option>
                                 <option id="Request" name="options">Item Request</option>
@@ -99,16 +99,15 @@
                         </div>
                         <div class="form-group">
                             <label for="classLabel">Class ID</label>
-                            <input type="text" class="form-control" id="classLabel" placeholder="i.e. CSC648">
-                            <button onclick="filterSelection(true)" class="form-control">GO</button>
+                            <input type="text" class="form-control" id="classLabel" onchange="filteredSearch();" placeholder="i.e. CSC648">
                         </div>
 
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="priceLabel">Price</label>
-                            <input type="text" class="form-control" id="priceLabel" placeholder="Min"> 
-                            To                         
-                            <input type="text" class="form-control" id="priceLabel" placeholder="Max"> 
-                        </div> -->
+                            <input type="text" class="form-control" id="priceMin" onchange="filteredSearch();" placeholder="Min">
+                            To
+                            <input type="text" class="form-control" id="priceMax" onchange="filteredSearch();" placeholder="Max">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -222,7 +221,7 @@
                     val = holder[i].getAttribute("id");
                 }
             }
-            runSearch(val);
+            filteredSearch();
         }
         function setStuff(name, val) {
             if (name == "category") {
@@ -260,8 +259,35 @@
             else {
                 var cherry = document.getElementById('classLabel').value;
                 //console.log(cherry);
-                BIGsearch(x, val, cherry);
+                if (cherry !== '') {
+                    BIGsearch(x, val, cherry);
+                } else {
+                    runFilterSearch(x, val);
+                }
             }
+        }
+        
+        function filteredSearch() {
+            let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
+            let catElement = document.getElementById('category');
+            let category = catElement.options[catElement.selectedIndex].text;
+            let typeElement = document.getElementById('typeSelect');
+            let type = typeElement.options[typeElement.selectedIndex].text;
+            let classID = document.getElementById('classLabel').value || '__NO_VALUE__';
+            let priceMin = document.getElementById('priceMin').value || '__NO_VALUE__';
+            let priceMax = document.getElementById('priceMax').value || '__NO_VALUE__';
+            console.log(category + ', ' + type + ', ' + classID + ', ' + priceMin + ' - ' + priceMax + '.');
+            let searchURL = 'http://localhost:3000/posts/fullsearch/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + priceMin + '/' + priceMax;
+            fetch(searchURL)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createCard(post);
+                    })
+                    document.getElementById('main-content').innerHTML = _html;
+                })
+                .catch((err) => console.log(err));
         }
     </script>
 
