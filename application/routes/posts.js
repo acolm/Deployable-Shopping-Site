@@ -148,10 +148,9 @@ router.get('/fullsearch/:searchTerm/:searchCategory/:searchType/:searchClass/:se
     if(searchType !== 'All'){
         _sql += 'type = ? AND ';
         arguments.push(searchType);
-        check[2] = 1;
     }
     if(searchClass !== '__NO_VALUE__'){
-        _sql += 'class LIKE ? AND ';
+        _sql += 'class = ? AND ';
         arguments.push('%' + searchClass + '%');
     }
     if(searchPriceMin !== '__NO_VALUE__'){
