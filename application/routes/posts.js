@@ -150,7 +150,7 @@ router.get('/fullsearch/:searchTerm/:searchCategory/:searchType/:searchClass/:se
         arguments.push(searchType);
     }
     if(searchClass !== '__NO_VALUE__'){
-        _sql += 'class = ? AND ';
+        _sql += 'class LIKE ? AND ';
         arguments.push('%' + searchClass + '%');
     }
     if(searchPriceMin !== '__NO_VALUE__'){
