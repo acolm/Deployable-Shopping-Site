@@ -20,7 +20,7 @@
     <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <!-- Logo -->
-        <a class="navbar-brand" href="./home.html">
+        <a class="navbar-brand" href="./index.html" target="_blank">
             <i class="fa fa-cube wid" aria-hidden="true"></i>
             GatorMart
             <!--Below is for GatorMart actual logo when available-->
@@ -41,11 +41,11 @@
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
                     <select class="form-control search-slt col-sm-3" id="category" name="category">
-                        <option id="All" name="cats" value="All">All</option>
-                        <option id="Books" name="cats" value="Books">Books</option>
-                        <option id="Textbooks" name="cats" value="Textbooks">Textbooks</option>
-                        <option id="Furniture" name="cats" value="Furniture">Furniture</option>
-                        <option id="Supplies" name="cats" value="Supplies">Supplies</option>
+                        <option id="All" name="cats">All</option>
+                        <option id="Books" name="cats">Books</option>
+                        <option id="Textbooks" name="cats">Textbooks</option>
+                        <option id="Furniture" name="cats">Furniture</option>
+                        <option id="Supplies" name="cats">Supplies</option>
                     </select>
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">
@@ -63,13 +63,13 @@
                     <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Wishlist</a>
+                    <a href="../HTML/dashboard.html" target="_blank" class="nav-link">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                    <a href="../HTML/aboutus.html" target="_blank" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/login.html" class="btn btn-outline-secondary" role="button">Login/Register</a>
+                    <a href="../HTML/login.html" target="_blank" class="btn btn-outline-secondary" role="button">Login/Register</a>
                 </li>
             </ul>
         </div>

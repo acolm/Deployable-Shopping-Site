@@ -135,7 +135,8 @@
     height: 100px;
     width: 200px;
     text-align: center;
-    padding: 30px;   
+    padding: 30px;  
+    background-color: antiquewhite; 
 }
 
 .typesButton:hover{
@@ -149,9 +150,9 @@ a{
 }
 
 
-/* Marketplace */
+/* MARKETPLACE CSS */
 .filters-card{
-    /*height: 260px;*/
+    height: 375px;
     border-radius: 5px;
     padding: 10px;
     border-right: 2px dashed #333;
@@ -206,6 +207,8 @@ float: left;
     height: 50px;
     width: 50px;
     background-color: grey;
+    border-radius: 50%;
+    vertical-align: middle;
 }
 
 .itemImage{
@@ -226,6 +229,9 @@ float: left;
     justify-content: space-between;
 }
 
-/* .offwhite{
-    background-color: #f8f8ff !important;
-} */
+/* HOMEPAGE CAROUSEL CSS*/
+.carousel-caption{
+    color: white !important;
+    background-color: rgb(10, 10, 10, .6);
+    border-radius: 10px;
+}

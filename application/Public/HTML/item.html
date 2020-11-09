@@ -20,7 +20,7 @@
     <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <!-- Logo -->
-        <a class="navbar-brand" href="./home.html">
+        <a class="navbar-brand" href="./index.html" target="_blank">
             <i class="fa fa-cube wid" aria-hidden="true"></i>
             GatorMart
             <!--Below is for GatorMart actual logo when available-->
@@ -63,13 +63,13 @@
                     <button class="btn btn-outline-secondary" type="button">Post</button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Wishlist</a>
+                    <a href="../HTML/dashboard.html" target="_blank" class="nav-link">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                    <a href="../HTML/aboutus.html" target="_blank" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/login.html" class="btn btn-outline-secondary" role="button">Login/Register</a>
+                    <a href="../HTML/login.html" target="_blank" class="btn btn-outline-secondary" role="button">Login/Register</a>
                 </li>
             </ul>
         </div>
@@ -82,11 +82,18 @@
         </div>
 
         <!-- Gotta take off border radius from CSS and use bootstrap "Border" instead on all pages for future -->
-        <div class="border shadow-sm rounded offwhite">
+        <div class="border shadow-sm rounded">
+            <!-- Seller Image and Name -->
             <div class="row mx-5 my-3">
+                <a href="../HTML/dashboard.html" class="d-flex">
                 <button class="btn" type="button">
-                    <div class="sellerImage rounded"></div>
+                    <div class="sellerImage"></div>
                 </button>
+                <div class="my-2">
+                    <h6 class="my-0">First, Last</h6>
+                    <p class="my-0">★★★★☆</p>
+                </div>
+                </a>
             </div>
 
             <div class="row mx-5 my-3">
@@ -110,10 +117,10 @@
                             <h3><span class="badge badge-warning sfsu-text-colors">$50.00</span></h3>
                         </div>
                         <!-- Wishlist -->
-                        <div class="font-weight-bold d-flex">
+                        <!-- <div class="font-weight-bold d-flex">
                             <input type="image" src="../Images/Icons/heart-icon.png" width="45" height="30">
                             Save to Wishlist
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Row 2: Type, Category, Class ID) -->
                     <div class="d-flex">
