@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Post Submission Page</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/search.css">
+    
+        <!--Font awesomesearch icons-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+        <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    </head>
+
+    <body>
+        <!-- [navbar] [theme] [backrgound theme]-->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <!-- Logo -->
+            <a class="navbar-brand" href="./index.html" target="_blank">
+                <i class="fa fa-cube wid" aria-hidden="true"></i>
+                GatorMart
+                <!--Below is for GatorMart actual logo when available-->
+                <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                    class="d-inline-block align-top" alt="">
+                GatorMart -->
+            </a>
+
+            <!-- Hamburger icon -->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!--Collapse navbar on smaller screens-->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <!-- Search bar code -->
+                <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                    <div class="input-group">
+                        <select class="form-control search-slt col-sm-3" id="category" name="category">
+                            <option id="All" name="cats">All</option>
+                            <option id="Books" name="cats">Books</option>
+                            <option id="Textbooks" name="cats">Textbooks</option>
+                            <option id="Furniture" name="cats">Furniture</option>
+                            <option id="Supplies" name="cats">Supplies</option>
+                        </select>
+                        <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
+                            name="searchtext">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                                <i class="fa fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Nav items code-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="../HTML/postsubmission.html" target="_blank" class="btn btn-outline-secondary" role="button">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../HTML/dashboard.html" target="_blank" class="nav-link">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../HTML/aboutus.html" target="_blank" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../HTML/login.html" target="_blank" class="btn btn-outline-secondary" role="button">Login/Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
+
+        <div class="container p-3 my-3 border col-lg-10">
+            <h2 class="text-center">Post Submission Form</h2>
+            <form class="needs-validation" novalidate>
+            <div class="row">
+                <!--Input area for images to left-->
+                <div class="col-sm-6">
+                    <!--Image displayed here-->
+                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                    <p class="font-italic text-center">The image uploaded will be rendered inside the box above.</p>
+                    <!--Image uploaded here-->
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="upload" onchange="readURL(this);" required>
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
+                </div>
+                
+                <!--Item info to the right-->
+                <div class="col-sm-6 font-weight-bold">
+                    <!--Item Name/Post Title-->
+                    <div class="form-group col-sm-10">
+                        <label for="PostTitle">Title</label>
+                        <input type="text" class="form-control" id="PostTitle" placeholder="Textbook for MATH400" required>
+                    </div>
+                    <!--Post Type: For Sale, Class Resource, Request-->
+                    <div class="form-group col-sm-5">
+                        <label for="PostType">Type</label>
+                        <select class="form-control" id="PostType" required>
+                            <option value="">Select Type</option>
+                            <option>For Sale</option>
+                            <option>Class Resource</option>
+                            <option>Request</option>
+                        </select>
+                    </div>
+                    <!--Category: Books, Textbooks, Furniture, Supplies-->
+                    <div class="form-group col-sm-5">
+                        <label for="ItemCat">Category</label>
+                        <select class="form-control" id="ItemCat" required>
+                            <option value="">Select Category</option>
+                            <option>Books</option>
+                            <option>Textbooks</option>
+                            <option>Furniture</option>
+                            <option>Supplies</option>
+                        </select>
+                    </div>
+                    <!--Class ID (optional?)-->
+                    <div class="form-group col-sm-4">
+                        <label for="ClassID">Class ID</label>
+                        <input type="text" class="form-control" id="ClassID" placeholder="i.e. CSC648">                        
+                    </div>
+                    <!--Price (optional?)-->
+                    <div class="form-group col-sm-4">
+                        <label for="ItemPrice"> Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" id="ItemPrice">
+                        </div>
+                    </div>
+                    <!--Description of Item-->
+                    <div class="form-group col-sm-12">
+                        <label for="ItemDescription">Description</label>                            
+                        <textarea class="form-control" rows="5" id="ItemDescription" placeholder="Enter item description..." required></textarea>
+                    </div>
+                    <!--Submit and cancel buttons-->
+                    <div class="col-sm-12">
+                        <!--Right now cancel button goes to home page, might want to change that later?-->
+                        <a href="./index.html" class="btn btn-outline-secondary my-3" role="button">Cancel</a>
+                        <button type="submit" class="btn btn-success btn-lg float-right my-2">Submit for Approval</button>
+                    </div>
+                
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <script>
+            //https://bootstrapious.com/p/bootstrap-image-upload
+            //displaying image
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#imageResult')
+                            .attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            //reading in image url
+            /*
+            $(function () {
+                $('#upload').on('change', function () {
+                    readURL(input);
+                });
+            });*/
+
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+              'use strict';
+              window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                  form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              }, false);
+            })();
+        </script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    </body>
+</html>
