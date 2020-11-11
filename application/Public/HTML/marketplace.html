@@ -114,13 +114,13 @@
             <!--Results COL div-->
             <div class="col-sm-10">
                 <div class="results-card">
-                    <h6 class="mx-2 d-inline-block">Results</h6>
-                    <button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Low Price to High Price</a>
-                        <a class="dropdown-item" href="#">High Price to Low Price</a>
-                    </div>
+                    <h6 id="ResultsText" class="mx-2 d-inline-block">Results</h6>
+                    <!--<button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By</button>-->
+                    <select class="float-right" id="sortBy" onchange="filteredSearch();">
+                        <option value="PriceLowToHi">Low Price to High Price</option>
+                        <option value="PriceHiToLow">High Price to Low Price</option>
+                    </select>
                 </div>
                 <div class="main-content" id="main-content">
 
@@ -174,18 +174,25 @@
         
         function filteredSearch() {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
-            let catElement = document.getElementById('category');
-            let category = catElement.options[catElement.selectedIndex].value;
-            let typeElement = document.getElementById('typeSelect');
-            let type = typeElement.options[typeElement.selectedIndex].value;
+            let category = document.getElementById('category').value;
+            let type = document.getElementById('typeSelect').value;
             let classID = document.getElementById('classLabel').value || '__NO_VALUE__';
             let priceMin = document.getElementById('priceMin').value || '__NO_VALUE__';
             let priceMax = document.getElementById('priceMax').value || '__NO_VALUE__';
+            let searchOrder = document.getElementById('sortBy').value;
             console.log(category + ', ' + type + ', ' + classID + ', ' + priceMin + ' - ' + priceMax + '.');
-            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + priceMin + '/' + priceMax;
+            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + priceMin + '/' + priceMax + '/' + searchOrder;
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
+                    let resultsText = dataAsObject.length + " result" + (dataAsObject.length !== 1 ? "s" : "");
+                    if (searchTerm !== '__NO_VALUE__') {
+                        resultsText += ' for "' + searchTerm + '"';
+                    }
+                    if (type !== 'All') {
+                        resultsText += ' in ' + type;
+                    }
+                    document.getElementById('ResultsText').innerHTML = resultsText;
                     let _html = "";
                     dataAsObject.forEach((post) => {
                         _html += createCard(post);

@@ -3,13 +3,14 @@ var express = require('express');
 var router = express.Router();
 const db = require("../config/database");
 
-router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:searchPriceMin/:searchPriceMax', (req, resp, next) => {
+router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:searchPriceMin/:searchPriceMax/:searchOrder', (req, resp, next) => {
     let searchTerm = req.params.searchTerm;
     let searchCategory = req.params.searchCategory;
     let searchType = req.params.searchType;
     let searchClass = req.params.searchClass;
     let searchPriceMin = req.params.searchPriceMin;
     let searchPriceMax = req.params.searchPriceMax;
+    let searchOrder = req.params.searchOrder;
     
     let arguments = [];
     let _sql = 'SELECT p.id, p.title, p.price, p.thumbnail, p.created, p.type \
@@ -36,7 +37,10 @@ router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:search
     if(searchPriceMax !== '__NO_VALUE__'){
         _sql += 'price <= ' + searchPriceMax + ' AND ';
     }
-    _sql +='approved = 1;';
+    _sql +='approved = 1 ORDER BY p.price';
+    if(searchOrder === 'PriceHiToLow') {
+        _sql += ' DESC';
+    }
     db.query(_sql, arguments)
     .then(([results, fields]) => {
         resp.json(results);
