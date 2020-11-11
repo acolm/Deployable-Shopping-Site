@@ -39,12 +39,11 @@
             <!-- Search bar code -->
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <select class="form-control search-slt col-sm-3" id="category" name="category">
-                        <option id="All" name="cats">All</option>
-                        <option id="Books" name="cats">Books</option>
-                        <option id="Textbooks" name="cats">Textbooks</option>
-                        <option id="Furniture" name="cats">Furniture</option>
-                        <option id="Supplies" name="cats">Supplies</option>
+                    <select class="form-control search-slt col-sm-3" id="typeSelect" name="type">
+                        <option id="All" name="options" value="All">All</option>
+                        <option id="For-Sale" name="options" value="For Sale">For Sale</option>
+                        <option id="Request" name="options" value="Item Request">Item Request</option>
+                        <option id="Resource" name="options" value="Class Resource">Class Resource</option>
                     </select>
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">

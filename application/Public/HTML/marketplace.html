@@ -40,12 +40,11 @@
             <!-- Search bar code -->
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <select class="form-control search-slt col-sm-3" id="category" name="category">
-                        <option id="All" name="cats">All</option>
-                        <option id="Books" name="cats">Books</option>
-                        <option id="Textbooks" name="cats">Textbooks</option>
-                        <option id="Furniture" name="cats">Furniture</option>
-                        <option id="Supplies" name="cats">Supplies</option>
+                    <select class="form-control search-slt col-sm-3" id="typeSelect" name="type">
+                        <option id="All" name="options" value="All">All</option>
+                        <option id="For-Sale" name="options" value="For Sale">For Sale</option>
+                        <option id="Request" name="options" value="Item Request">Item Request</option>
+                        <option id="Resource" name="options" value="Class Resource">Class Resource</option>
                     </select>
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">
@@ -89,12 +88,13 @@
                     <!--Filters-->
                     <div class="form-horizontal my-2">
                         <div class="form-group" id="search-type">
-                            <label for="typeLabel">Type</label>
-                            <select class="form-control" id="typeSelect" onchange="filteredSearch();">
-                                <option id="All" name="options" value="All">All</option>
-                                <option id="For-Sale" name="options" value="For Sale">For Sale</option>
-                                <option id="Request" name="options" value="Item Request">Item Request</option>
-                                <option id="Resource" name="options" value="Class Resource">Class Resource</option>
+                            <label for="typeLabel">Category</label>
+                            <select class="form-control" id="category" name="category" onchange="filteredSearch();">
+                                <option id="All" name="cats" value="All">All</option>
+                                <option id="Books" name="cats" value="Books">Books</option>
+                                <option id="Textbooks" name="cats" value="Textbooks">Textbooks</option>
+                                <option id="Furniture" name="cats" value="Furniture">Furniture</option>
+                                <option id="Supplies" name="cats" value="Supplies">Supplies</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -113,7 +113,7 @@
             </div>
             <!--Results COL div-->
             <div class="col-sm-10">
-                <div class="border results-card shadow-sm">
+                <div class="results-card">
                     <h6 class="mx-2 d-inline-block">Results</h6>
                     <button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By</button>
@@ -148,60 +148,6 @@
                 </div> \
             </a>`;
         }
-        function runSearch(val) {
-            let searchTerm = document.getElementById('searchtext').value;
-            if (searchTerm === "") {
-                searchTerm = "noValue";
-            }
-            let searchURL = 'http://localhost:3000/posts/search/' + searchTerm + "/" + val;
-            fetch(searchURL)
-                .then((data) => data.json())
-                .then((dataAsObject) => {
-                    let _html = "";
-                    dataAsObject.forEach((post) => {
-                        _html += createCard(post);
-                    })
-                    document.getElementById('main-content').innerHTML = _html;
-                })
-                .catch((err) => console.log(err));
-        }
-
-        function runFilterSearch(x, val) {
-            let searchTerm = document.getElementById('searchtext').value;
-            if (searchTerm === "") {
-                searchTerm = "noValue";
-            }
-            let searchURL = 'http://localhost:3000/posts/searchType/' + searchTerm + "/" + x + "/" + val;
-            fetch(searchURL)
-                .then((data) => data.json())
-                .then((dataAsObject) => {
-                    let _html = "";
-                    dataAsObject.forEach((post) => {
-                        _html += createCard(post);
-                    })
-                    document.getElementById('main-content').innerHTML = _html;
-                })
-                .catch((err) => console.log(err));
-        }
-
-        function BIGsearch(x, val, cherry) {
-            let searchTerm = document.getElementById('searchtext').value;
-            if (searchTerm === "") {
-                searchTerm = "noValue";
-            }
-            let searchURL = 'http://localhost:3000/posts/BIGsearch/' + searchTerm + "/" + x + "/" + val + "/" + cherry;
-            fetch(searchURL)
-                .then((data) => data.json())
-                .then((dataAsObject) => {
-                    let _html = "";
-                    dataAsObject.forEach((post) => {
-                        _html += createCard(post);
-                    })
-                    document.getElementById('main-content').innerHTML = _html;
-                })
-                .catch((err) => console.log(err));
-        }
-
         function parse() {
             var url = document.location.href,
                 params = url.split('?')[1].split('&'),
@@ -216,8 +162,8 @@
             filteredSearch();
         }
         function setStuff(name, val) {
-            if (name == "category") {
-                document.getElementById(val).selected = "true";
+            if (name == "type") {
+                document.getElementById("typeSelect").value = val;
             }
             else {
                 var holder = document.getElementById(name);
@@ -225,39 +171,6 @@
             }
         }
         window.onload = parse();
-
-        function filterSelection(decide) {
-            var val;
-            var x, i;
-            var holder = document.getElementsByName("options");
-            //console.log(holder);
-            for (i = 0; i < holder.length; i++) {
-                if (holder[i].selected === true) {
-                    //console.log(holder[i].getAttribute("id"));
-                    val = holder[i].getAttribute("id");
-                }
-            }
-            //console.log(val);
-            var holder2 = document.getElementsByName("cats");
-            for (i = 0; i < holder2.length; i++) {
-                if (holder2[i].selected === true) {
-                    //console.log(holder2[i].getAttribute("id"));
-                    x = holder2[i].getAttribute("id");
-                }
-            }
-            if (decide === 'false') {
-                runFilterSearch(x, val);
-            }
-            else {
-                var cherry = document.getElementById('classLabel').value;
-                //console.log(cherry);
-                if (cherry !== '') {
-                    BIGsearch(x, val, cherry);
-                } else {
-                    runFilterSearch(x, val);
-                }
-            }
-        }
         
         function filteredSearch() {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
@@ -269,7 +182,7 @@
             let priceMin = document.getElementById('priceMin').value || '__NO_VALUE__';
             let priceMax = document.getElementById('priceMax').value || '__NO_VALUE__';
             console.log(category + ', ' + type + ', ' + classID + ', ' + priceMin + ' - ' + priceMax + '.');
-            let searchURL = 'http://localhost:3000/posts/fullsearch/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + priceMin + '/' + priceMax;
+            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + priceMin + '/' + priceMax;
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
