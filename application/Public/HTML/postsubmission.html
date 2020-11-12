@@ -89,6 +89,9 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="upload" onchange="readURL(this);" required>
                         <label class="custom-file-label" for="customFile">Choose file</label>
+                        <div class="invalid-feedback">
+                            Please upload an image of the item.
+                        </div>
                     </div>
                     <!--Image displayed here-->
                     <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
@@ -98,39 +101,48 @@
                 <!--Item info to the right-->
                 <div class="col-sm-6 font-weight-bold">
                     <!--Item Name/Post Title-->
-                    <div class="form-group col-sm-10">
+                    <div class="form-group col">
                         <label for="PostTitle">Title</label>
-                        <input type="text" class="form-control" id="PostTitle" placeholder="Textbook for MATH400" required>
+                        <input type="text" class="form-control col-sm-10" id="PostTitle" placeholder="Textbook for MATH400" required>
+                        <div class="invalid-feedback">
+                            Please enter a title.
+                        </div>
                     </div>
                     <!--Post Type: For Sale, Class Resource, Request-->
-                    <div class="form-group col-sm-5">
+                    <div class="form-group col">
                         <label for="PostType">Type</label>
-                        <select class="form-control" id="PostType" required>
+                        <select class="form-control col-sm-5" id="PostType" required>
                             <option value="">Select Type</option>
                             <option>For Sale</option>
                             <option>Class Resource</option>
                             <option>Request</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Please select a post type.
+                        </div>
                     </div>
                     <!--Category: Books, Textbooks, Furniture, Supplies-->
-                    <div class="form-group col-sm-5">
+                    <div class="form-group col">
                         <label for="ItemCat">Category</label>
-                        <select class="form-control" id="ItemCat" required>
+                        <select class="form-control col-sm-5" id="ItemCat" required>
                             <option value="">Select Category</option>
                             <option>Books</option>
                             <option>Textbooks</option>
                             <option>Furniture</option>
                             <option>Supplies</option>
                         </select>
+                        <div class="invalid-feedback">
+                            Please select a category.
+                        </div>
                     </div>
-                    <!--Class ID (optional?)-->
-                    <div class="form-group col-sm-4">
-                        <label for="ClassID">Class ID</label>
-                        <input type="text" class="form-control" id="ClassID" placeholder="i.e. CSC648">                        
+                    <!--Class ID (optional)-->
+                    <div class="form-group col">
+                        <label for="ClassID"> Class ID <span class="text-muted">(Optional)</span> </label>
+                        <input type="text" class="form-control col-sm-4" id="ClassID" placeholder="e.g. CSC648">                        
                     </div>
-                    <!--Price (optional?)-->
+                    <!--Price (optional)-->
                     <div class="form-group col-sm-4">
-                        <label for="ItemPrice"> Price</label>
+                        <label for="ItemPrice"> Price <span class="text-muted">(Optional)</span></label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
@@ -142,6 +154,9 @@
                     <div class="form-group col-sm-12">
                         <label for="ItemDescription">Description</label>                            
                         <textarea class="form-control" rows="5" id="ItemDescription" placeholder="Enter item description..." required></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a description.
+                        </div>
                     </div>
                     <!--Submit and cancel buttons-->
                     <div class="col-sm-12">
