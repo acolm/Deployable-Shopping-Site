@@ -16,11 +16,11 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="body-color">
     <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-color">
         <!-- Logo -->
-        <a class="navbar-brand" href="./index.html" >
+        <a class="navbar-brand" href="./index.html">
             <i class="fa fa-cube wid" aria-hidden="true"></i>
             GatorMart
             <!--Below is for GatorMart actual logo when available-->
@@ -49,7 +49,8 @@
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go"
+                            style="background-color: #231161">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -59,34 +60,43 @@
             <!-- Nav items code-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="../HTML/postsubmission.html"  class="btn btn-outline-secondary" role="button">Post</a>
+                    <a href="../HTML/postsubmission.html" class="btn btn-outline-secondary" role="button">Post</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/dashboard.html"  class="nav-link">Account</a>
+                    <a href="../HTML/dashboard.html" class="nav-link">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/aboutus.html"  class="nav-link">About</a>
+                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../HTML/login.html"  class="btn btn-outline-secondary" role="button">Login/Register</a>
+                    <a href="../HTML/login.html" class="btn btn-outline-secondary" role="button">Login/Register</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-<!-- Start body of page with a container and small gap from navbar-->
+    <div class="border alert-warning d-flex justify-content-center" role="alert">
+        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    </div>
+
+    <!-- Start body of page with a container and small gap from navbar-->
     <div class="container my-1">
-        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
-            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
-        </div>
 
         <!-- Gotta take off border radius from CSS and use bootstrap "Border" instead on all pages for future -->
-        <div class="border shadow-sm rounded offwhite">
+        <div class="border shadow-sm rounded form-color">
+            <!-- Seller Image and Name -->
             <div class="row mx-5 my-3">
-                <button class="btn" type="button">
-                    <div id="sellerImage" class="sellerImage rounded"></div>
-                </button>
+                <a href="../HTML/dashboard.html" class="d-flex">
+                    <button class="btn" type="button">
+                        <div class="sellerImage"></div>
+                    </button>
+                    <div class="my-2">
+                        <h6 class="my-0">First, Last</h6>
+                        <p class="my-0">★★★★☆</p>
+                    </div>
+                </a>
             </div>
+
 
             <div class="row mx-5 my-3">
                 <!-- Item image of left side of post card-->
@@ -109,10 +119,10 @@
                             <h3><span id="itemPrice" class="badge badge-warning sfsu-text-colors">$50.00</span></h3>
                         </div>
                         <!-- Wishlist -->
-                        <div class="font-weight-bold d-flex">
+                        <!-- <div class="font-weight-bold d-flex">
                             <input type="image" src="../Images/Icons/heart-icon.png" width="45" height="30">
                             Save to Wishlist
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Row 2: Type, Category, Class ID) -->
                     <div class="d-flex">
@@ -151,8 +161,10 @@
         </div>
     </div>
 
-    <footer class="container">
-        <hr class="featurette-divider">
+    <hr class="featurette-divider">
+    <footer class="footer" style="background:  grey; color: white;">
+
+
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
@@ -162,7 +174,7 @@
             <a href="#">・ Terms</a>
         </p>
     </footer>
-    
+
     <script>
         function parse() {
             var url = document.location.href,
@@ -176,7 +188,7 @@
             populatePage(data);
         }
         window.onload = parse;
-        
+
         function populatePage(data) {
             let queryURL = '../posts/getitem/' + data.id;
             fetch(queryURL)

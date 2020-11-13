@@ -15,9 +15,9 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="body-color">
     <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-color">
         <!-- Logo -->
         <a class="navbar-brand" href="./index.html" >
             <i class="fa fa-cube wid" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go" style="background-color: #231161">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -73,12 +73,12 @@
         </div>
     </nav>
 
+    <div class="border alert-warning d-flex justify-content-center" role="alert">
+        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    </div>
+
     <!-- Start body of page with a container and small gap from navbar-->
     <div class="container my-1">
-        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
-            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
-        </div>
-
         <!-- Carousel -->
         <div class="row">
             <!--Carousel Wrapper-->
@@ -150,8 +150,8 @@
         </div>
 
         <!-- Random Info -->
-        <div class="row">
-            <section class="text-center mt-5">
+        <div class="row mt-5 rounded" style="background:  #231161;">
+            <section class="text-center mt-3" style="color: white;">
 
                 <h3 class="text-center font-weight-bold mb-4">Why shop with GatorMart?</h3>
                 <!-- Section description -->
@@ -166,23 +166,24 @@
         <!-- Button Blocks -->
         <div class="row my-5">
             <div class="col-sm-4 d-flex justify-content-center">
-                <a href="../HTML/marketplace.html?type=For+Sale&searchtext=" ><div class="typesButton border shadow" type="button">For Sale
+                <a href="../HTML/marketplace.html?type=For+Sale&searchtext=" ><div class="typesButton border shadow rounded-lg" style="background: rgb(124, 241, 124); color: white; font-weight: bold; font-size: x-large;">For Sale
                 </div></a>
             </div>
             <div class="col-sm-4 d-flex justify-content-center">
-                <a href="../HTML/marketplace.html?type=Item+Request&searchtext=" ><div class="typesButton border shadow" type="button">Item Requests
+                <a href="../HTML/marketplace.html?type=Item+Request&searchtext=" ><div class="typesButton border shadow rounded-lg" style="background: rgb(245, 142, 194);  color: white; font-weight: bold; font-size: x-large;">Item Requests
                 </div></a>
             </div>
             <div class="col-sm-4 d-flex justify-content-center">
-                <a href="../HTML/marketplace.html?type=Class+Resource&searchtext=" ><div class="typesButton border shadow" type="button">Class Resources
+                <a href="../HTML/marketplace.html?type=Class+Resource&searchtext=" ><div class="typesButton border shadow rounded-lg" style="background: lightblue; color: white; font-weight: bold; font-size: x-large;">Class Resources
                 </div></a>
             </div>
         </div>
     </div>
 
-    <footer class="container">
-        <div class="container"></div>
-        <hr class="featurette-divider">
+    <hr class="featurette-divider">
+    <footer class="footer" style="background:  grey; color: white;">
+        
+    
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>

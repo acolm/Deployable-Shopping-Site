@@ -16,9 +16,9 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="body-color">
     <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-color">
         <!-- Logo -->
         <a class="navbar-brand" href="./index.html" >
             <i class="fa fa-cube wid" aria-hidden="true"></i>
@@ -49,7 +49,7 @@
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go" style="background-color: #231161">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -75,14 +75,14 @@
     </nav>
 
     <!-- Start body of page with a container and small gap from navbar-->
+    <div class="border alert-warning d-flex justify-content-center" role="alert">
+        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    </div>
     <div class="container my-1">
-        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
-            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
-        </div>
         <div class="row">
             <!--Filters COL div-->
             <div class="col-sm-2">
-                <div class="border filters-card shadow-sm">
+                <div class="border filters-card shadow-sm form-color">
                     <h6>Filters</h6>
                     <hr class="featurette-divider my-0">
                     <!--Filters-->
@@ -128,6 +128,20 @@
             </div>
         </div>
     </div>
+
+    <hr class="featurette-divider">
+    <footer class="footer" style="background:  grey; color: white;">
+        
+    
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>
+            © 2020-2021 Team 06 ・
+            <a href="#">Privacy</a>
+            <a href="#">・ Terms</a>
+        </p>
+    </footer>
 
     <script>
         function createCard(data) {

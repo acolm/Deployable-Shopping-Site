@@ -17,9 +17,9 @@
         <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     </head>
 
-    <body>
+    <body class="body-color">
         <!-- [navbar] [theme] [backrgound theme]-->
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <nav class="navbar navbar-expand-sm navbar-color">
             <!-- Logo -->
             <a class="navbar-brand" href="./index.html" >
                 <i class="fa fa-cube wid" aria-hidden="true"></i>
@@ -29,13 +29,13 @@
                     class="d-inline-block align-top" alt="">
                 GatorMart -->
             </a>
-
+    
             <!-- Hamburger icon -->
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-
+    
+    
             <!--Collapse navbar on smaller screens-->
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <!-- Search bar code -->
@@ -50,13 +50,13 @@
                         <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                             name="searchtext">
                         <div class="input-group-append">
-                            <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go" style="background-color: #231161">
                                 <i class="fa fa-search fa-sm"></i>
                             </button>
                         </div>
                     </div>
                 </form>
-
+    
                 <!-- Nav items code-->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -75,11 +75,11 @@
             </div>
         </nav>
 
-        <div class="row border alert alert-light d-flex justify-content-center" role="alert">
+        <div class="border alert-warning d-flex justify-content-center" role="alert">
             SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
 
-        <div class="container p-3 my-3 border col-lg-10">
+        <div class="container rounded shadow-sm p-3 my-3 border col-lg-10 form-color">
             <h2 class="text-center">Post Submission Form</h2>
             <form class="needs-validation" novalidate>
             <div class="row">
@@ -169,6 +169,20 @@
             </div>
             </form>
         </div>
+
+        <hr class="featurette-divider">
+        <footer class="footer" style="background:  grey; color: white;">
+            
+        
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>
+                © 2020-2021 Team 06 ・
+                <a href="#">Privacy</a>
+                <a href="#">・ Terms</a>
+            </p>
+        </footer>
 
         <script>
             //https://bootstrapious.com/p/bootstrap-image-upload

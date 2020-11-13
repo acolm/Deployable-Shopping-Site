@@ -18,9 +18,9 @@
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 
-<body>
+<body class="body-color">
     <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-color">
         <!-- Logo -->
         <a class="navbar-brand" href="./index.html" >
             <i class="fa fa-cube wid" aria-hidden="true"></i>
@@ -51,7 +51,7 @@
                     <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
                         name="searchtext">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go">
+                        <button class="btn btn-secondary" type="submit" id="nav-bar-go" style="background-color: #231161">
                             <i class="fa fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -76,7 +76,11 @@
         </div>
     </nav>
 
-    <div class="container p-4 my-3 border col-sm-4">
+    <div class="border alert-warning d-flex justify-content-center" role="alert">
+        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    </div>
+
+    <div class="container rounded shadow-sm p-4 my-3 border col-sm-4" style="background-color: white;">
         <h2 class="text-center">GatorMart Sign In</h2>
         <form class="needs-validation" novalidate>
             <div class="form-group">
