@@ -48,17 +48,21 @@ router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:search
     .catch((err) => next(err));
 });
 
-router.get('/getitem/:itemId', (req, resp, next) => {
-    let itemId = req.params.itemId;
-    
+router.get("/:id", (req, resp, next) => {
+    resp.sendFile("item.html", {root: "public/html"});
+});
+
+router.get('/getPostById/:id', (req, resp, next) => {
+    let _id = req.params.id;
     let _sql = 'SELECT p.id, p.title, p.description, p.price, p.type, p.class, p.created, p.photopath, p.category, \
     u.firstname, u.lastname, u.profilepic \
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
-    WHERE p.id = ' + itemId + ';';
-    db.query(_sql)
+    WHERE p.id=?;';
+    console.log("step 2");
+    db.query(_sql,_id)
     .then(([results, fields]) => {
-        resp.json(results);
+        resp.json(results[0]);
     })
     .catch((err) => next(err));
 });

@@ -20,7 +20,7 @@
     <!-- [navbar] [theme] [backrgound theme]-->
     <nav class="navbar navbar-expand-sm navbar-color">
         <!-- Logo -->
-        <a class="navbar-brand" href="./index.html">
+        <a class="navbar-brand" href="/">
             <i class="fa fa-cube wid" aria-hidden="true"></i>
             GatorMart
             <!--Below is for GatorMart actual logo when available-->
@@ -88,10 +88,12 @@
             <div class="row mx-5 my-3">
                 <a href="../HTML/dashboard.html" class="d-flex">
                     <button class="btn" type="button">
-                        <div class="sellerImage"></div>
+                        <div class="sellerImage">
+                            <!-- <img id="sellerImage" src="" class="img-fluid" /> -->
+                        </div>
                     </button>
                     <div class="my-2">
-                        <h6 class="my-0">First, Last</h6>
+                        <h6 id="userName" class="my-0"></h6>
                         <p class="my-0">★★★★☆</p>
                     </div>
                 </a>
@@ -101,14 +103,16 @@
             <div class="row mx-5 my-3">
                 <!-- Item image of left side of post card-->
                 <div class="col-sm-6">
-                    <div id="itemImage" class="itemImage rounded"></div>
+                    <div class="itemImage rounded">
+                        <img id="itemImage" src="" class="img-fluid" />
+                    </div>
                 </div>
 
                 <!-- Item information on right side of post card-->
                 <div class="col-sm-6">
                     <!-- Header information (TITLE and POST DATE) -->
                     <div>
-                        <h4 id="itemTitle" class="d-inline-block">Textbook for MATH400</h4>
+                        <h4 id="itemTitle" class="d-inline-block"></h4>
                         <p id="itemDateCreated" class="float-right">DD/MM/YYY</p>
                     </div>
                     <hr class="featurette-divider my-0">
@@ -116,7 +120,7 @@
                     <div class="my-3 d-flex space">
                         <!-- Price -->
                         <div>
-                            <h3><span id="itemPrice" class="badge badge-warning sfsu-text-colors">$50.00</span></h3>
+                            <h3><span id="itemPrice" class="badge badge-warning sfsu-text-colors"></span></h3>
                         </div>
                         <!-- Wishlist -->
                         <!-- <div class="font-weight-bold d-flex">
@@ -128,24 +132,24 @@
                     <div class="d-flex">
                         <div>
                             <h6 class="font-weight-bold">Type</h6>
-                            <p id="itemType">For sale</p>
+                            <p id="itemType"></p>
                         </div>
 
                         <div class="mx-5">
                             <h6 class="font-weight-bold">Category</h6>
-                            <p id="itemCategory">Books</p>
+                            <p id="itemCategory"></p>
                         </div>
 
                         <div>
                             <h6 class="font-weight-bold">Class ID</h6>
-                            <p id="itemClassID">MATH400</p>
+                            <p id="itemClassID"></p>
                         </div>
                     </div>
                     <!-- Row 3: Item description -->
                     <div>
                         <h6 class="font-weight-bold">Description</h6>
                         <div id="itemDescription" class="item-description border rounded">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit corrupti quis hic!
+                            
                         </div>
                     </div>
                     <!-- Row 4: Message seller and Send button -->
@@ -176,46 +180,25 @@
     </footer>
 
     <script>
-        function parse() {
-            var url = document.location.href,
-                params = url.split('?')[1].split('&'),
-                data = {}, tmp;
-            for (var i = 0, l = params.length; i < l; i++) {
-                tmp = params[i].split('=');
-                data[tmp[0]] = tmp[1];
-                tmp[1] = tmp[1].replace(/\+/g, ' ');
-            }
-            populatePage(data);
-        }
-        window.onload = parse;
-
-        function populatePage(data) {
-            let queryURL = '../posts/getitem/' + data.id;
-            fetch(queryURL)
-                .then((data) => data.json())
-                .then((dataAsObject) => {
-                    if (dataAsObject.length === 1) {
-                        let item = dataAsObject[0];
-                        console.log(item);
-                        if (item.profilepic !== 'null') {
-                            document.getElementById('sellerImage').innerHTML = `<img src="${item.profilepic}" class="img-fluid" />`;
-                        }
-                        if (item.photopath !== 'null') {
-                            document.getElementById('itemImage').innerHTML = `<img src="${item.photopath}" class="img-fluid" />`;
-                        }
-                        document.getElementById('itemTitle').innerHTML = item.title;
-                        document.getElementById('itemDateCreated').innerHTML = item.created;
-                        document.getElementById('itemPrice').innerHTML = '$' + item.price.toFixed(2);
-                        document.getElementById('itemType').innerHTML = item.type;
-                        document.getElementById('itemCategory').innerHTML = item.category;
-                        document.getElementById('itemClassID').innerHTML = item.class;
-                        document.getElementById('itemDescription').innerHTML = item.description;
-                    } else {
-                        console.log('Error loading item with id ' + data.id);
-                    }
-                })
-                .catch((err) => console.log(err));
-        }
+        let url = document.URL.split("/");
+        let _id = url[url.length-1];
+        let postURL = '../posts/getPostById/' +_id;
+        fetch(postURL)
+        .then((data) => data.json())
+        .then((dataAsObject) => {
+            document.getElementById('itemImage').src = dataAsObject.photopath;
+            // document.getElementById('sellerImage').src = dataAsObject.profilepic;
+            document.getElementById('itemTitle').textContent = dataAsObject.title;
+            document.getElementById('itemDateCreated').textContent = dataAsObject.created;
+            document.getElementById('itemPrice').textContent = "$" + dataAsObject.price;
+            document.getElementById('itemType').textContent = dataAsObject.type;
+            document.getElementById('itemCategory').textContent = dataAsObject.category;
+            document.getElementById('itemClassID').textContent = dataAsObject.class;
+            document.getElementById('itemDescription').textContent = dataAsObject.description;
+            document.getElementById('userName').textContent = dataAsObject.firstname + " "+ dataAsObject.lastname;
+            // document.getElementById('userRating').textContent = dataAsObject.rating;
+        })
+        .catch((err) => console.log(err));
     </script>
 
     <!-- Optional JavaScript -->
