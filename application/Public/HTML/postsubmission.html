@@ -88,13 +88,13 @@
                     <!--Image uploaded here-->
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="upload" onchange="readURL(this);" required>
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label class="custom-file-label" for="customFile" id="fileName">Choose file</label>
                         <div class="invalid-feedback">
                             Please upload an image of the item.
                         </div>
                     </div>
                     <!--Image displayed here-->
-                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block restrict"></div>
                     <div id="ImageUploadText"><p class="font-italic text-center">The image uploaded will be rendered here.</p></div>
                 </div>
                 
@@ -103,7 +103,7 @@
                     <!--Item Name/Post Title-->
                     <div class="form-group col">
                         <label for="PostTitle">Title</label>
-                        <input type="text" class="form-control col-sm-10" id="PostTitle" placeholder="Textbook for MATH400" required>
+                        <input type="text" class="form-control col-sm-10" id="PostTitle" placeholder="e.g. Textbook for MATH400" required>
                         <div class="invalid-feedback">
                             Please enter a title.
                         </div>
@@ -147,7 +147,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="text" class="form-control" id="ItemPrice">
+                            <input type="number" class="form-control" id="ItemPrice">
                         </div>
                     </div>
                     <!--Description of Item-->
@@ -170,18 +170,15 @@
             </form>
         </div>
 
-        <hr class="featurette-divider">
-        <footer class="footer" style="background:  grey; color: white;">
-            
-        
-            <p class="float-right">
+        <footer class="footer">
+            <span class="float-right">
                 <a href="#">Back to top</a>
-            </p>
-            <p>
+            </span>
+            <span>
                 © 2020-2021 Team 06 ・
                 <a href="#">Privacy</a>
                 <a href="#">・ Terms</a>
-            </p>
+            </span>
         </footer>
 
         <script>
