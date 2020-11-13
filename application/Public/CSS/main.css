@@ -231,9 +231,12 @@ float: left;
 }
 
 .itemImage{
-    height: 500px;
-    width: 100%;
-    background-color: black;
+    display:grid; 
+    place-items: center;
+}
+
+.img-extra{
+    max-height: 500px;
 }
 
 .item-description{
