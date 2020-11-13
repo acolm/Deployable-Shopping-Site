@@ -182,6 +182,7 @@ a{
 
 .btn{
     padding: 10px;
+    border: 1px solid #212529;
 }
 
 /* .item-card{
@@ -273,4 +274,17 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.nav-button{
+    border: 1px solid #212529;
+    padding: 10px;
+    line-height: 19px;
+    border-radius: 0.25rem;
+}
+
+.nav-button:hover{
+    background-color: #231161;
+    color: white;
+    border-color: transparent;
 }
