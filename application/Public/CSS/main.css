@@ -266,6 +266,15 @@ float: left;
     padding: 0 10px 0 10px;
 }
 
+.footer-about{
+    width: 100%;
+    background-color: rgb(158, 158, 158);
+    color: white;
+    padding: 0 10px 0 10px;
+    height: 60px;
+    line-height: 60px;
+}
+
 .restrict{
     max-height: 620px;
 }
