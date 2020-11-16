@@ -3,13 +3,11 @@ var express = require('express');
 var router = express.Router();
 const db = require("../config/database");
 
-router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:searchPriceMin/:searchPriceMax/:searchOrder', (req, resp, next) => {
+router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:searchOrder', (req, resp, next) => {
     let searchTerm = req.params.searchTerm;
     let searchCategory = req.params.searchCategory;
     let searchType = req.params.searchType;
     let searchClass = req.params.searchClass;
-    let searchPriceMin = req.params.searchPriceMin;
-    let searchPriceMax = req.params.searchPriceMax;
     let searchOrder = req.params.searchOrder;
     
     let arguments = [];
@@ -30,12 +28,6 @@ router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:search
     if(searchClass !== '__NO_VALUE__'){
         _sql += 'class LIKE ? AND ';
         arguments.push('%' + searchClass + '%');
-    }
-    if(searchPriceMin !== '__NO_VALUE__'){
-        _sql += 'price >= ' + searchPriceMin + ' AND ';
-    }
-    if(searchPriceMax !== '__NO_VALUE__'){
-        _sql += 'price <= ' + searchPriceMax + ' AND ';
     }
     _sql +='approved = 1 ORDER BY p.price';
     if(searchOrder === 'PriceHiToLow') {
