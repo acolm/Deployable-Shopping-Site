@@ -189,7 +189,7 @@
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
-                    let resultsText = dataAsObject.length + " result" + (dataAsObject.length !== 1 ? "s" : "");
+                    let resultsText = "Showing " + dataAsObject.length + " result" + (dataAsObject.length !== 1 ? "s" : "");
                     if (searchTerm !== '__NO_VALUE__') {
                         resultsText += ' for "' + searchTerm + '"';
                     }
