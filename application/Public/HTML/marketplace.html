@@ -103,13 +103,6 @@
                             <label for="classLabel">Class ID</label>
                             <input type="text" class="form-control" id="classLabel" onchange="filteredSearch();" placeholder="i.e. CSC648">
                         </div>
-
-                        <div class="form-group">
-                            <label for="priceLabel">Price</label>
-                            <input type="text" class="form-control" id="priceMin" onchange="filteredSearch();" placeholder="Min">
-                            To
-                            <input type="text" class="form-control" id="priceMax" onchange="filteredSearch();" placeholder="Max">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -190,11 +183,9 @@
             let category = document.getElementById('category').value;
             let type = document.getElementById('typeSelect').value;
             let classID = document.getElementById('classLabel').value || '__NO_VALUE__';
-            let priceMin = document.getElementById('priceMin').value || '__NO_VALUE__';
-            let priceMax = document.getElementById('priceMax').value || '__NO_VALUE__';
             let searchOrder = document.getElementById('sortBy').value;
-            console.log(category + ', ' + type + ', ' + classID + ', ' + priceMin + ' - ' + priceMax + '.');
-            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + priceMin + '/' + priceMax + '/' + searchOrder;
+            console.log(category + ', ' + type + ', ' + classID + '.');
+            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + searchOrder;
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
