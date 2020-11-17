@@ -137,7 +137,7 @@
 
     <script>
         function createCard(data) {
-            return `<a href="/posts/${data.id}" id="post-${data.id}" class="test-card-wrapper"> \
+            return `<a href="/posts/${data.id}" id="post-${data.id}" target="blank" class="test-card-wrapper"> \
                 <div class="test-card-body"> \
                     <div class="test-card-top"> \
                         <div class="test-card-image-wrapper"> \
@@ -149,7 +149,7 @@
                         <div class="test-card-price-wrapper">
                             <span class="test-card-price">$${data.price}</span> \
                         </div> \
-                        <span class="test-card-date">${data.created}</span> \
+                        <span class="test-card-date">${parseDateString(data.created)}</span> \
                     </div> \
                 </div> \
             </a>`;
@@ -177,6 +177,10 @@
             }
         }
         window.onload = parse();
+        
+        function parseDateString(dateString) {
+            return dateString.split('T')[0];
+        }
         
         function filteredSearch() {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';

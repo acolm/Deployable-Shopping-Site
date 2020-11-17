@@ -176,25 +176,33 @@
     </footer>
 
     <script>
-        let url = document.URL.split("/");
-        let _id = url[url.length-1];
-        let postURL = '../posts/getPostById/' +_id;
-        fetch(postURL)
-        .then((data) => data.json())
-        .then((dataAsObject) => {
-            document.getElementById('itemImage').src = dataAsObject.photopath;
-            // document.getElementById('sellerImage').src = dataAsObject.profilepic;
-            document.getElementById('itemTitle').textContent = dataAsObject.title;
-            document.getElementById('itemDateCreated').textContent = dataAsObject.created;
-            document.getElementById('itemPrice').textContent = "$" + dataAsObject.price;
-            document.getElementById('itemType').textContent = dataAsObject.type;
-            document.getElementById('itemCategory').textContent = dataAsObject.category;
-            document.getElementById('itemClassID').textContent = dataAsObject.class;
-            document.getElementById('itemDescription').textContent = dataAsObject.description;
-            document.getElementById('userName').textContent = dataAsObject.firstname + " "+ dataAsObject.lastname;
-            // document.getElementById('userRating').textContent = dataAsObject.rating;
-        })
-        .catch((err) => console.log(err));
+        function parseDateString(dateString) {
+            return dateString.split('T')[0];
+        }
+        
+        function loadData() {
+            let url = document.URL.split("/");
+            let _id = url[url.length-1];
+            let postURL = '../posts/getPostById/' +_id;
+            fetch(postURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                document.getElementById('itemImage').src = dataAsObject.photopath;
+                // document.getElementById('sellerImage').src = dataAsObject.profilepic;
+                document.getElementById('itemTitle').textContent = dataAsObject.title;
+                document.getElementById('itemDateCreated').textContent = parseDateString(dataAsObject.created);
+                document.getElementById('itemPrice').textContent = "$" + dataAsObject.price;
+                document.getElementById('itemType').textContent = dataAsObject.type;
+                document.getElementById('itemCategory').textContent = dataAsObject.category;
+                document.getElementById('itemClassID').textContent = dataAsObject.class;
+                document.getElementById('itemDescription').textContent = dataAsObject.description;
+                document.getElementById('userName').textContent = dataAsObject.firstname + " "+ dataAsObject.lastname;
+                // document.getElementById('userRating').textContent = dataAsObject.rating;
+            })
+            .catch((err) => console.log(err));
+        }
+        
+        window.onload = loadData();
     </script>
 
     <!-- Optional JavaScript -->
