@@ -1,3 +1,9 @@
+/*
+    index.js
+    
+    Description: Contains the route fetching the index page from the server
+*/
+
 var express = require('express');
 var router = express.Router();
 

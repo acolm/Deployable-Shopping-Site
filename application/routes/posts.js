@@ -1,3 +1,9 @@
+/*
+    posts.js
+    
+    Description: Contains all routes that request post information from the server
+*/
+
 const e = require('express');
 var express = require('express');
 var router = express.Router();
