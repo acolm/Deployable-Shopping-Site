@@ -43,14 +43,16 @@
             <!-- Search bar code -->
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="typeSelect" name="type">
-                        <option id="All" name="options" value="All">All</option>
-                        <option id="For-Sale" name="options" value="For Sale">For Sale</option>
-                        <option id="Request" name="options" value="Item Request">Item Request</option>
-                        <option id="Resource" name="options" value="Class Resource">Class Resource</option>
+                    <select class="form-control search-slt col-sm-2" id="category" name="category" onchange="filteredSearch();">
+                        <option value="All">All</option>
+                        <option value="Books">Books</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Supplies">Supplies</option>
+                        <option value="Textbooks">Textbooks</option>
+                        <option value="Tutoring">Tutoring</option>
+                        <option value="Item Request">Item Request</option>
                     </select>
-                    <input class="form-control" type="text" placeholder="Search for items" id="searchtext"
-                        name="searchtext">
+                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="submit" id="nav-bar-go"
                             style="background-color: #231161">
@@ -82,11 +84,10 @@
     <div class="container my-1">
         <div class="row">
             <!--Filters COL div-->
-            <div class="col-sm-2">
+            <!--<div class="col-sm-2">
                 <div class="border filters-card shadow-sm form-color">
                     <h6>Filters</h6>
                     <hr class="featurette-divider my-0">
-                    <!--Filters-->
                     <div class="form-horizontal my-2">
                         <div class="form-group" id="search-type">
                             <label for="typeLabel">Category</label>
@@ -101,13 +102,13 @@
                         </div>
                         <div class="form-group">
                             <label for="classLabel">Class ID</label>
-                            <input type="text" class="form-control" id="classLabel" onchange="filteredSearch();" placeholder="i.e. CSC648">
+                            <input type="text" class="form-control" id="classLabel" onchange="filteredSearch();" placeholder="e.g. CSC648">
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!--Results COL div-->
-            <div class="col-sm-10">
+            <div class="col-sm-12">
                 <div class="results-card">
                     <h6 id="ResultsText" class="mx-2 d-inline-block">Results</h6>
                     <!--<button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
@@ -168,8 +169,8 @@
             filteredSearch();
         }
         function setStuff(name, val) {
-            if (name == "type") {
-                document.getElementById("typeSelect").value = val;
+            if (name == "category") {
+                document.getElementById("category").value = val;
             }
             else {
                 var holder = document.getElementById(name);
@@ -185,11 +186,11 @@
         function filteredSearch() {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
             let category = document.getElementById('category').value;
-            let type = document.getElementById('typeSelect').value;
-            let classID = document.getElementById('classLabel').value || '__NO_VALUE__';
+            // let type = document.getElementById('typeSelect').value;
+            // let classID = document.getElementById('classLabel').value || '__NO_VALUE__';
             let searchOrder = document.getElementById('sortBy').value;
-            console.log(category + ', ' + type + ', ' + classID + '.');
-            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + type + '/' + classID + '/' + searchOrder;
+            // console.log(category + ', ' + type + ', ' + classID + '.');
+            let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + searchOrder;
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
@@ -197,8 +198,8 @@
                     if (searchTerm !== '__NO_VALUE__') {
                         resultsText += ' for "' + searchTerm + '"';
                     }
-                    if (type !== 'All') {
-                        resultsText += ' in ' + type;
+                    if (category !== 'All') {
+                        resultsText += ' in ' + category;
                     }
                     document.getElementById('ResultsText').innerHTML = resultsText;
                     let _html = "";

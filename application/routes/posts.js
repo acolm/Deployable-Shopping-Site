@@ -3,31 +3,22 @@ var express = require('express');
 var router = express.Router();
 const db = require("../config/database");
 
-router.get('/search/:searchTerm/:searchCategory/:searchType/:searchClass/:searchOrder', (req, resp, next) => {
+router.get('/search/:searchTerm/:searchCategory/:searchOrder', (req, resp, next) => {
     let searchTerm = req.params.searchTerm;
     let searchCategory = req.params.searchCategory;
-    let searchType = req.params.searchType;
-    let searchClass = req.params.searchClass;
     let searchOrder = req.params.searchOrder;
     
     let arguments = [];
     let _sql = 'SELECT p.id, p.title, p.price, p.thumbnail, p.created, p.type \
     FROM posts p WHERE ';
     if (searchTerm !== '__NO_VALUE__') {
-        _sql += 'title LIKE ? AND ';
+        _sql += '(title LIKE ? OR class LIKE ?) AND ';
+        arguments.push('%' + searchTerm + '%');
         arguments.push('%' + searchTerm + '%');
     }
     if(searchCategory !== 'All'){
         _sql += 'category = ? AND ';
         arguments.push(searchCategory);
-    }
-    if(searchType !== 'All'){
-        _sql += 'type = ? AND ';
-        arguments.push(searchType);
-    }
-    if(searchClass !== '__NO_VALUE__'){
-        _sql += 'class LIKE ? AND ';
-        arguments.push('%' + searchClass + '%');
     }
     _sql +='approved = 1 ORDER BY p.price';
     if(searchOrder === 'PriceHiToLow') {
