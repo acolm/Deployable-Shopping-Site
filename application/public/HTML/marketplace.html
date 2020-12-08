@@ -26,16 +26,10 @@
     <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
         SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
     </div>
-    <!-- [navbar] [theme] [backrgound theme]-->
+    <!-- [navbar] [theme] [background theme]-->
     <nav class="navbar navbar-expand-sm navbar-color">
         <!-- Logo -->
         <a class="navbar-brand" href="/">
-            <!-- <i class="fa fa-cube wid" aria-hidden="true"></i>
-            GatorMart -->
-            <!--Below is for GatorMart actual logo when available-->
-            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
-            GatorMart -->
             <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
         </a>
 
@@ -50,13 +44,6 @@
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
                     <select class="form-control search-slt col-sm-2" id="category" name="category" onchange="filteredSearch();">
-                        <option value="All">All</option>
-                        <option value="Books">Books</option>
-                        <option value="Furniture">Furniture</option>
-                        <option value="Supplies">Supplies</option>
-                        <option value="Textbooks">Textbooks</option>
-                        <option value="Tutoring">Tutoring</option>
-                        <option value="Item Request">Item Request</option>
                     </select>
                     <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
                     <div class="input-group-append">
@@ -89,36 +76,10 @@
     <!-- Start body of page with a container and small gap from navbar-->
     <div class="container my-1">
         <div class="row">
-            <!--Filters COL div-->
-            <!--<div class="col-sm-2">
-                <div class="border filters-card shadow-sm form-color">
-                    <h6>Filters</h6>
-                    <hr class="featurette-divider my-0">
-                    <div class="form-horizontal my-2">
-                        <div class="form-group" id="search-type">
-                            <label for="typeLabel">Category</label>
-                            <select class="form-control" id="category" name="category" onchange="filteredSearch();">
-                                <option value="All">All</option>
-                                <option value="Books">Books</option>
-                                <option value="Furniture">Furniture</option>
-                                <option value="Supplies">Supplies</option>
-                                <option value="Textbooks">Textbooks</option>
-                                <option value="Tutoring">Tutoring</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="classLabel">Class ID</label>
-                            <input type="text" class="form-control" id="classLabel" onchange="filteredSearch();" placeholder="e.g. CSC648">
-                        </div>
-                    </div>
-                </div>
-            </div>-->
             <!--Results COL div-->
             <div class="col-sm-12">
                 <div class="results-card">
                     <h6 id="ResultsText" class="mx-2 d-inline-block">Results</h6>
-                    <!--<button class="border btn-sm btn-light dropdown-toggle float-right" id="sortby" type="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By</button>-->
                     <select class="float-right" id="sortBy" onchange="filteredSearch();">
                         <option value="PriceLowToHi">Price: Low to High</option>
                         <option value="PriceHiToLow">Price: High to Low</option>
@@ -181,7 +142,7 @@
             </a>`;
         }
         //This function processes the important information that is grabbed from the URL and then calls actual search function
-        function parse() {
+        function parseURL() {
             cCreate();
             var url = document.location.href,
                 params = url.split('?')[1].split('&'),
@@ -191,22 +152,17 @@
                 data[tmp[0]] = tmp[1];
                 tmp[1] = tmp[1].replace(/\+/g, " ");
                 //console.log(tmp[0]);
-                setStuff(tmp[0], tmp[1]);
+                assignValue(tmp[0], tmp[1]);
             }
             filteredSearch();
         }
         //This function is used to set values to their correct elements, can be expanded if more filters are needed
-        function setStuff(name, val) {
-            if (name == "category") {
-                document.getElementById("category").value = val;
-            }
-            else {
+        function assignValue(name, val) {
                 var holder = document.getElementById(name);
                 holder.value = val;
-            }
         }
         //When the window loads, it calls the parse function
-        window.onload = parse();
+        window.onload = parseURL();
         
         function parseDateString(dateString) {
             return dateString.split('T')[0];
@@ -218,10 +174,7 @@
         function filteredSearch() {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
             let category = document.getElementById('category').value;
-            // let type = document.getElementById('typeSelect').value;
-            // let classID = document.getElementById('classLabel').value || '__NO_VALUE__';
             let searchOrder = document.getElementById('sortBy').value;
-            // console.log(category + ', ' + type + ', ' + classID + '.');
             let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + searchOrder;
             fetch(searchURL)
                 .then((data) => data.json())
