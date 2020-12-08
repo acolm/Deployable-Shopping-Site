@@ -15,7 +15,7 @@ router.get('/search/:searchTerm/:searchCategory/:searchOrder', (req, resp, next)
     let searchOrder = req.params.searchOrder;
     
     let arguments = [];
-    let _sql = 'SELECT p.id, p.title, p.price, p.thumbnail, p.created, p.type \
+    let _sql = 'SELECT p.id, p.title, p.price, p.thumbnail, p.created \
     FROM posts p WHERE ';
     if (searchTerm !== '__NO_VALUE__') {
         _sql += '(title LIKE ? OR class LIKE ?) AND ';
@@ -43,7 +43,7 @@ router.get("/:id", (req, resp, next) => {
 
 router.get('/getPostById/:id', (req, resp, next) => {
     let _id = req.params.id;
-    let _sql = 'SELECT p.id, p.title, p.description, p.price, p.type, p.class, p.created, p.photopath, p.category, \
+    let _sql = 'SELECT p.id, p.title, p.description, p.price, p.class, p.created, p.photopath, p.category, \
     u.firstname, u.lastname, u.profilepic \
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \

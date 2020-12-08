@@ -49,14 +49,7 @@
             <!-- Search bar code -->
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="category" name="category" onchange="filteredSearch();">
-                        <option value="All">All</option>
-                        <option value="Books">Books</option>
-                        <option value="Furniture">Furniture</option>
-                        <option value="Supplies">Supplies</option>
-                        <option value="Textbooks">Textbooks</option>
-                        <option value="Tutoring">Tutoring</option>
-                        <option value="Item Request">Item Request</option>
+                    <select class="form-control search-slt col-sm-2" id="category" name="category">
                     </select>
                     <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
                     <div class="input-group-append">
@@ -137,10 +130,10 @@
                     </div>
                     <!-- Row 2: Type, Category, Class ID) -->
                     <div class="d-flex">
-                        <div>
+                        <!-- <div>
                             <h6 class="font-weight-bold">Type</h6>
                             <p id="itemType"></p>
-                        </div>
+                        </div> -->
 
                         <div class="mx-5">
                             <h6 class="font-weight-bold">Category</h6>
@@ -185,20 +178,20 @@
 
     <script>
         //This function makes the options for the category tab in nav bar
-        function makeOp(data){
-            return ` <option value=${data.type}>${data.type}</option>`;
+        function makeOp(op){
+            return ` <option value=${op.type}>${op.type}</option>`;
         }
         //This function assembles the options
         function cCreate(){
             const cat = '/category/';
             fetch(cat)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((option) => {
-                    _html += makeOp(option);
+            .then((getBack) => getBack.json())
+            .then((thingObjects) => {
+                let stuff = "";
+                thingObjects.forEach((option) => {
+                    stuff += makeOp(option);
                 })
-                document.getElementById('category').innerHTML = _html;
+                document.getElementById('category').innerHTML = stuff;
             })
             .catch((err) => console.log(err));
         }
@@ -218,7 +211,7 @@
                 document.getElementById('itemTitle').textContent = dataAsObject.title;
                 document.getElementById('itemDateCreated').textContent = parseDateString(dataAsObject.created);
                 document.getElementById('itemPrice').textContent = "$" + dataAsObject.price;
-                document.getElementById('itemType').textContent = dataAsObject.type;
+                //document.getElementById('itemType').textContent = dataAsObject.type;
                 document.getElementById('itemCategory').textContent = dataAsObject.category;
                 document.getElementById('itemClassID').textContent = dataAsObject.class;
                 document.getElementById('itemDescription').textContent = dataAsObject.description;
