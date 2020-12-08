@@ -130,7 +130,7 @@
             </div>
         </div>
     </div>
-
+    <!--This is the footer which should be at the very bottom of the page-->
     <footer class="footer-home">
         <span class="float-right">
             <a href="#">Back to top</a>
@@ -143,6 +143,25 @@
     </footer>
 
     <script>
+        //This function makes the options for the category tab in nav bar
+        function makeOp(data){
+            return ` <option value=${data.type}>${data.type}</option>`;
+        }
+        //This function assembles the options
+        function cCreate(){
+            const cat = '/category/';
+            fetch(cat)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                let _html = "";
+                dataAsObject.forEach((option) => {
+                    _html += makeOp(option);
+                })
+                document.getElementById('category').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+        }
+        //This function creates a structure to display results from database 
         function createCard(data) {
             return `<a href="/posts/${data.id}" id="post-${data.id}" target="blank" class="test-card-wrapper"> \
                 <div class="test-card-body"> \
@@ -161,7 +180,9 @@
                 </div> \
             </a>`;
         }
+        //This function processes the important information that is grabbed from the URL and then calls actual search function
         function parse() {
+            cCreate();
             var url = document.location.href,
                 params = url.split('?')[1].split('&'),
                 data = {}, tmp;
@@ -174,6 +195,7 @@
             }
             filteredSearch();
         }
+        //This function is used to set values to their correct elements, can be expanded if more filters are needed
         function setStuff(name, val) {
             if (name == "category") {
                 document.getElementById("category").value = val;
@@ -183,12 +205,16 @@
                 holder.value = val;
             }
         }
+        //When the window loads, it calls the parse function
         window.onload = parse();
         
         function parseDateString(dateString) {
             return dateString.split('T')[0];
         }
-        
+        /*
+            This function processes all of the information for the search
+            it grabs info from the page and creates the result text that is displayed with the results
+        */
         function filteredSearch() {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
             let category = document.getElementById('category').value;

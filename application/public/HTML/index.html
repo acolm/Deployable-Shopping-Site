@@ -49,13 +49,13 @@
             <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
                 <div class="input-group">
                     <select class="form-control search-slt col-sm-2" id="category" name="category" onchange="filteredSearch();">
-                        <option value="All">All</option>
+                        <!-- <option value="All">All</option>
                         <option value="Books">Books</option>
                         <option value="Furniture">Furniture</option>
                         <option value="Supplies">Supplies</option>
                         <option value="Textbooks">Textbooks</option>
                         <option value="Tutoring">Tutoring</option>
-                        <option value="Item Request">Item Request</option>
+                        <option value="Item Request">Item Request</option> -->
                     </select>
                     <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
                     <div class="input-group-append">
@@ -172,22 +172,6 @@
             <!--/Carousel Wrapper-->
         </div>
 
-
-        <!-- Button Blocks -->
-        <!-- <div class="row my-5">
-            <div class="col-sm-4 d-flex justify-content-center">
-                <a href="../HTML/marketplace.html?type=For+Sale&searchtext=" ><div class="typesButton border shadow rounded-lg" style="background: rgb(124, 241, 124); color: white; font-weight: bold; font-size: x-large;">For Sale
-                </div></a>
-            </div>
-            <div class="col-sm-4 d-flex justify-content-center">
-                <a href="../HTML/marketplace.html?type=Item+Request&searchtext=" ><div class="typesButton border shadow rounded-lg" style="background: rgb(245, 142, 194);  color: white; font-weight: bold; font-size: x-large;">Item Requests
-                </div></a>
-            </div>
-            <div class="col-sm-4 d-flex justify-content-center">
-                <a href="../HTML/marketplace.html?type=Class+Resource&searchtext=" ><div class="typesButton border shadow rounded-lg" style="background: lightblue; color: white; font-weight: bold; font-size: x-large;">Class Resources
-                </div></a>
-            </div>
-        </div> -->
     </div>
 
     <footer class="footer-home">
@@ -201,6 +185,26 @@
         </span>
     </footer>
 
+    <!--Code for category pull down-->
+    <script>
+        function makeOp(data){
+            return ` <option value=${data.type}>${data.type}</option>`;
+        }
+        function cCreate(){
+            const cat = '/category/';
+            fetch(cat)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                let _html = "";
+                dataAsObject.forEach((option) => {
+                    _html += makeOp(option);
+                })
+                document.getElementById('category').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+        }
+        window.onload = cCreate();
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

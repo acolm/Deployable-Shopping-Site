@@ -184,11 +184,29 @@
     </footer>
 
     <script>
+        //This function makes the options for the category tab in nav bar
+        function makeOp(data){
+            return ` <option value=${data.type}>${data.type}</option>`;
+        }
+        //This function assembles the options
+        function cCreate(){
+            const cat = '/category/';
+            fetch(cat)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                let _html = "";
+                dataAsObject.forEach((option) => {
+                    _html += makeOp(option);
+                })
+                document.getElementById('category').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+        }
         function parseDateString(dateString) {
             return dateString.split('T')[0];
         }
-        
         function loadData() {
+            cCreate();
             let url = document.URL.split("/");
             let _id = url[url.length-1];
             let postURL = '../posts/getPostById/' +_id;

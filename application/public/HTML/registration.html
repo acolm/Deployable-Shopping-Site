@@ -90,38 +90,38 @@
 
     <div class="container rounded shadow-sm p-3 my-3 border col-lg-6 form-color">
         <h2 class="text-center">Register Account Form</h2>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method="POST" action="/users/registration">
             <div class="form-group">
                 <label for="UserFirstName">First Name:</label>
-                <input type="text" class="form-control" id="UserFirstName" placeholder="Enter your first name" required>
+                <input type="text" class="form-control" id="UserFirstName" name="UserFirstName" placeholder="Enter your first name" required>
                 <div class="invalid-feedback">
                     Please enter first name.
                 </div>
             </div>
             <div class="form-group">
                 <label for="UserLastName">Last Name:</label>
-                <input type="text" class="form-control" id="UserLastName" placeholder="Enter your last name" required>
+                <input type="text" class="form-control" id="UserLastName" name="UserFirstName" placeholder="Enter your last name" required>
                 <div class="invalid-feedback">
                     Please enter last name.
                 </div>
             </div>
             <div class="form-group">
                 <label for="UserEmail">Email address:</label>
-                <input type="email" class="form-control" id="UserEmail" aria-describedby="emailHelp" placeholder="Enter your SFSU email" required oninput="validateEmail(this)">
+                <input type="email" class="form-control" id="UserEmail" name="email" aria-describedby="emailHelp" placeholder="Enter your SFSU email" required oninput="validateEmail(this)">
                 <div class="invalid-feedback">
                     Must use a SFSU email.
                 </div>
             </div>
             <div class="form-group">
                 <label for="UserPassword1">Password:</label>
-                <input type="password" class="form-control" id="UserPassword1" placeholder="Enter your password" required>
+                <input type="password" class="form-control" id="UserPassword1" name="UserPassword1" placeholder="Enter your password" required>
                 <div class="invalid-feedback">
                     Please enter password.
                 </div>
             </div>
             <div class="form-group">
                 <label for="UserPassword2"> Confirm Password:</label>
-                <input type="password" class="form-control" id="UserPassword2" placeholder="Enter your password again" required oninput="validatePasswords(this)">
+                <input type="password" class="form-control" id="UserPassword2" name="UserPassword2" placeholder="Enter your password again" required oninput="validatePasswords(this)">
                 <div class="invalid-feedback">
                     Please enter password again.
                 </div>
@@ -152,6 +152,27 @@
             <a href="#">・ Terms</a>
         </span>
     </footer>
+
+        <!--Code for category pull down-->
+        <script>
+            function makeOp(data){
+                return ` <option value=${data.type}>${data.type}</option>`;
+            }
+            function cCreate(){
+                const cat = '/category/';
+                fetch(cat)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
+                })
+                .catch((err) => console.log(err));
+            }
+            window.onload = cCreate();
+        </script>
 
     <script>
         function validatePasswords(password2){
