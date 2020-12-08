@@ -25,25 +25,25 @@
 
 ------------------------------------------------------------------
 
-1. Server URL: ec2-18-188-43-23.us-east-2.compute.amazonaws.com
+1. Server URL: 3.134.106.28
 2. SSH username: ubuntu
 3. SSH key: in folder
 4. Database Port: 3306
 5. Database username: root
 6. Database password: csc648
-7. Database name: notebay
+7. Database name: gatormart
 
 # Connecting to server from windows
 1. Open Putty and make sure ssh is selected
-2. In the Host Name section put username@serverURL (ubuntu@ec2-3-12...)
+2. In the Host Name section put username@serverURL (3.134.106.28)
 3. In the menu on the left, expand SSH and click on Auth
 4. Browse the location of the key and select it
 5. Clicking open will grant you access to the aws server
 
 ### Connecting to database
-1. In the command line, sudo mysql -u root
+1. In the command line, mysql -u gatorapp -p 
 2. If it asks for password: csc648
 3. In mysql shell, show databases;
 
 ## Getting to website in browser
-http://ec2-18-188-43-23.us-east-2.compute.amazonaws.com:3000/ in address bar
+http://3.134.106.28:3000/ in address bar
