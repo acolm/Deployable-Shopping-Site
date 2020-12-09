@@ -12,4 +12,14 @@ router.get('/', function(req, res, next) {
   res.sendFile('index.html', {root:'public/HTML'});
 });
 
+router.get('/registration', function(req, res, next) {
+  res.sendFile('registration.html', {root:'public/HTML'});
+})
+
+router.get('/login', function(req,res,next) {
+  res.sendFile('login.html', {root:'public/HTML'});
+})
+
+
+
 module.exports = router;

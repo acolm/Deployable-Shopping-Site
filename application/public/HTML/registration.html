@@ -20,8 +20,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 
 <body class="body-color">
@@ -83,7 +81,7 @@
 
     <div class="container rounded shadow-sm p-3 my-3 border col-lg-6 form-color">
         <h2 class="text-center">Register Account Form</h2>
-        <form class="needs-validation" novalidate method="POST" action="/users/registration">
+        <form class="needs-validation" novalidate method="POST" action="/users/register">
             <div class="form-group">
                 <label for="UserFirstName">First Name:</label>
                 <input type="text" class="form-control" id="UserFirstName" name="UserFirstName" placeholder="Enter your first name" required>
@@ -93,7 +91,7 @@
             </div>
             <div class="form-group">
                 <label for="UserLastName">Last Name:</label>
-                <input type="text" class="form-control" id="UserLastName" name="UserFirstName" placeholder="Enter your last name" required>
+                <input type="text" class="form-control" id="UserLastName" name="UserLastName" placeholder="Enter your last name" required>
                 <div class="invalid-feedback">
                     Please enter last name.
                 </div>
@@ -129,7 +127,7 @@
             <div class="text-center">
                 <button type="submit" class="btn btn-outline-secondary btn-block">Submit</button>
                 <small id="emailHelp" class="form-text text-muted">
-                    <a href="./login.html">Already have an account? Click Here.</a>
+                    <a href="/login">Already have an account? Click Here.</a>
                 </small>
             </div>
         </form>
@@ -146,8 +144,8 @@
         </span>
     </footer>
 
-        <!--Code for category pull down-->
-        <script>
+    <!--Code for category pull down-->
+    <script>
             function makeOp(data){
                 return ` <option value=${data.type}>${data.type}</option>`;
             }
@@ -165,7 +163,7 @@
                 .catch((err) => console.log(err));
             }
             window.onload = cCreate();
-        </script>
+    </script>
 
     <script>
         function validatePasswords(password2){
@@ -204,6 +202,27 @@
           }, false);
         })();
     </script>
+
+    <!--Code for doing submit-->
+    <!-- <script>
+        const _form = document.getElementById(regForm);
+        _form.onsubmit = function(event) {
+            event.preventDefault();
+            let _body = new FormData(_form);
+            console.log("AM I MAKING IT HERE?");
+            axios({
+                body:_body,
+                method: "POST"
+                url: '/users/register' 
+            })
+            .then((dataAsObject) => {
+                console.log(dataAsObject);
+                alert(dataAsObject.data.message);
+                //location.replace(dataAsObject.data.redirect);
+            })
+            .catch(err => console.log(err));
+        }
+    </script> -->
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

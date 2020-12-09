@@ -5,9 +5,12 @@
 */
 
 var express = require('express');
-const { successPrint } = require('../../../../CSC317/csc317-termproject-acolm/application/helpers/debug/debughelpers');
 var router = express.Router();
 const db = require("../config/database");
+const bcrypt = require('bcrypt');
+const errorPrint = require("../helpers/debug/debughelpers").errorPrint;
+const successPrint = require("../helpers/debug/debughelpers").successPrint;
+const UserError = require("../helpers/errors/UserError");
 
 router.post("/register", (req,resp, next) => {
     let firstName = req.body.UserFirstName;
@@ -18,17 +21,21 @@ router.post("/register", (req,resp, next) => {
 
     //first validate passwords on server
     if(password1 !== password2){
-        resp.redirect('/registration');//leaving this here for now
+        resp.redirect('../HTML/registration.html');//Have to send user a pop-up
     }
     else{
         //search for email if it already has an account
         db.execute("SELECT * FROM users WHERE email=?;", [email])
         .then(([results, fields]) => {
             if(results && results.length==0){
-                //hash password
+                return bcrypt.hash(password1, 10);
             }
             else{
-                //throw error
+                throw new UserError(
+                    "Failed Registration, email already exists",
+                    "/registration",
+                    200
+                );
             }
         })
         //insert the new user into mysql table
@@ -41,17 +48,25 @@ router.post("/register", (req,resp, next) => {
             if(results && results.affectedRows){
                 successPrint("Registration was successful!");
                 resp.redirect("/login");
+                //resp.json = ({status: "OK", message: "Successful registration!", "redirect": "/"});
             }
             else{
-                //throw error
+                throw new UserError(
+                    "Server Error, user could not be created",
+                    "/registration",
+                    500
+                  );
             }
         })
         //catch errors
         .catch((err) => {
-            //if statement
-            resp.status(err.getStatus);
-            resp.redirect(err.getRedirectURL());
-            next(err);
+            if (err instanceof UserError) {
+                resp.status(err.status);
+                resp.redirect(err.redirectURL);
+                //resp.json = ({status: err.status, message: err.message, "redirect": err.redirectURL});
+            }else{
+              next(err);
+            }
         });
     }
 });
@@ -68,27 +83,33 @@ router.post("/login", (req, resp, next) => {
             let hPassword = results[0].password;
             //userID = results[0].id;
             //return statement comparing passwords
+            return bcrypt.compare(password, hpassword);
         }
         else{
-            //throw error
+            throw new UserError('username or password is incorrect','/login', 200);
         }
     })
     .then((check) => {
         if(check){
-            //success print
-            //set session info
-            requestAnimationFrame.redirect('/');
-        }
-        else{
-            //throw error
-        }
+            successPrint('successful Login!');
+            req.session.username = username;
+            req.session.userID = userID;
+            req.session.save();
+            console.log(req.session);
+            resp.redirect('/');
+          }else{
+            throw new UserError('username or password is incorrect','/login', 200);
+          }
     })
     .catch((err) => {
-        //if statement
-        resp.status(err.getStatus());
-        resp.redirect(err.getRedirectURL());
-        next(err);
-    })
+        if(err instanceof UserError) {
+          errorPrint(err.getMessage());
+          resp.status(err.getStatus());
+          resp.redirect(err.getRedirectURL());
+        }else{
+          next(err);
+        }
+      })
 });
 
 module.exports = router;
