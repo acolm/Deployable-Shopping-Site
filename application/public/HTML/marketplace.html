@@ -146,20 +146,18 @@
             cCreate();
             var url = document.location.href,
                 params = url.split('?')[1].split('&'),
-                data = {}, tmp;
+                data = {}, tmp, cats;
             for (var i = 0, l = params.length; i < l; i++) {
                 tmp = params[i].split('=');
                 data[tmp[0]] = tmp[1];
                 tmp[1] = tmp[1].replace(/\+/g, " ");
-                //console.log(tmp[0]);
-                assignValue(tmp[0], tmp[1]);
+                var holder = document.getElementById(tmp[0]);
+                holder.value = tmp[1];
+                if(tmp[0] == 'category'){
+                    cats = tmp[1];
+                }
             }
-            filteredSearch();
-        }
-        //This function is used to set values to their correct elements, can be expanded if more filters are needed
-        function assignValue(name, val) {
-                var holder = document.getElementById(name);
-                holder.value = val;
+            filteredSearch(cats); //work around to search not working
         }
         //When the window loads, it calls the parse function
         window.onload = parseURL();
@@ -171,9 +169,12 @@
             This function processes all of the information for the search
             it grabs info from the page and creates the result text that is displayed with the results
         */
-        function filteredSearch() {
+        function filteredSearch(category2) {
             let searchTerm = document.getElementById('searchtext').value || '__NO_VALUE__';
             let category = document.getElementById('category').value;
+            if (category == ""){
+                category = category2;
+            }
             let searchOrder = document.getElementById('sortBy').value;
             let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + searchOrder;
             fetch(searchURL)
