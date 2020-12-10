@@ -48,12 +48,24 @@ router.get('/getPostById/:id', (req, resp, next) => {
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE p.id=?;';
-    console.log("step 2");
     db.query(_sql,_id)
     .then(([results, fields]) => {
         resp.json(results[0]);
     })
     .catch((err) => next(err));
 });
+
+router.get('/getRecentPosts/:count', (req, resp, next) => {
+    let count = req.params.count;
+    let _sql = 'SELECT p.id, p.title, p.price, p.created, p.thumbnail FROM posts p \
+    ORDER BY p.created DESC LIMIT ';
+    _sql += count;          //For some reason, this wont work unless I add onto this string
+    db.query(_sql)          //Might have to do with function ending too quickly without it
+    .then(([results, fields]) => {
+	resp.json(results);
+    })
+    .catch((err) => next(err));
+});
+
 
 module.exports = router;

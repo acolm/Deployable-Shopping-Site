@@ -114,7 +114,6 @@
             fetch(cat)
             .then((getBack) => getBack.json())
             .then((thingObjects) => {
-                console.log(thingObjects);
                 let stuff = "";
                 thingObjects.forEach((option) => {
                     stuff += makeOp(option);
@@ -178,7 +177,6 @@
             }
             let searchOrder = document.getElementById('sortBy').value;
             let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + searchOrder;
-            console.log(searchURL);
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
