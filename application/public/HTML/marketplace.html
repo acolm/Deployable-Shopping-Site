@@ -106,7 +106,7 @@
     <script>
         //This function makes the options for the category tab in nav bar
         function makeOp(op){
-            return ` <option value=${op.type}>${op.type}</option>`;
+            return ` <option value="${op.type}">${op.type}</option>`;
         }
         //This function assembles the options
         function cCreate(){
@@ -114,6 +114,7 @@
             fetch(cat)
             .then((getBack) => getBack.json())
             .then((thingObjects) => {
+                console.log(thingObjects);
                 let stuff = "";
                 thingObjects.forEach((option) => {
                     stuff += makeOp(option);
@@ -177,6 +178,7 @@
             }
             let searchOrder = document.getElementById('sortBy').value;
             let searchURL = '../posts/search/' + searchTerm + '/' + category + '/' + searchOrder;
+            console.log(searchURL);
             fetch(searchURL)
                 .then((data) => data.json())
                 .then((dataAsObject) => {
