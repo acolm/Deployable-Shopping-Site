@@ -74,16 +74,15 @@ router.post("/register", (req,resp, next) => {
 router.post("/login", (req, resp, next) => {
     let email = req.body.email;
     let password = req.body.password;
-    //let userID;
+    let userId;
 
     //search if email is in database, is currently not included in sql statement
-    db.execute("SELECT password FROM users WHERE email=?;", [email])
+    db.execute("SELECT id, password FROM users WHERE email=?;", [email])
     .then(([results, fields]) => {
         if(results && results.length == 1){
             let hPassword = results[0].password;
-            //userID = results[0].id;
-            //return statement comparing passwords
-            return bcrypt.compare(password, hpassword);
+            userId = results[0].id;
+            return bcrypt.compare(password, hPassword);
         }
         else{
             throw new UserError('username or password is incorrect','/login', 200);
@@ -91,9 +90,9 @@ router.post("/login", (req, resp, next) => {
     })
     .then((check) => {
         if(check){
-            successPrint('successful Login!');
-            req.session.username = username;
-            req.session.userID = userID;
+            successPrint(`Successful Login by ${email}`);
+            req.session.email = email;
+            req.session.id = userId;
             req.session.save();
             console.log(req.session);
             resp.redirect('/');

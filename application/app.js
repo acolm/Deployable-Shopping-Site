@@ -2,6 +2,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var sessions = require('express-session');
+var mysqlSession = require('express-mysql-session');
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/users');
@@ -20,6 +22,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var mysqlSessionStore = new mysqlSession({/* using default options */},require('./config/database'));
+app.use(sessions({
+    key: "csid",
+    secret: "this is a secret from CSC648",
+    store:  mysqlSessionStore,
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use('/', indexRouter);
 app.use('/users/', userRouter);
