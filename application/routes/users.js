@@ -102,9 +102,9 @@ router.post("/login", (req, resp, next) => {
     })
     .catch((err) => {
         if(err instanceof UserError) {
-          errorPrint(err.getMessage());
-          resp.status(err.getStatus());
-          resp.redirect(err.getRedirectURL());
+          errorPrint(err.message);
+          resp.status(err.status);
+          resp.redirect(err.redirectURL);
         }else{
           next(err);
         }
