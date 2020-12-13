@@ -41,6 +41,9 @@
             </a>
     
             <!-- Hamburger icon -->
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
     
             <!--Collapse navbar on smaller screens-->
             <div class="collapse navbar-collapse" id="navbarMenu">
@@ -68,7 +71,7 @@
                         <a href="../HTML/dashboard.html" class="nav-link">Account</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../HTML/aboutus.html" class="nav-link">About</a>
+                        <a href="/aboutus" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
                         <a href="/login" class="btn btn-outline-secondary" role="button">Login/Register</a>
@@ -99,12 +102,12 @@
                     </div>
                 </div>
                 <!--Class ID (optional)-->
-                <div class="form-group col" id="ClassID" style="visibility: hidden;">
+                <div class="form-group col" id="ClassID">
                     <label for="ClassID"> Class ID <span class="text-muted">(Optional)</span> </label>
                     <input type="text" class="form-control col-sm-4" id="ItemClassID" placeholder="e.g. CSC648">                        
                 </div>
                 <!--Price (optional)-->
-                <div class="form-group col-sm-4" id="Price" style="visibility: hidden;">
+                <div class="form-group col-sm-4" id="Price">
                     <label for="ItemPrice"> Price <span class="text-muted">(Optional)</span></label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -143,7 +146,7 @@
             
         </div>
 
-        <footer class="footer-about">
+        <footer class="footer-about" style="margin-top: 185px;">
             <span class="float-right">
                 <a href="#">Back to top</a>
             </span>
@@ -157,7 +160,7 @@
         <!--Code for category pull down-->
         <script>
             function makeOp(data){
-                return ` <option value=${data.type}>${data.type}</option>`;
+                return `<option value="${data.type}">${data.type}</option>`;
             }
             function cCreate(){
                 const cat = '/category/';
@@ -169,7 +172,8 @@
                         _html += makeOp(option);
                     })
                     document.getElementById('category').innerHTML = _html;
-                    document.getElementById('ItemCat').innerHTML = _html;
+                    var noAll = _html.indexOf("ion>") + 4;
+                    document.getElementById('ItemCat').innerHTML = _html.substring(noAll, _html.length);
                 })
                 .catch((err) => console.log(err));
             }
@@ -179,15 +183,15 @@
         <script>
             function checkCategory(input){
                 var cat = input.value;
-                if(cat == "Item"){
-                    document.getElementById("Price").style.visibility = "hidden";
-                    document.getElementById("ClassID").style.visibility = "hidden";
+                if(cat == "Item Request"){
+                    document.getElementById("Price").style.display = "none";
+                    document.getElementById("ClassID").style.display = "none";
                 }else if(cat == "Textbooks"|| cat == "Books"){
-                    document.getElementById("Price").style.visibility = "visible";
-                    document.getElementById("ClassID").style.visibility = "visible";
+                    document.getElementById("Price").style.display = "flow-root";
+                    document.getElementById("ClassID").style.display = "flow-root";
                 }else{
-                    document.getElementById("Price").style.visibility = "visible";
-                    document.getElementById("ClassID").style.visibility = "hidden";
+                    document.getElementById("Price").style.display = "flow-root";
+                    document.getElementById("ClassID").style.display = "none";
                 }
             }
             //https://bootstrapious.com/p/bootstrap-image-upload

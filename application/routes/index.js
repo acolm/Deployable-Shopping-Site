@@ -20,6 +20,8 @@ router.get('/login', function(req,res,next) {
   res.sendFile('login.html', {root:'public/HTML'});
 })
 
-
+router.get('/aboutus', function(req, res, next) {
+  res.sendFile('aboutus.html', {root:'public/HTML'});
+})
 
 module.exports = router;
