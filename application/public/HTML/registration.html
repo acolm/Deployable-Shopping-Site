@@ -203,27 +203,6 @@
         })();
     </script>
 
-    <!--Code for doing submit-->
-    <!-- <script>
-        const _form = document.getElementById(regForm);
-        _form.onsubmit = function(event) {
-            event.preventDefault();
-            let _body = new FormData(_form);
-            console.log("AM I MAKING IT HERE?");
-            axios({
-                body:_body,
-                method: "POST"
-                url: '/users/register' 
-            })
-            .then((dataAsObject) => {
-                console.log(dataAsObject);
-                alert(dataAsObject.data.message);
-                //location.replace(dataAsObject.data.redirect);
-            })
-            .catch(err => console.log(err));
-        }
-    </script> -->
-
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
