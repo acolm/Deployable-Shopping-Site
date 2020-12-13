@@ -81,13 +81,13 @@
         </nav>
     
         <div class="container rounded shadow-sm p-3 my-3 border col-lg-7 form-color">
-            <form class="needs-validation font-weight-bold" novalidate>
+            <form class="needs-validation font-weight-bold" novalidate method="POST" action="/posts/createPost">
                 <h2 class="text-center">Post Submission Form</h2>
                 <!--Item info-->
                 <!--Item Name/Post Title-->
                 <div class="form-group col">
                     <label for="PostTitle">Title</label>
-                    <input type="text" class="form-control col-sm-10" id="PostTitle" placeholder="e.g. Textbook for MATH400" required>
+                    <input type="text" class="form-control col-sm-10" id="PostTitle" name ="title" placeholder="e.g. Textbook for MATH400" required>
                     <div class="invalid-feedback">
                         Please enter a title.
                     </div>
@@ -95,7 +95,7 @@
                 <!--Category -->
                 <div class="form-group col">
                     <label for="ItemCat">Category</label>
-                    <select class="form-control col-sm-5" id="ItemCat" onchange="checkCategory(this)" required>
+                    <select class="form-control col-sm-5" id="ItemCat" name="cat" onchange="checkCategory(this)" required>
                     </select>
                     <div class="invalid-feedback">
                         Please select a category.
@@ -104,7 +104,7 @@
                 <!--Class ID (optional)-->
                 <div class="form-group col" id="ClassID">
                     <label for="ClassID"> Class ID <span class="text-muted">(Optional)</span> </label>
-                    <input type="text" class="form-control col-sm-4" id="ItemClassID" placeholder="e.g. CSC648">                        
+                    <input type="text" class="form-control col-sm-4" id="ItemClassID" name="classID" placeholder="e.g. CSC648">                        
                 </div>
                 <!--Price (optional)-->
                 <div class="form-group col-sm-4" id="Price">
@@ -113,20 +113,20 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="number" class="form-control" id="ItemPrice">
+                        <input type="number" class="form-control" id="ItemPrice" name="price">
                     </div>
                 </div>
                 <!--Description of Item-->
                 <div class="form-group col-sm-10">
                     <label for="ItemDescription">Description</label>                            
-                    <textarea class="form-control" rows="5" id="ItemDescription" placeholder="Enter item description..." required></textarea>
+                    <textarea class="form-control" rows="5" id="ItemDescription" name= "description" placeholder="Enter item description..." required></textarea>
                     <div class="invalid-feedback">
                         Please enter a description.
                     </div>
                 </div>
                 <!--Image uploaded here-->
                 <div class="custom-file col-sm-10">
-                    <input type="file" class="custom-file-input" id="upload" onchange="readURL(this);" required>
+                    <input type="file" class="custom-file-input" id="upload" name="upload" onchange="readURL(this);" required>
                     <label class="custom-file-label" for="customFile" id="fileName">Choose image of item</label>
                     <div class="invalid-feedback">
                         Please upload an image of the item.

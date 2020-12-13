@@ -61,6 +61,7 @@ router.post("/register", (req,resp, next) => {
         //catch errors
         .catch((err) => {
             if (err instanceof UserError) {
+                errorPrint(err.message);
                 resp.status(err.status);
                 resp.redirect(err.redirectURL);
                 //resp.json = ({status: err.status, message: err.message, "redirect": err.redirectURL});
