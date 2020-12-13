@@ -92,22 +92,16 @@
                 <!--Category -->
                 <div class="form-group col">
                     <label for="ItemCat">Category</label>
-                    <select class="form-control col-sm-5" id="ItemCat" oninput="checkCategory(this)" required>
-                        <option value="">Select Category</option>
-                        <option>Books</option>
-                        <option>Textbooks</option>
-                        <option>Furniture</option>
-                        <option>Supplies</option>
-                        <option>Item Request</option>
+                    <select class="form-control col-sm-5" id="ItemCat" onchange="checkCategory(this)" required>
                     </select>
                     <div class="invalid-feedback">
                         Please select a category.
                     </div>
                 </div>
                 <!--Class ID (optional)-->
-                <div class="form-group col">
+                <div class="form-group col" id="ClassID" style="visibility: hidden;">
                     <label for="ClassID"> Class ID <span class="text-muted">(Optional)</span> </label>
-                    <input type="text" class="form-control col-sm-4" id="ClassID" placeholder="e.g. CSC648">                        
+                    <input type="text" class="form-control col-sm-4" id="ItemClassID" placeholder="e.g. CSC648">                        
                 </div>
                 <!--Price (optional)-->
                 <div class="form-group col-sm-4" id="Price" style="visibility: hidden;">
@@ -175,6 +169,7 @@
                         _html += makeOp(option);
                     })
                     document.getElementById('category').innerHTML = _html;
+                    document.getElementById('ItemCat').innerHTML = _html;
                 })
                 .catch((err) => console.log(err));
             }
@@ -183,10 +178,16 @@
 
         <script>
             function checkCategory(input){
-                if(input.value != "Item Request"){
-                    document.getElementById("Price").style.visibility = "visible";
-                }else{
+                var cat = input.value;
+                if(cat == "Item"){
                     document.getElementById("Price").style.visibility = "hidden";
+                    document.getElementById("ClassID").style.visibility = "hidden";
+                }else if(cat == "Textbooks"|| cat == "Books"){
+                    document.getElementById("Price").style.visibility = "visible";
+                    document.getElementById("ClassID").style.visibility = "visible";
+                }else{
+                    document.getElementById("Price").style.visibility = "visible";
+                    document.getElementById("ClassID").style.visibility = "hidden";
                 }
             }
             //https://bootstrapious.com/p/bootstrap-image-upload
