@@ -89,15 +89,16 @@
                         Please enter a title.
                     </div>
                 </div>
-                <!--Category: Books, Textbooks, Furniture, Supplies-->
+                <!--Category -->
                 <div class="form-group col">
                     <label for="ItemCat">Category</label>
-                    <select class="form-control col-sm-5" id="ItemCat" required>
+                    <select class="form-control col-sm-5" id="ItemCat" oninput="checkCategory(this)" required>
                         <option value="">Select Category</option>
                         <option>Books</option>
                         <option>Textbooks</option>
                         <option>Furniture</option>
                         <option>Supplies</option>
+                        <option>Item Request</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a category.
@@ -109,7 +110,7 @@
                     <input type="text" class="form-control col-sm-4" id="ClassID" placeholder="e.g. CSC648">                        
                 </div>
                 <!--Price (optional)-->
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-4" id="Price" style="visibility: hidden;">
                     <label for="ItemPrice"> Price <span class="text-muted">(Optional)</span></label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -140,7 +141,7 @@
                 <!--Submit and cancel buttons-->
                 <div>
                     <!--Cancel button goes to home page-->
-                    <a href="./index.html" class="btn btn-outline-secondary" role="button">Cancel</a>
+                    <a href="/" class="btn btn-outline-secondary" role="button">Cancel</a>
                     <button type="submit" class="btn btn-success btn-lg float-right">Submit for Approval</button>
                     <small class="form-text text-muted float-right my-4"> (May take up to 24 hours to get approved)</small>
                 </div>
@@ -159,28 +160,35 @@
             </span>
         </footer>
 
-    <!--Code for category pull down-->
-    <script>
-        function makeOp(data){
-            return ` <option value=${data.type}>${data.type}</option>`;
-        }
-        function cCreate(){
-            const cat = '/category/';
-            fetch(cat)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((option) => {
-                    _html += makeOp(option);
+        <!--Code for category pull down-->
+        <script>
+            function makeOp(data){
+                return ` <option value=${data.type}>${data.type}</option>`;
+            }
+            function cCreate(){
+                const cat = '/category/';
+                fetch(cat)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
                 })
-                document.getElementById('category').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
-        }
-        window.onload = cCreate();
-    </script>
+                .catch((err) => console.log(err));
+            }
+            window.onload = cCreate();
+        </script>
 
         <script>
+            function checkCategory(input){
+                if(input.value != "Item Request"){
+                    document.getElementById("Price").style.visibility = "visible";
+                }else{
+                    document.getElementById("Price").style.visibility = "hidden";
+                }
+            }
             //https://bootstrapious.com/p/bootstrap-image-upload
             //displaying image
             function readURL(input) {
