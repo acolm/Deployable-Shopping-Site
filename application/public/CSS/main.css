@@ -252,8 +252,8 @@ float: left;
 }
 
 .sfsu-text-colors{
-    background-color: #800080 !important;
-    color: #FFFF00 !important;
+    background-color: #ffcc00 !important;
+    color: #231161 !important;
 }
 .space{ /* have to figure out a way to get rid of this and find a bootstrap alternative*/
     justify-content: space-between;
@@ -319,3 +319,28 @@ input::-webkit-inner-spin-button {
     color: white;
     border-color: transparent;
 }
+
+/* Error page HTML */
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.error-actions {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.error-actions .btn { 
+    margin-right:10px; 
+    border: none;
+    color: #f0f2f5 !important;
+    background-color: #231161 !important;
+}
+
+/* Privacy Page */
+.btn-static {
+    color: #f0f2f5 !important;
+    background-color: #231161 !important;
+    border: 1px solid lightgrey;
+    cursor: default;
+    font-size: 25px !important;
+  }

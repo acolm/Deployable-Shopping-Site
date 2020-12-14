@@ -24,4 +24,13 @@ router.get('/aboutus', function(req, res, next) {
   res.sendFile('aboutus.html', {root:'public/HTML'});
 })
 
+router.get('/privacy', function(req, res, next) {
+  res.sendFile('privacy_policy.html', {root:'public/HTML'});
+})
+
+router.get('/terms', function(req, res, next) {
+  res.sendFile('terms_and_conditions.html', {root:'public/HTML'});
+})
+
+
 module.exports = router;
