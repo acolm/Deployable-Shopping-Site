@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 .body-color{
     background-color: #f0f2f5;
 }
@@ -266,7 +277,7 @@ float: left;
     border-radius: 10px;
 }
 
-.footer{
+/* .footer{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -275,15 +286,16 @@ float: left;
     background-color: rgb(158, 158, 158);
     color: white;
     padding: 0 10px 0 10px;
-}
+} */
 
-.footer-about{
+.footer{
     width: 100%;
     background-color: rgb(158, 158, 158);
     color: white;
     padding: 0 10px 0 10px;
     height: 60px;
     line-height: 60px;
+    margin-top: 50px;
 }
 
 .footer-home{
@@ -337,10 +349,3 @@ input::-webkit-inner-spin-button {
 }
 
 /* Privacy Page */
-.btn-static {
-    color: #f0f2f5 !important;
-    background-color: #231161 !important;
-    border: 1px solid lightgrey;
-    cursor: default;
-    font-size: 25px !important;
-  }

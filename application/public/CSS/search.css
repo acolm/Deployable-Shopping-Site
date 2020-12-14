@@ -38,7 +38,9 @@
     color: 4a4a4a;
     font-weight: 700;
     display: block;
-    overflow: hidden;
+    white-space:pre;
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
 
 .test-card-price-wrapper{

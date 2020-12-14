@@ -41,8 +41,7 @@
         </a>
 
         <!-- Hamburger icon -->
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarMenu">
+        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -53,8 +52,7 @@
                 <div class="input-group">
                     <select class="form-control search-slt col-sm-2" id="category" name="category">
                     </select>
-                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)"
-                        id="searchtext" name="searchtext">
+                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="submit" id="nav-bar-go"
                             style="background-color: #231161">
@@ -250,7 +248,7 @@
         </ul>
     </div>
 
-    <footer class="footer-home">
+    <footer class="footer">
         <span class="float-right">
             <a href="#">Back to top</a>
         </span>
@@ -261,6 +259,28 @@
         </span>
     </footer>
 
+    <!--Code for category pull down-->
+    <script>
+        function makeOp(data){
+            return ` <option value=${data.type}>${data.type}</option>`;
+        }
+        function cCreate(){
+            const cat = '/category/';
+            fetch(cat)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                let _html = "";
+                dataAsObject.forEach((option) => {
+                    _html += makeOp(option);
+                })
+                document.getElementById('category').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+        }
+
+        window.onload = cCreate();;
+    </script>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
