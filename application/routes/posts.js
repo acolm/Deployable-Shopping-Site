@@ -7,7 +7,95 @@
 const e = require('express');
 var express = require('express');
 var router = express.Router();
+const errorPrint = require("../helpers/debug/debughelpers").errorPrint;
+const successPrint = require("../helpers/debug/debughelpers").successPrint;
 const db = require("../config/database");
+const UserError = require("../helpers/errors/UserError");
+var sharp = require('sharp');
+var multer = require('multer');
+var crypto = require('crypto');
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, "public/Images/uploads");
+    },
+    filename: function(req, file, cb) {
+        let fileExt = file.mimetype.split("/")[1];
+        let randomName = crypto.randomBytes(22).toString("hex");
+        cb(null, `${randomName}.${fileExt}`);
+    }
+});
+
+var uploader = multer({storage: storage});
+
+router.post('/createPost', uploader.single('upload'), (req, resp, next) => {    
+    let fileUploaded = req.file.path;
+    let fileASThumbnail = `thumbnail-${req.file.filename}`;
+    let destofThumbnail = req.file.destination+"/"+fileASThumbnail;
+    let arguments = [];
+    //probably do validation before sending to sql
+    arguments.push(req.body.title);
+    arguments.push(req.body.description);
+    arguments.push(req.body.cat);
+    //arguments.push(req.session.userId);
+    var forPOST = fileUploaded.replace("public", "..");
+    var forPOST2 = destofThumbnail.replace("public", "..");
+    arguments.push(forPOST);
+    arguments.push(forPOST2);
+    let price = req.body.price;
+    let classID = req.body.classID;
+
+    let baseSQL = `INSERT INTO posts(title, description, category, photopath, thumbnail`; //currently missing session data
+    let sqlValues = ` VALUES(?,?,?,?,?`;
+
+    if(price !== ''){
+        baseSQL += `, price`;
+        sqlValues += `,?`;
+        arguments.push(price);
+    }
+    if(classID !== ''){
+        baseSQL += `, class`;
+        sqlValues += `,?`;
+        arguments.push(classID);
+    }
+    baseSQL += `)`;
+    sqlValues += `)`;
+    var combine = baseSQL+sqlValues;
+    console.log(combine);
+    for (var i =0; i<arguments.length;i++){
+        console.log(arguments[i]);
+    }
+
+    sharp(fileUploaded)
+    .resize(200, 200, {
+        fit: "fill"
+    })
+    .toFile(destofThumbnail)
+    .then(() => {
+        return db.execute(combine, arguments);
+    })
+    .then(([results, fields]) => {
+        if(results && results.affectedRows){
+            successPrint('New Post created');
+            resp.redirect("/");
+        }
+        else{
+            throw new UserError("Failed to create new post", 
+            "../HTML/postsubmission.html",
+            500);
+        }
+    })
+    .catch((err) => {
+        if(err instanceof UserError){
+            errorPrint(err.message);
+            resp.status(err.status);
+            resp.redirect(err.redirectURL);
+        }
+        else{
+            next(err);
+        }
+    })
+});
 
 router.get('/search/:searchTerm/:searchCategory/:searchOrder', (req, resp, next) => {
     let searchTerm = req.params.searchTerm;
@@ -58,7 +146,7 @@ router.get('/getPostById/:id', (req, resp, next) => {
 router.get('/getRecentPosts/:count', (req, resp, next) => {
     let count = req.params.count;
     let _sql = 'SELECT p.id, p.title, p.price, p.created, p.thumbnail FROM posts p \
-    ORDER BY p.created DESC LIMIT ';
+    WHERE approved = 1 ORDER BY p.created DESC LIMIT ';
     _sql += count;          //For some reason, this wont work unless I add onto this string
     db.query(_sql)          //Might have to do with function ending too quickly without it
     .then(([results, fields]) => {
@@ -66,6 +154,5 @@ router.get('/getRecentPosts/:count', (req, resp, next) => {
     })
     .catch((err) => next(err));
 });
-
 
 module.exports = router;

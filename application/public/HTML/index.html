@@ -96,11 +96,11 @@
             </section>
         </div>
 
-        <div class="row my-5">
+        <div class="row my-3">
             <h4 class="font-weight-bold">Recently Added Items : </h4>
         </div>
         <!-- Carousel -->
-        <div id="main-content" class="main-content">
+        <div id="main-content-home" class="main-content">
 
         </div>
 
@@ -141,7 +141,7 @@
             </a>`;
         }
 
-        fetch('/posts/getRecentPosts/10')
+        fetch('/posts/getRecentPosts/5')
         .then((data2) => data2.json())
         .then((dataAsObject2) => {
             console.log(dataAsObject2);
@@ -149,7 +149,7 @@
             dataAsObject2.forEach((post) => {
                 _html2 += createCard(post);
             })
-            document.getElementById("main-content").innerHTML = _html2;
+            document.getElementById("main-content-home").innerHTML = _html2;
         })
         .catch((err) => console.log(err));
     </script>

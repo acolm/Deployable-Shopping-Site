@@ -74,3 +74,14 @@
     grid-auto-columns: 0.2fr;
     gap: 0rem;
 }
+
+#main-content-home {
+    display: grid;
+    height:70vh;
+    margin: 20px auto auto auto;
+    grid-template-rows: repeat(1, 0.75fr);
+    grid-template-columns: repeat(5, 0.2fr);
+    grid-auto-rows: 0.75fr;
+    grid-auto-columns: 0.2fr;
+    gap: 0rem;
+}
