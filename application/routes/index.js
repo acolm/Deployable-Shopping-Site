@@ -16,6 +16,14 @@ router.get('/registration', function(req, res, next) {
   res.sendFile('registration.html', {root:'public/HTML'});
 })
 
+router.get('/account', function(req, res, next) {
+  res.sendFile('dashboard.html', {root:'public/HTML'});
+})
+
+router.get('/post', function(req, res, next) {
+  res.sendFile('postsubmission.html', {root:'public/HTML'});
+})
+
 router.get('/login', function(req,res,next) {
   res.sendFile('login.html', {root:'public/HTML'});
 })

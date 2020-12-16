@@ -137,20 +137,27 @@
             .catch((err) => console.log(err));
         }
         //This function creates a structure to display results from database 
-        function createCard(data) {
-            return `<a href="/posts/${data.id}" id="post-${data.id}" target="blank" class="test-card-wrapper"> \
+        function createCard(data2) {
+            let priceStr = 'Free';
+            if (data2.category === 'Item Request') {
+                priceStr = "Item Request";
+            }
+            else if (data2.price) {
+                priceStr = '$' + data2.price;
+            }
+            return `<a href="/posts/${data2.id}" id="post-${data2.id}" target="blank" class="test-card-wrapper"> \
                 <div class="test-card-body"> \
                     <div class="test-card-top"> \
                         <div class="test-card-image-wrapper"> \
-                            <img class="card-image" src="${data.thumbnail}" /> \
+                            <img class="card-image" src="${data2.thumbnail}" /> \
                         </div> \
                     </div> \
                     <div class="test-card-bottom"> \
-                        <span class="test-card-title">${data.title}</span> \
+                        <span class="test-card-title">${data2.title}</span> \
                         <div class="test-card-price-wrapper">
-                            <span class="test-card-price">$${data.price}</span> \
+                            <span class="test-card-price">${priceStr}</span> \
                         </div> \
-                        <span class="test-card-date">${parseDateString(data.created)}</span> \
+                        <span class="test-card-date">${parseDateString(data2.created)}</span> \
                     </div> \
                 </div> \
             </a>`;

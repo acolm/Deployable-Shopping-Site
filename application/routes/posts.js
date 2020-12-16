@@ -103,7 +103,7 @@ router.get('/search/:searchTerm/:searchCategory/:searchOrder', (req, resp, next)
     let searchOrder = req.params.searchOrder;
     
     let arguments = [];
-    let _sql = 'SELECT p.id, p.title, p.price, p.thumbnail, p.created \
+    let _sql = 'SELECT p.id, p.title, p.category, p.price, p.thumbnail, p.created \
     FROM posts p WHERE ';
     if (searchTerm !== '__NO_VALUE__') {
         _sql += '(title LIKE ? OR class LIKE ?) AND ';
@@ -145,7 +145,7 @@ router.get('/getPostById/:id', (req, resp, next) => {
 
 router.get('/getRecentPosts/:count', (req, resp, next) => {
     let count = req.params.count;
-    let _sql = 'SELECT p.id, p.title, p.price, p.created, p.thumbnail FROM posts p \
+    let _sql = 'SELECT p.id, p.title, p.category, p.price, p.created, p.thumbnail FROM posts p \
     WHERE approved = 1 ORDER BY p.created DESC LIMIT ';
     _sql += count;          //For some reason, this wont work unless I add onto this string
     db.query(_sql)          //Might have to do with function ending too quickly without it

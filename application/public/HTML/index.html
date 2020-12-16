@@ -106,8 +106,11 @@
 
 
     </div>
+    
+    <div class="spacer">
+    </div>
 
-    <footer class="footer">
+    <footer class="footer-home">
         <span class="float-right">
             <a href="#">Back to top</a>
         </span>
@@ -123,6 +126,13 @@
             return dateString.split('T')[0];
         }
         function createCard(data2) {
+            let priceStr = 'Free';
+            if (data2.category === 'Item Request') {
+                priceStr = "Item Request";
+            }
+            else if (data2.price) {
+                priceStr = '$' + data2.price;
+            }
             return `<a href="/posts/${data2.id}" id="post-${data2.id}" target="blank" class="test-card-wrapper"> \
                 <div class="test-card-body"> \
                     <div class="test-card-top"> \
@@ -133,7 +143,7 @@
                     <div class="test-card-bottom"> \
                         <span class="test-card-title">${data2.title}</span> \
                         <div class="test-card-price-wrapper">
-                            <span class="test-card-price">$${data2.price}</span> \
+                            <span class="test-card-price">${priceStr}</span> \
                         </div> \
                         <span class="test-card-date">${parseDateString(data2.created)}</span> \
                     </div> \
