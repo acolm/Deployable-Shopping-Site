@@ -296,13 +296,19 @@
                     <td><h6 class="font-weight-bold">Post Title</h6></td>
                     <td><h6 class="font-weight-bold">Date Created</h6></td>
                     <td></td>
+                    <td></td>
                     <td></td></tr>`;
                 dataAsObject.forEach((post) => {
                     postTable += `<tr class="mr-5">
                         <td><a href="/posts/${post.id}">${post.title}</a></td>
                         <td>${parseDateString(post.created)}</td>
                         <td><a href="/posts/${post.id}"><button type="button" class="btn btn-primary btn-sm">View Post</button></a></td>
-                        <td><button type="button" class="btn btn-danger btn-sm" onclick="deletePost(${post.id});">Delete Post</button></td></tr>`;
+                        <td><button type="button" class="btn btn-danger btn-sm" onclick="deletePost(${post.id});">Delete Post</button></td>
+                        <td>`;
+                    if (!post.approved) {
+                        postTable += '(Awaiting approval)';
+                    }
+                    postTable += '</td></tr>'
                 });
                 postTable += '</table>';
                 document.getElementById('postTable').innerHTML = postTable;
