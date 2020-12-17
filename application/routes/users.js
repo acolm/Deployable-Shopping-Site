@@ -21,7 +21,7 @@ router.post("/register", (req,resp, next) => {
 
     //first validate passwords on server
     if(password1 !== password2){
-        resp.redirect('../HTML/registration.html');//Have to send user a pop-up
+        resp.redirect('/registration');//Have to send user a pop-up
     }
     else{
         //search for email if it already has an account
@@ -93,7 +93,7 @@ router.post("/login", (req, resp, next) => {
         if(check){
             successPrint(`Successful Login by ${email}`);
             req.session.email = email;
-            req.session.id = userId;
+            req.session.userId = userId;
             req.session.save();
             console.log(req.session);
             resp.redirect('/');
@@ -110,6 +110,21 @@ router.post("/login", (req, resp, next) => {
           next(err);
         }
       })
+});
+
+router.post("/logout", (req,resp, next) => {
+    req.session.destroy((err) => {
+        if(err){
+            errorPrint('Failed to destroy');
+            next(err);
+        }
+        else{
+            successPrint('session was destoryed');
+            resp.clearCookie('csid');
+            resp.redirect('/');
+        }
+    })
+
 });
 
 module.exports = router;
