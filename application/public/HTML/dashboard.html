@@ -226,7 +226,7 @@
             return dateString.split('T')[0];
         }
         function populateUserInfo(userID) {
-            const usrURL = '/users/getUserInfo/' + userID;
+            const usrURL = '/users/getUserInfo';
             fetch(usrURL)
             .then((data) => data.json())
             .then((dataAsObject) => {
@@ -237,7 +237,7 @@
             .catch((err) => console.log(err));
         }
         function populateMessages(userID) {
-            const msgURL = '/messages/getMessagesForUser/' + userID;
+            const msgURL = '/messages/getMessagesForUser';
             fetch(msgURL)
             .then((data) => data.json())
             .then((dataAsObject) => {
@@ -276,19 +276,19 @@
             })
             .catch((err) => console.log(err));
         }
-        function deletePost(postID, userID) {
+        function deletePost(postID) {
             fetch('/posts/delete/' + postID, {
                 method: 'DELETE'
             })
             .then((data) => data.json())
             .then((dataAsObject) => {
                 if (dataAsObject.success) {
-                    populatePosts(userID);
+                    populatePosts();
                 }
             });
         }
-        function populatePosts(userID) {
-            const postURL = '/posts/getPostsByUser/' + userID;
+        function populatePosts() {
+            const postURL = '/posts/getPostsByUser';
             fetch(postURL)
             .then((data) => data.json())
             .then((dataAsObject) => {
@@ -303,7 +303,7 @@
                         <td><a href="/posts/${post.id}">${post.title}</a></td>
                         <td>${parseDateString(post.created)}</td>
                         <td><a href="/posts/${post.id}"><button type="button" class="btn btn-primary btn-sm">View Post</button></a></td>
-                        <td><button type="button" class="btn btn-danger btn-sm" onclick="deletePost(${post.id}, ${userID});">Delete Post</button></td></tr>`;
+                        <td><button type="button" class="btn btn-danger btn-sm" onclick="deletePost(${post.id});">Delete Post</button></td></tr>`;
                 });
                 postTable += '</table>';
                 document.getElementById('postTable').innerHTML = postTable;
@@ -329,10 +329,9 @@
         }
         window.onload = function() {
             cCreate();
-            let userID = 8; // TODO(Lothar): Find the logged in user's id.
-            populateUserInfo(userID);
-            populateMessages(userID);
-            populatePosts(userID);
+            populateUserInfo();
+            populateMessages();
+            populatePosts();
         };
     </script>
 

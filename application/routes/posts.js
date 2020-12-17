@@ -28,6 +28,23 @@ var storage = multer.diskStorage({
 
 var uploader = multer({storage: storage});
 
+router.get('/getPostsByUser', (req, resp, next) => {
+    if (req.session && req.session.userId) {
+        let userID = req.session.userId;
+        let arguments = [];
+        let _sql = 'SELECT p.id, p.title, p.created, p.approved FROM posts p \
+        WHERE p.fk_userid = ?';
+        arguments.push(userID);
+        db.query(_sql, arguments)
+        .then(([results, fields]) => {
+            resp.json(results);
+        })
+        .catch((err) => next(err));
+    } else {
+        resp.redirect('/login');
+    }
+});
+
 router.post('/createPost', uploader.single('upload'), (req, resp, next) => {    
     let fileUploaded = req.file.path;
     let fileASThumbnail = `thumbnail-${req.file.filename}`;
@@ -37,7 +54,7 @@ router.post('/createPost', uploader.single('upload'), (req, resp, next) => {
     arguments.push(req.body.title);
     arguments.push(req.body.description);
     arguments.push(req.body.cat);
-    //arguments.push(req.session.userId);
+    arguments.push(req.session.userId);
     var forPOST = fileUploaded.replace("public", "..");
     var forPOST2 = destofThumbnail.replace("public", "..");
     arguments.push(forPOST);
@@ -45,8 +62,8 @@ router.post('/createPost', uploader.single('upload'), (req, resp, next) => {
     let price = req.body.price;
     let classID = req.body.classID;
 
-    let baseSQL = `INSERT INTO posts(title, description, category, photopath, thumbnail`; //currently missing session data
-    let sqlValues = ` VALUES(?,?,?,?,?`;
+    let baseSQL = `INSERT INTO posts(title, description, category, fk_userid, photopath, thumbnail`; //currently missing session data
+    let sqlValues = ` VALUES(?,?,?,?,?,?`;
 
     if(price !== ''){
         baseSQL += `, price`;
@@ -149,19 +166,6 @@ router.get('/getRecentPosts/:count', (req, resp, next) => {
     WHERE approved = 1 ORDER BY p.created DESC LIMIT ';
     _sql += count;          //For some reason, this wont work unless I add onto this string
     db.query(_sql)          //Might have to do with function ending too quickly without it
-    .then(([results, fields]) => {
-        resp.json(results);
-    })
-    .catch((err) => next(err));
-});
-
-router.get('/getPostsByUser/:userid', (req, resp, next) => {
-    let userID = req.params.userid;
-    let arguments = [];
-    let _sql = 'SELECT p.id, p.title, p.created, p.approved FROM posts p \
-    WHERE p.fk_userid = ?';
-    arguments.push(userID);
-    db.query(_sql, arguments)
     .then(([results, fields]) => {
         resp.json(results);
     })

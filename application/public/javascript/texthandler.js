@@ -1,4 +1,3 @@
-console.log("FUCK THIS-----------------------------------------------");
 function logoutClick(event){
     var fetchOptions = {
         method: "POST",
