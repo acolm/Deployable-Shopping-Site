@@ -141,7 +141,14 @@ router.post("/logout", (req,resp, next) => {
             resp.redirect('/');
         }
     })
+});
 
+router.get('/checkLogin', (req, resp, next) => {
+    if (req.session && req.session.userId) {
+        resp.json({loggedIn: true});
+    } else {
+        resp.json({loggedIn: false});
+    }
 });
 
 module.exports = router;
