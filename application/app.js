@@ -3,13 +3,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sessions = require('express-session');
-var mysqlSession = require('express-mysql-session');
+var mysqlSession = require('express-mysql-session')(sessions);
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/users');
 var postRouter = require('./routes/posts');
 var catRouter = require('./routes/category');
 var messageRouter = require('./routes/messages');
+
+var errorPrint = require("./helpers/debug/debughelpers").errorPrint;
+var requestPrint = require("./helpers/debug/debughelpers").successPrint;
 
 var app = express();
 
