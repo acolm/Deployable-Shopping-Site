@@ -150,7 +150,7 @@
         fetch('/posts/getRecentPosts/5')
         .then((data2) => data2.json())
         .then((dataAsObject2) => {
-            console.log(dataAsObject2);
+            // console.log(dataAsObject2);
             let _html2 = "";
             dataAsObject2.forEach((post) => {
                 _html2 += createCard(post);
