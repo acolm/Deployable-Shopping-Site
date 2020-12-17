@@ -168,4 +168,18 @@ router.get('/getPostsByUser/:userid', (req, resp, next) => {
     .catch((err) => next(err));
 });
 
+router.delete('/delete/:postid', (req, resp, next) => {
+    let arguments = [req.params.postid];
+    let _sql = 'DELETE FROM posts \
+    WHERE id = ?;';
+    db.execute(_sql, arguments)
+    .then(([results, fields]) => {
+        resp.json({success: true});
+    })
+    .catch((err) => {
+        resp.json({success: false});
+        next(err);
+    });
+});
+
 module.exports = router;
