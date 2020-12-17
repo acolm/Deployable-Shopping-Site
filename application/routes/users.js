@@ -112,4 +112,17 @@ router.post("/login", (req, resp, next) => {
       })
 });
 
+router.get('/getUserInfo/:userid', (req, resp, next) => {
+    let userID = req.params.userid;
+    let arguments = [];
+    let _sql = 'SELECT u.id, u.firstname, u.lastname, u.email, u.profilepic FROM users u \
+    WHERE u.id = ?';
+    arguments.push(userID);
+    db.query(_sql, arguments)
+    .then(([results, fields]) => {
+        resp.json(results[0]);
+    })
+    .catch((err) => next(err));
+});
+
 module.exports = router;

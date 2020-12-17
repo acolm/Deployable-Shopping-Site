@@ -94,7 +94,7 @@
                     </button>
                     <div class="my-2">
                         <h6 id="userName" class="my-0"></h6>
-                        <p class="my-0">★★★★☆</p>
+                        <!-- <p class="my-0">★★★★☆</p> -->
                     </div>
                 </a>
             </div>
@@ -135,12 +135,12 @@
                             <p id="itemType"></p>
                         </div> -->
 
-                        <div class="mx-5">
+                        <div>
                             <h6 class="font-weight-bold">Category</h6>
                             <p id="itemCategory"></p>
                         </div>
 
-                        <div>
+                        <div class="mx-5">
                             <h6 class="font-weight-bold">Class ID</h6>
                             <p id="itemClassID"></p>
                         </div>
@@ -148,16 +148,20 @@
                     <!-- Row 3: Item description -->
                     <div>
                         <h6 class="font-weight-bold">Description</h6>
-                        <div id="itemDescription" class="item-description border rounded">
+                        <div id="itemDescription" class="item-description">
                             
                         </div>
                     </div>
                     <!-- Row 4: Message seller and Send button -->
                     <div>
-                        <h6 class="font-weight-bold my-3">Message</h6>
-                        <textarea class="form-control"
-                            placeholder="Send seller your contact information (max 600 characters)..."></textarea>
-                        <button class="btn btn-success float-right my-2">Send</button>
+                        <form action="/messages/createMessage" method="POST">
+                            <input type="hidden" id="userID" name="userID">
+                            <input type="hidden" id="postID" name="postID">
+                            <input type="hidden" id="senderID" name="senderID" value="10">
+                            <h6 class="font-weight-bold my-3">Message</h6>
+                            <textarea class="form-control" name="message" placeholder="Send seller your contact information (max 512 characters)..." required></textarea>
+                            <input type="submit" class="btn btn-success float-right my-2" value="Send">
+                        </form>
                     </div>
 
                 </div>
@@ -206,17 +210,27 @@
             fetch(postURL)
             .then((data) => data.json())
             .then((dataAsObject) => {
+                let priceStr = 'Free';
+                if (dataAsObject.category === 'Item Request') {
+                    priceStr = "Item Request";
+                }
+                else if (dataAsObject.price) {
+                    priceStr = '$' + dataAsObject.price;
+                }
                 document.getElementById('itemImage').src = dataAsObject.photopath;
                 // document.getElementById('sellerImage').src = dataAsObject.profilepic;
                 document.getElementById('itemTitle').textContent = dataAsObject.title;
                 document.getElementById('itemDateCreated').textContent = parseDateString(dataAsObject.created);
-                document.getElementById('itemPrice').textContent = "$" + dataAsObject.price;
+                document.getElementById('itemPrice').textContent = priceStr;
                 //document.getElementById('itemType').textContent = dataAsObject.type;
                 document.getElementById('itemCategory').textContent = dataAsObject.category;
                 document.getElementById('itemClassID').textContent = dataAsObject.class;
                 document.getElementById('itemDescription').textContent = dataAsObject.description;
                 document.getElementById('userName').textContent = dataAsObject.firstname + " "+ dataAsObject.lastname;
                 // document.getElementById('userRating').textContent = dataAsObject.rating;
+                
+                document.getElementById('userID').value = dataAsObject.userID;
+                document.getElementById('postID').value = dataAsObject.id;
             })
             .catch((err) => console.log(err));
         }

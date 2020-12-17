@@ -95,9 +95,9 @@
                 <button class="btn" type="button">
                     <div class="sellerImage"></div>
                 </button>
-                <div class="my-2">
-                    <h6 class="my-0">First, Last</h6>
-                    <p class="my-0">★★★★☆</p>
+                <div class="my-2" id="userTopName">
+                    
+                    <!-- <p class="my-0">★★★★☆</p> -->
                 </div>
             </div>
 
@@ -118,51 +118,55 @@
                     <div class="tab-pane fade" id="account">
                         <h4 class="mt-2">Account Information</h4>
                         <h6 class="mt-4 font-weight-bold">Name</h6>
-                        <p>First, Last</p>
+                        <div id="fullName"></div>
                         <h6 class="mt-4 font-weight-bold">E-mail</h6>
-                        <p>lfirst@mail.sfsu.edu</p>
+                        <div id="userEmail"></div>
                         <button type="button" class="my-2 btn btn-primary">Change Password</button>
                     </div>
 
                     <!-- Messages Tab -->
                     <div class="tab-pane fade" id="messages">
                         <h4 class="mt-2">My Messages</h4>
-                        <h6 class="mt-4"><small>Showing 1 of 1 Messages</small></h6>
+                        <h6 class="mt-4" id="countMessages"></h6>
                         <div class="d-flex">
                             <div class="mr-5">
                                 <h6 class="font-weight-bold">Post Title</h6>
-                                <p class="border">Textbook for Math400</p>
+                                <div id="msgPostTitles"></div>
                             </div>
                             <div class="mr-5">
                                 <h6 class="font-weight-bold">Date</h6>
-                                <p class="border">MM/DD/YY</p>
+                                <div id="messageDates"></div>
                             </div>
                             <div class="mr-5">
                                 <h6 class="font-weight-bold">From</h6>
-                                <p class="border">First, Last</p>
+                                <div id="messageSenders"></div>
                             </div>
                             <div class="mr-5">
                                 <h6 class="font-weight-bold">Message</h6>
-                                <p class="border">Interested. Contact me at flast@mail.sfsu.edu ...</p>
+                                <div id="messageTexts"></div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="my_posts">
                         <h4 class="mt-2">My Posts</h4>
-                        <h6 class="mt-4"><small>Showing 1 of 1 Posts</small></h6>
+                        <h6 class="mt-4" id="countPosts"></h6>
                         <div class="d-flex">
                             <div class="mr-5">
                                 <h6 class="font-weight-bold">Post Title</h6>
+                                <div id="postTitles"></div>
                                 <p class="border">Textbook for Math400</p>
                             </div>
                             <div class="mr-5">
                                 <h6 class="font-weight-bold">Date Created</h6>
+                                <div id="postDates"></div>
                                 <p class="border">MM/DD/YY</p>
                             </div>
                             <div class="mr-5">
+                                <div id="postViewButtons"></div>
                                 <button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button>
                             </div>
                             <div class="mr-5">
+                                <div id="postDeleteButtons"></div>
                                 <button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>
                             </div>
                         </div>
@@ -204,7 +208,73 @@
             })
             .catch((err) => console.log(err));
         }
-        window.onload = cCreate();
+        function parseDateString(dateString) {
+            return dateString.split('T')[0];
+        }
+        function populateUserInfo(userID) {
+            const usrURL = '/users/getUserInfo/' + userID;
+            fetch(usrURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                document.getElementById('userTopName').innerHTML = `<h6 class="my-0">${dataAsObject.firstname} ${dataAsObject.lastname}</h6>`;
+                document.getElementById('fullName').innerHTML = `<p>${dataAsObject.firstname} ${dataAsObject.lastname}</p>`;
+                document.getElementById('userEmail').innerHTML = `<p>${dataAsObject.email}</p>`;
+            })
+            .catch((err) => console.log(err));
+        }
+        function populateMessages(userID) {
+            const msgURL = '/messages/getMessagesForUser/' + userID;
+            fetch(msgURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                document.getElementById('countMessages').innerHTML = `<small>Showing ${dataAsObject.length} of ${dataAsObject.length} Messages</small>`;
+                let postTitles = "";
+                let messageDates = "";
+                let messageSenders = "";
+                let messageTexts = "";
+                dataAsObject.forEach((message) => {
+                    postTitles += `<p><a href="/posts/${message.postID}">${message.postTitle}</a></p>`;
+                    messageDates += `<p>${parseDateString(message.created)}</p>`;
+                    messageSenders += `<p>${message.email}</p>`;
+                    messageTexts += `<p>${message.message}</p>`;
+                });
+                document.getElementById('msgPostTitles').innerHTML = postTitles;
+                document.getElementById('messageDates').innerHTML = messageDates;
+                document.getElementById('messageSenders').innerHTML = messageSenders;
+                document.getElementById('messageTexts').innerHTML = messageTexts;
+            })
+            .catch((err) => console.log(err));
+        }
+        function populatePosts(userID) {
+            const postURL = '/posts/getPostsByUser/' + userID;
+            fetch(postURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                document.getElementById('countPosts').innerHTML = `<small>Showing ${dataAsObject.length} of ${dataAsObject.length} Posts</small>`;
+                let postTitles = "";
+                let postDates = "";
+                let postViewButtons = "";
+                let postDeleteButtons = "";
+                dataAsObject.forEach((post) => {
+                    postTitles += `<p><a href="/posts/${post.id}">${post.title}</a></p>`;
+                    postDates += `<p>${parseDateString(post.created)}</p>`;
+                    postViewButtons += `<a href="/posts/${post.id}"><button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button></a>`;
+                    postDeleteButtons += `<button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>`; // TODO(Lothar): Add delete functionality
+                });
+                document.getElementById('postTitles').innerHTML = postTitles;
+                document.getElementById('postDates').innerHTML = postDates;
+                document.getElementById('postViewButtons').innerHTML = postViewButtons;
+                document.getElementById('postDeleteButtons').innerHTML = postDeleteButtons;
+            })
+            .catch((err) => console.log(err));
+        }
+        window.onload = function() {
+            cCreate();
+            let userID = 2; // TODO(Lothar): Find the logged in user's id.
+            populateUserInfo(userID);
+            populateMessages(userID);
+            populatePosts(userID);
+        };
     </script>
 
     <script>

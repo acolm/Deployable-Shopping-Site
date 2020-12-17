@@ -132,7 +132,7 @@ router.get("/:id", (req, resp, next) => {
 router.get('/getPostById/:id', (req, resp, next) => {
     let _id = req.params.id;
     let _sql = 'SELECT p.id, p.title, p.description, p.price, p.class, p.created, p.photopath, p.category, \
-    u.firstname, u.lastname, u.profilepic \
+    u.id AS userID, u.firstname, u.lastname, u.profilepic \
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE p.id=?;';
@@ -150,7 +150,20 @@ router.get('/getRecentPosts/:count', (req, resp, next) => {
     _sql += count;          //For some reason, this wont work unless I add onto this string
     db.query(_sql)          //Might have to do with function ending too quickly without it
     .then(([results, fields]) => {
-	resp.json(results);
+        resp.json(results);
+    })
+    .catch((err) => next(err));
+});
+
+router.get('/getPostsByUser/:userid', (req, resp, next) => {
+    let userID = req.params.userid;
+    let arguments = [];
+    let _sql = 'SELECT p.id, p.title, p.created, p.approved FROM posts p \
+    WHERE p.fk_userid = ?';
+    arguments.push(userID);
+    db.query(_sql, arguments)
+    .then(([results, fields]) => {
+        resp.json(results);
     })
     .catch((err) => next(err));
 });

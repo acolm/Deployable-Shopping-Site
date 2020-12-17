@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var userRouter = require('./routes/users');
 var postRouter = require('./routes/posts');
 var catRouter = require('./routes/category');
+var messageRouter = require('./routes/messages');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/', indexRouter);
 app.use('/users/', userRouter);
 app.use('/posts/', postRouter);
 app.use('/category/', catRouter);
+app.use('/messages/', messageRouter);
 
 app.use((err, req, res, next) => {
     res.status(500);
