@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>Home</title>
+    <title>About Aaron</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,122 +23,124 @@
 </head>
 
 <body class="body-color">
-    <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
-        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    <div class="content">
+        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
+        <!-- [navbar] [theme] [backrgound theme]-->
+        <nav class="navbar navbar-expand-sm navbar-color">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <!--Below is for GatorMart actual logo when available-->
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+            </a>
+
+            <!-- Hamburger icon -->
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Collapse navbar on smaller screens-->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <!-- Search bar code -->
+                <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                    <div class="input-group">
+                        <select class="form-control search-slt col-sm-2" id="category" name="category">
+                        </select>
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go"
+                                style="background-color: #231161">
+                                <i class="fa fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Nav items code-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/account" class="nav-link">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/aboutus" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="loginLogout"></div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="showcase">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAaron/aaron.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>Who I am</h1>
+                            <p>I'm from the Bay Area, having lived here my whole life. I knew from an early age that I
+                                wanted to be a Computer Science major and started taking classes in High School.
+                                I see the more technical aspects of the field as puzzles that need to be solved, something
+                                that drew me in very early on. I am excited to see where this field goes and optomistic to
+                                work in it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>My Experience</h1>
+                            <p>Projects that span my educational career have exposed me to many different coding languages,
+                                all of which are common and standard in a workplace enviorment.
+                                The different applications I have completed include a ux driven website, a full stack online
+                                messaging app, and a full stack image hosting website.
+                                These projects were done with other people, which makes me well versed in utilizing git
+                                repositories in a team setting.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAaron/aaron2.jpg">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="..//Images/AboutAaron/aaron3.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <div class="showcase-text">
+                            <h1>Where I am now</h1>
+                            <p>I am currently a student at San Francisco State University studying Computer Science. Many of
+                                the instructors I've had were either from the industry or still working in it.
+                                I am looking forward to graduating and continuing to learning as the medium is ever
+                                evolving.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-color">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <!--Below is for GatorMart actual logo when available-->
-            <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
-        </a>
-
-        <!-- Hamburger icon -->
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--Collapse navbar on smaller screens-->
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <!-- Search bar code -->
-            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
-                <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="category" name="category">
-                    </select>
-                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go"
-                            style="background-color: #231161">
-                            <i class="fa fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Nav items code-->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/account" class="nav-link">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/aboutus" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login" id="authButton" class="btn btn-outline-secondary" role="button">Login/Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAaron/aaron.jpg">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>Who I am</h1>
-                        <p>I'm from the Bay Area, having lived here my whole life. I knew from an early age that I
-                            wanted to be a Computer Science major and started taking classes in High School.
-                            I see the more technical aspects of the field as puzzles that need to be solved, something
-                            that drew me in very early on. I am excited to see where this field goes and optomistic to
-                            work in it.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>My Experience</h1>
-                        <p>Projects that span my educational career have exposed me to many different coding languages,
-                            all of which are common and standard in a workplace enviorment.
-                            The different applications I have completed include a ux driven website, a full stack online
-                            messaging app, and a full stack image hosting website.
-                            These projects were done with other people, which makes me well versed in utilizing git
-                            repositories in a team setting.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAaron/aaron2.jpg">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="..//Images/AboutAaron/aaron3.jpg">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 ">
-                    <div class="showcase-text">
-                        <h1>Where I am now</h1>
-                        <p>I am currently a student at San Francisco State University studying Computer Science. Many of
-                            the instructors I've had were either from the industry or still working in it.
-                            I am looking forward to graduating and continuing to learning as the medium is ever
-                            evolving.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!--The footer-->
-    <footer class="footer">
+    <footer class="footer-test">
         <span class="float-right">
             <a href="#">Back to top</a>
         </span>
@@ -148,6 +150,8 @@
             <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
+    
+    <script type="text/javascript" src="../javascript/checklogin.js"></script>
 
     <!--Code for category pull down-->
     <script>
@@ -167,7 +171,11 @@
             })
             .catch((err) => console.log(err));
         }
-        window.onload = cCreate();
+
+        window.onload = function() {
+            cCreate();
+            checkLogin();
+        };
     </script>
 
     <!--Scrpt-->

@@ -23,122 +23,124 @@
 </head>
 
 <body class="body-color">
-    <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
-        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    <div class="content">
+        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
+        <!-- [navbar] [theme] [backrgound theme]-->
+        <nav class="navbar navbar-expand-sm navbar-color">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <!--Below is for GatorMart actual logo when available-->
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+            </a>
+
+            <!-- Hamburger icon -->
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Collapse navbar on smaller screens-->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <!-- Search bar code -->
+                <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                    <div class="input-group">
+                        <select class="form-control search-slt col-sm-2" id="category" name="category">
+                        </select>
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go"
+                                style="background-color: #231161">
+                                <i class="fa fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Nav items code-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/account" class="nav-link">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/aboutus" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="loginLogout"></div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="showcase">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAllyson/allyson1.JPG">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>Who I am</h1>
+                            <p>I am a 22 year old Chinese American born and raised in San Francisco. One of the reasons why
+                                I chose
+                                to go to SF State is because I didn't want to move away from home. Outside of being a
+                                student, I
+                                am a really big baseball fan so I try to watch just about every Giants game.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>My Experience</h1>
+                            <p> Most of my programming experience comes from school. When I started coding in high school I
+                                was
+                                mostly doing web design (HTML and CSS). When I got to college, I started to learn a few more
+                                languages such as Java, C/C++ and Python (although still learning that one). Some of the
+                                projects
+                                that I have worked on include designing a couple games and making a MBTI type predictor.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAllyson/laptop.jpg">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAllyson/allyson2.JPG">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <div class="showcase-text">
+                            <h1>Where I am now</h1>
+                            <p>I am currently a student at SF State, working on my BS in Computer Science. I am hoping to
+                                graduate
+                                at the end of this semester, so I am trying to figure out what my life will be like after
+                                college
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-color">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <!--Below is for GatorMart actual logo when available-->
-            <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
-        </a>
-
-        <!-- Hamburger icon -->
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--Collapse navbar on smaller screens-->
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <!-- Search bar code -->
-            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
-                <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="category" name="category">
-                    </select>
-                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go"
-                            style="background-color: #231161">
-                            <i class="fa fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Nav items code-->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/account" class="nav-link">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/aboutus" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login" id="authButton" class="btn btn-outline-secondary" role="button">Login/Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAllyson/allyson1.JPG">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>Who I am</h1>
-                        <p>I am a 22 year old Chinese American born and raised in San Francisco. One of the reasons why
-                            I chose
-                            to go to SF State is because I didn't want to move away from home. Outside of being a
-                            student, I
-                            am a really big baseball fan so I try to watch just about every Giants game.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>My Experience</h1>
-                        <p> Most of my programming experience comes from school. When I started coding in high school I
-                            was
-                            mostly doing web design (HTML and CSS). When I got to college, I started to learn a few more
-                            languages such as Java, C/C++ and Python (although still learning that one). Some of the
-                            projects
-                            that I have worked on include designing a couple games and making a MBTI type predictor.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAllyson/laptop.jpg">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAllyson/allyson2.JPG">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 ">
-                    <div class="showcase-text">
-                        <h1>Where I am now</h1>
-                        <p>I am currently a student at SF State, working on my BS in Computer Science. I am hoping to
-                            graduate
-                            at the end of this semester, so I am trying to figure out what my life will be like after
-                            college
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!--The Footer-->
-    <footer class="footer">
+    <footer class="footer-test">
         <span class="float-right">
             <a href="#">Back to top</a>
         </span>
@@ -148,6 +150,8 @@
             <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
+    
+    <script type="text/javascript" src="../javascript/checklogin.js"></script>
 
     <!--Code for category pull down-->
     <script>
@@ -167,7 +171,11 @@
             })
             .catch((err) => console.log(err));
         }
-        window.onload = cCreate();
+
+        window.onload = function() {
+            cCreate();
+            checkLogin();
+        };
     </script>
 
     <!--Scrpt-->

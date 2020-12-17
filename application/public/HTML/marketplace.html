@@ -28,10 +28,11 @@
         <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
             SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
-        <!-- [navbar] [theme] [background theme]-->
+        <!-- [navbar] [theme] [backrgound theme]-->
         <nav class="navbar navbar-expand-sm navbar-color">
             <!-- Logo -->
             <a class="navbar-brand" href="/">
+                <!--Below is for GatorMart actual logo when available-->
                 <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
             </a>
 
@@ -69,7 +70,7 @@
                         <a href="/aboutus" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login" class="btn btn-outline-secondary" role="button">Login/Register</a>
+                        <div id="loginLogout"></div>
                     </li>
                 </ul>
             </div>
@@ -94,6 +95,7 @@
             </div>
         </div>
     </div>
+    
     <!--This is the footer which should be at the very bottom of the page-->
     <footer class="footer-test">
         <span class="float-right">
@@ -105,6 +107,8 @@
             <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
+    
+    <script src="../javascript/checklogin.js"></script>
 
     <script>
         //This function makes the options for the category tab in nav bar
@@ -167,7 +171,10 @@
         }
         
         //When the window loads, it calls the cCreate function
-        window.onload = cCreate();
+        window.onload = function() {
+            checkLogin();
+            cCreate();
+        }
         
         function parseDateString(dateString) {
             return dateString.split('T')[0];

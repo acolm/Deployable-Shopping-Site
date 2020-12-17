@@ -23,124 +23,140 @@
 </head>
 
 <body class="body-color">
-    <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
-        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    <div class="content">
+        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
+        <!-- [navbar] [theme] [backrgound theme]-->
+        <nav class="navbar navbar-expand-sm navbar-color">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <!--Below is for GatorMart actual logo when available-->
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+            </a>
+
+            <!-- Hamburger icon -->
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Collapse navbar on smaller screens-->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <!-- Search bar code -->
+                <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                    <div class="input-group">
+                        <select class="form-control search-slt col-sm-2" id="category" name="category">
+                        </select>
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go"
+                                style="background-color: #231161">
+                                <i class="fa fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Nav items code-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/account" class="nav-link">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/aboutus" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="loginLogout"></div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="showcase">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutWilson/Me.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>Who I am</h1>
+                            <p>I am a 22 year old student here at SF State, I am currently working towards my B.S in
+                                Computer Science. I have lived in
+                                San Francisco my whole life and I haven't done too much traveling, but I want to go explore
+                                the other side of the world one day.
+                                My interests include video games, reading, and coding on the side. I was initially
+                                interested in CS because of video games so I want to
+                                go into the video game industry in the future after I graduate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>My Experience</h1>
+                            <p>I don't have too much expeience in CS other than what I've done at SF State, but one of my
+                                proudest accomplishments was
+                                designing and coding my own game. In CSC 413, we were tasked with creating two games as our
+                                final project, those were the firs two
+                                games I coded and they were some of the most enjoyablet hings I've coded. The two games
+                                weren't very complicated or especially well coded,
+                                but I had a lot on interest and passion when making them, hopefully in the future I'll be
+                                able to create more games and improve upon my skills.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutWilson/Game.jpg">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="..//Images/AboutWilson/Bungie.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <div class="showcase-text">
+                            <h1>Where I am now</h1>
+                            <p>I am currently a student in San Francisco State University’s B.S. in Computer Science
+                                program. I will hopefully graduate within the next semster
+                                and begin my journey in the CS field. I am aspiring to become a game designer or developer
+                                and work on pursuing my passion of one day
+                                creating my own video game. I want to be able to do something to either make people happy or
+                                help others with my knowledge and skills. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-color">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <!--Below is for GatorMart actual logo when available-->
-            <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
-        </a>
 
-        <!-- Hamburger icon -->
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--Collapse navbar on smaller screens-->
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <!-- Search bar code -->
-            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
-                <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="category" name="category">
-                    </select>
-                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go"
-                            style="background-color: #231161">
-                            <i class="fa fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Nav items code-->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/account" class="nav-link">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/aboutus" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login" id="authButton" class="btn btn-outline-secondary" role="button">Login/Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutWilson/Me.jpg">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>Who I am</h1>
-                        <p>I am a 22 year old student here at SF State, I am currently working towards my B.S in
-                            Computer Science. I have lived in
-                            San Francisco my whole life and I haven't done too much traveling, but I want to go explore
-                            the other side of the world one day.
-                            My interests include video games, reading, and coding on the side. I was initially
-                            interested in CS because of video games so I want to
-                            go into the video game industry in the future after I graduate.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>My Experience</h1>
-                        <p>I don't have too much expeience in CS other than what I've done at SF State, but one of my
-                            proudest accomplishments was
-                            designing and coding my own game. In CSC 413, we were tasked with creating two games as our
-                            final project, those were the firs two
-                            games I coded and they were some of the most enjoyablet hings I've coded. The two games
-                            weren't very complicated or especially well coded,
-                            but I had a lot on interest and passion when making them, hopefully in the future I'll be
-                            able to create more games and improve upon my skills.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutWilson/Game.jpg">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="..//Images/AboutWilson/Bungie.jpg">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 ">
-                    <div class="showcase-text">
-                        <h1>Where I am now</h1>
-                        <p>I am currently a student in San Francisco State University’s B.S. in Computer Science
-                            program. I will hopefully graduate within the next semster
-                            and begin my journey in the CS field. I am aspiring to become a game designer or developer
-                            and work on pursuing my passion of one day
-                            creating my own video game. I want to be able to do something to either make people happy or
-                            help others with my knowledge and skills. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--The Footer-->
+    <footer class="footer-test">
+        <span class="float-right">
+            <a href="#">Back to top</a>
+        </span>
+        <span>
+            © 2020-2021 Team 06 ・
+            <a href="/privacy" target=" ">Privacy Policy</a>
+            <a href="/terms" target=" ">・ Terms & Conditions</a>
+        </span>
+    </footer>
+    
+    <script type="text/javascript" src="../javascript/checklogin.js"></script>
 
     <!--Code for category pull down-->
     <script>
@@ -160,20 +176,12 @@
             })
             .catch((err) => console.log(err));
         }
-        window.onload = cCreate();
-    </script>    
 
-    <!--The Footer-->
-    <footer class="footer">
-        <span class="float-right">
-            <a href="#">Back to top</a>
-        </span>
-        <span>
-            © 2020-2021 Team 06 ・
-            <a href="/privacy" target=" ">Privacy Policy</a>
-            <a href="/terms" target=" ">・ Terms & Conditions</a>
-        </span>
-    </footer>
+        window.onload = function() {
+            cCreate();
+            checkLogin();
+        };
+    </script>
 
     <!--Scrpt-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>

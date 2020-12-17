@@ -27,161 +27,160 @@
 </head>
 
 <body class="body-color">
-    <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
-        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
-    </div>
-    <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-color">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <!--Below is for GatorMart actual logo when available-->
-            <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
-        </a>
-
-        <!-- Hamburger icon -->
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--Collapse navbar on smaller screens-->
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <!-- Search bar code -->
-            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
-                <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="category" name="category">
-                    </select>
-                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go"
-                            style="background-color: #231161">
-                            <i class="fa fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Nav items code-->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/account" class="nav-link">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/aboutus" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login" id="authButton" class="btn btn-outline-secondary" role="button">Login/Register</a>
-                </li>
-            </ul>
+    <div class="content">
+        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
-    </nav>
+        <!-- [navbar] [theme] [backrgound theme]-->
+        <nav class="navbar navbar-expand-sm navbar-color">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <!--Below is for GatorMart actual logo when available-->
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+            </a>
 
-    <!-- Start body of page with a container and small gap from navbar-->
-    <div class="container my-1">
+            <!-- Hamburger icon -->
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- Gotta take off border radius from CSS and use bootstrap "Border" instead on all pages for future -->
-        <div class="border shadow-sm rounded form-color">
-            <div class="row justify-content-center">
-                <h3 class="my-2">User's Dashboard</h3>
-            </div>
+            <!--Collapse navbar on smaller screens-->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <!-- Search bar code -->
+                <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                    <div class="input-group">
+                        <select class="form-control search-slt col-sm-2" id="category" name="category">
+                        </select>
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go"
+                                style="background-color: #231161">
+                                <i class="fa fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
-            <!-- Seller Image and Name -->
-            <div class="row mx-1">
-                <button class="btn" type="button">
-                    <div class="sellerImage"></div>
-                </button>
-                <div class="my-2" id="userTopName">
-                    
-                    <!-- <p class="my-0">★★★★☆</p> -->
-                </div>
-            </div>
-
-            <div class="mx-2 my-3 border rounded">
-                <ul class="nav nav-tabs" id="myTabs">
+                <!-- Nav items code-->
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="#account" class="nav-link" data-toggle="tab">Account</a>
+                        <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#messages" class="nav-link" data-toggle="tab">Messages</a>
+                        <a href="/account" class="nav-link">Account</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#my_posts" class="nav-link" data-toggle="tab">My Posts</a>
+                        <a href="/aboutus" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="loginLogout"><form action="/users/logout" method="POST"><input type="Submit" class="btn btn-outline-secondary" role="button" value="Logout"></form></div>
                     </li>
                 </ul>
-                <div class="mx-2 tab-content">
-                    <!-- Account Information Tab -->
-                    <div class="tab-pane fade" id="account">
-                        <h4 class="mt-2">Account Information</h4>
-                        <h6 class="mt-4 font-weight-bold">Name</h6>
-                        <div id="fullName"></div>
-                        <h6 class="mt-4 font-weight-bold">E-mail</h6>
-                        <div id="userEmail"></div>
-                        <button type="button" class="my-2 btn btn-primary">Change Password</button>
-                    </div>
+            </div>
+        </nav>
 
-                    <!-- Messages Tab -->
-                    <div class="tab-pane fade" id="messages">
-                        <h4 class="mt-2">My Messages</h4>
-                        <h6 class="mt-4" id="countMessages"></h6>
-                        <div id="messageTable"></div>
-                        <!--<div class="d-flex">
-                            <div class="mr-5">
-                                <h6 class="font-weight-bold">Post Title</h6>
-                                <div id="msgPostTitles"></div>
-                            </div>
-                            <div class="mr-5">
-                                <h6 class="font-weight-bold">Date</h6>
-                                <div id="messageDates"></div>
-                            </div>
-                            <div class="mr-5">
-                                <h6 class="font-weight-bold">From</h6>
-                                <div id="messageSenders"></div>
-                            </div>
-                            <div class="mr-5">
-                                <h6 class="font-weight-bold">Message</h6>
-                                <div id="messageTexts"></div>
-                            </div>
-                        </div>-->
-                    </div>
-                    <div class="tab-pane fade" id="my_posts">
-                        <h4 class="mt-2">My Posts</h4>
-                        <h6 class="mt-4" id="countPosts"></h6>
-                        <div id="postTable"></div>
-                        <!--<div class="d-flex">
-                            <div class="mr-5">
-                                <h6 class="font-weight-bold">Post Title</h6>
-                                <div id="postTitles"></div>
-                                <p class="border">Textbook for Math400</p>
-                            </div>
-                            <div class="mr-5">
-                                <h6 class="font-weight-bold">Date Created</h6>
-                                <div id="postDates"></div>
-                                <p class="border">MM/DD/YY</p>
-                            </div>
-                            <div class="mr-5">
-                                <div id="postViewButtons"></div>
-                                <button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button>
-                            </div>
-                            <div class="mr-5">
-                                <div id="postDeleteButtons"></div>
-                                <button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>
-                            </div>
-                        </div>-->
+        <!-- Start body of page with a container and small gap from navbar-->
+        <div class="container my-1">
+
+            <!-- Gotta take off border radius from CSS and use bootstrap "Border" instead on all pages for future -->
+            <div class="border shadow-sm rounded form-color">
+                <div class="row justify-content-center">
+                    <h3 class="my-2">User's Dashboard</h3>
+                </div>
+
+                <!-- Seller Image and Name -->
+                <div class="row mx-1">
+                    <button class="btn" type="button">
+                        <div class="sellerImage"></div>
+                    </button>
+                    <div class="my-2" id="userTopName">
+                        
+                        <!-- <p class="my-0">★★★★☆</p> -->
                     </div>
                 </div>
 
+                <div class="mx-2 my-3 border rounded">
+                    <ul class="nav nav-tabs" id="myTabs">
+                        <li class="nav-item">
+                            <a href="#account" class="nav-link" data-toggle="tab">Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#messages" class="nav-link" data-toggle="tab">Messages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#my_posts" class="nav-link" data-toggle="tab">My Posts</a>
+                        </li>
+                    </ul>
+                    <div class="mx-2 tab-content">
+                        <!-- Account Information Tab -->
+                        <div class="tab-pane fade" id="account">
+                            <h4 class="mt-2">Account Information</h4>
+                            <h6 class="mt-4 font-weight-bold">Name</h6>
+                            <div id="fullName"></div>
+                            <h6 class="mt-4 font-weight-bold">E-mail</h6>
+                            <div id="userEmail"></div>
+                            <button type="button" class="my-2 btn btn-primary">Change Password</button>
+                        </div>
+
+                        <!-- Messages Tab -->
+                        <div class="tab-pane fade" id="messages">
+                            <h4 class="mt-2">My Messages</h4>
+                            <h6 class="mt-4" id="countMessages"></h6>
+                            <div id="messageTable"></div>
+                            <!--<div class="d-flex">
+                                <div class="mr-5">
+                                    <h6 class="font-weight-bold">Post Title</h6>
+                                    <div id="msgPostTitles"></div>
+                                </div>
+                                <div class="mr-5">
+                                    <h6 class="font-weight-bold">Date</h6>
+                                    <div id="messageDates"></div>
+                                </div>
+                                <div class="mr-5">
+                                    <h6 class="font-weight-bold">From</h6>
+                                    <div id="messageSenders"></div>
+                                </div>
+                                <div class="mr-5">
+                                    <h6 class="font-weight-bold">Message</h6>
+                                    <div id="messageTexts"></div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="tab-pane fade" id="my_posts">
+                            <h4 class="mt-2">My Posts</h4>
+                            <h6 class="mt-4" id="countPosts"></h6>
+                            <div id="postTable"></div>
+                            <!--<div class="d-flex">
+                                <div class="mr-5">
+                                    <h6 class="font-weight-bold">Post Title</h6>
+                                    <div id="postTitles"></div>
+                                    <p class="border">Textbook for Math400</p>
+                                </div>
+                                <div class="mr-5">
+                                    <h6 class="font-weight-bold">Date Created</h6>
+                                    <div id="postDates"></div>
+                                    <p class="border">MM/DD/YY</p>
+                                </div>
+                                <div class="mr-5">
+                                    <div id="postViewButtons"></div>
+                                    <button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button>
+                                </div>
+                                <div class="mr-5">
+                                    <div id="postDeleteButtons"></div>
+                                    <button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
-
-
         </div>
     </div>
-    
-    <div class="spacer">
-    </div>
 
-    <footer class="footer-home">
+    <footer class="footer-test">
         <span class="float-right">
             <a href="#">Back to top</a>
         </span>
