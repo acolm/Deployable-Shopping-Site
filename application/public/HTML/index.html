@@ -20,7 +20,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script defer scr="../javascript/texthandler.js"></script>
+    <script scr="../javascript/texthandler.js" defer></script>
 </head>
 
 <body class="body-color">
@@ -150,7 +150,6 @@
         fetch('/posts/getRecentPosts/5')
         .then((data2) => data2.json())
         .then((dataAsObject2) => {
-            // console.log(dataAsObject2);
             let _html2 = "";
             dataAsObject2.forEach((post) => {
                 _html2 += createCard(post);
