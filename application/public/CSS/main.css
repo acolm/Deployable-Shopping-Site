@@ -273,9 +273,14 @@ float: left;
 /* HOMEPAGE CAROUSEL CSS*/
 .carousel-caption{
     color: white !important;
+    font-size: 60%;
     background-color: rgb(10, 10, 10, .6);
     border-radius: 10px;
 }
+
+@media (min-width: 992px) { /* Large devices (desktops, 992px and up) */
+    .carousel-caption { font-size: 100%;} 
+  }
 
 .footer{
     width: 100%;
