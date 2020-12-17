@@ -28,14 +28,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var mysqlSessionStore = new mysqlSession({/* using default options */},require('./config/database'));
-app.use(sessions({
+var sessionOptions = {
     key: "csid",
     secret: "this is a secret from CSC648",
     store:  mysqlSessionStore,
+    cookie: {secure: false, httpOnly: false, maxAge:900000, SameSite: null},
     resave: false,
     saveUninitialized: false
-}));
+};
 
+app.use(sessions(sessionOptions));
 app.use('/', indexRouter);
 app.use('/users/', userRouter);
 app.use('/posts/', postRouter);

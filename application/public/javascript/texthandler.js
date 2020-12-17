@@ -1,3 +1,4 @@
+console.log("FUCK THIS-----------------------------------------------");
 function logoutClick(event){
     var fetchOptions = {
         method: "POST",
@@ -10,7 +11,7 @@ function logoutClick(event){
     fetch(fetchURL, fetchOptions)
     .then((data) => {
         console.log(data);
-        let logButton = document.getElementById('');
+        let logButton = document.getElementById('authButton');
         logButton.innerHTML = "Log In";
         logButton.setAttribute('href', '/login');
         logButton.onclick = null;
@@ -19,13 +20,14 @@ function logoutClick(event){
 
 if(document.cookie.includes('csid')){
     console.log('user is logged in');
-    let logButton = document.getElementById('');
+    let logButton = document.getElementById('authButton');
     logButton.innerHTML = "Log Out";
     logButton.removeAttribute('href');
-    logButton.onclick = logoutClick;
+    logButton.onclick = logoutClick();
 }
 else{
-    let logButton = document.getElementById('');
+    console.log("IS THIS WORKING?");
+    let logButton = document.getElementById('authButton');
     logButton.innerHTML = "Log In";
     logButton.setAttribute('href', '/login');
 }

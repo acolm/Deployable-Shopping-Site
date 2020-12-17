@@ -3,7 +3,7 @@ const errorPrint = require ("../helpers/debug/debughelpers").errorPrint;
 const successPrint = require("../helpers/debug/debughelpers").successPrint;
 
 routeProtectors.userIsLoggedIn = function(req, resp, next){
-    if(req.session.username){
+    if(req.session.email){
         successPrint('User is logged in');
         next();
     }else{
