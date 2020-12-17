@@ -68,7 +68,7 @@
 
 #main-content {
     display: grid;
-    height:70vh;
+    /*height:70vh;*/
     margin: 20px auto auto auto;
     grid-template-rows: repeat(2, 0.75fr);
     grid-template-columns: repeat(5, 0.2fr);
@@ -79,7 +79,7 @@
 
 #main-content-home {
     display: grid;
-    height:40vh;
+    /*height:40vh;*/
     margin: 20px auto auto auto;
     grid-template-rows: repeat(1, 0.5fr);
     grid-template-columns: repeat(5, 0.2fr);
