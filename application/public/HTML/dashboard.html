@@ -134,49 +134,11 @@
                             <h4 class="mt-2">My Messages</h4>
                             <h6 class="mt-4" id="countMessages"></h6>
                             <div id="messageTable"></div>
-                            <!--<div class="d-flex">
-                                <div class="mr-5">
-                                    <h6 class="font-weight-bold">Post Title</h6>
-                                    <div id="msgPostTitles"></div>
-                                </div>
-                                <div class="mr-5">
-                                    <h6 class="font-weight-bold">Date</h6>
-                                    <div id="messageDates"></div>
-                                </div>
-                                <div class="mr-5">
-                                    <h6 class="font-weight-bold">From</h6>
-                                    <div id="messageSenders"></div>
-                                </div>
-                                <div class="mr-5">
-                                    <h6 class="font-weight-bold">Message</h6>
-                                    <div id="messageTexts"></div>
-                                </div>
-                            </div>-->
                         </div>
                         <div class="tab-pane fade" id="my_posts">
                             <h4 class="mt-2">My Posts</h4>
                             <h6 class="mt-4" id="countPosts"></h6>
                             <div id="postTable"></div>
-                            <!--<div class="d-flex">
-                                <div class="mr-5">
-                                    <h6 class="font-weight-bold">Post Title</h6>
-                                    <div id="postTitles"></div>
-                                    <p class="border">Textbook for Math400</p>
-                                </div>
-                                <div class="mr-5">
-                                    <h6 class="font-weight-bold">Date Created</h6>
-                                    <div id="postDates"></div>
-                                    <p class="border">MM/DD/YY</p>
-                                </div>
-                                <div class="mr-5">
-                                    <div id="postViewButtons"></div>
-                                    <button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button>
-                                </div>
-                                <div class="mr-5">
-                                    <div id="postDeleteButtons"></div>
-                                    <button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
 
@@ -263,30 +225,13 @@
                     <td><h6 class="font-weight-bold">Message</h6></td></tr>`;
                     dataAsObject.forEach((message) => {
                         messageTable += `<tr class="mr-5">
-                        <td><a href="/posts/${message.postID}">${message.postTitle}</a></td>
+                        <td><a href="/posts/${message.postID}" target="blank">${message.postTitle}</a></td>
                         <td>${parseDateString(message.created)}</td>
                         <td>${message.email}</td>
                         <td>${message.message}</td></tr>`;
                     });
                     messageTable += '</table>';
                     document.getElementById('messageTable').innerHTML = messageTable;
-
-                    /*
-                    let postTitles = "";
-                    let messageDates = "";
-                    let messageSenders = "";
-                    let messageTexts = "";
-                    dataAsObject.forEach((message) => {
-                        postTitles += `<p><a href="/posts/${message.postID}">${message.postTitle}</a></p>`;
-                        messageDates += `<p>${parseDateString(message.created)}</p>`;
-                        messageSenders += `<p>${message.email}</p>`;
-                        messageTexts += `<p>${message.message}</p>`;
-                    });
-                    document.getElementById('msgPostTitles').innerHTML = postTitles;
-                    document.getElementById('messageDates').innerHTML = messageDates;
-                    document.getElementById('messageSenders').innerHTML = messageSenders;
-                    document.getElementById('messageTexts').innerHTML = messageTexts;
-                    */
                 })
                 .catch((err) => console.log(err));
         }
@@ -307,6 +252,7 @@
             } else {
                 message = "You pressed cancel!";
             }
+            alert(message);
         }
         function populatePosts() {
             const postURL = '/posts/getPostsByUser';
@@ -322,9 +268,9 @@
                     <td></td></tr>`;
                     dataAsObject.forEach((post) => {
                         postTable += `<tr class="mr-5">
-                        <td><a href="/posts/${post.id}">${post.title}</a></td>
+                        <td><a href="/posts/${post.id}" target="blank">${post.title}</a></td>
                         <td>${parseDateString(post.created)}</td>
-                        <td><a href="/posts/${post.id}"><button type="button" class="btn btn-primary btn-sm">View Post</button></a></td>
+                        <td><a href="/posts/${post.id}" target="blank"><button type="button" class="btn btn-primary btn-sm">View Post</button></a></td>
                         <td><button type="button" class="btn btn-danger btn-sm" onclick="deletePost(${post.id});">Delete Post</button></td>
                         <td>`;
                         if (!post.approved) {
@@ -334,23 +280,6 @@
                     });
                     postTable += '</table>';
                     document.getElementById('postTable').innerHTML = postTable;
-
-                    /*
-                    let postTitles = "";
-                    let postDates = "";
-                    let postViewButtons = "";
-                    let postDeleteButtons = "";
-                    dataAsObject.forEach((post) => {
-                        postTitles += `<p><a href="/posts/${post.id}">${post.title}</a></p>`;
-                        postDates += `<p>${parseDateString(post.created)}</p>`;
-                        postViewButtons += `<a href="/posts/${post.id}"><button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button></a>`;
-                        postDeleteButtons += `<button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>`; // TODO(Lothar): Add delete functionality
-                    });
-                    document.getElementById('postTitles').innerHTML = postTitles;
-                    document.getElementById('postDates').innerHTML = postDates;
-                    document.getElementById('postViewButtons').innerHTML = postViewButtons;
-                    document.getElementById('postDeleteButtons').innerHTML = postDeleteButtons;
-                    */
                 })
                 .catch((err) => console.log(err));
         }

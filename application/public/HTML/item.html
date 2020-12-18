@@ -136,9 +136,7 @@
                                 <p id="itemCategory"></p>
                             </div>
 
-                            <div class="mx-5">
-                                <h6 class="font-weight-bold">Class ID</h6>
-                                <p id="itemClassID"></p>
+                            <div class="mx-5" id="itemClassID">
                             </div>
                         </div>
                         <!-- Row 3: Item description -->
@@ -219,7 +217,9 @@
                 document.getElementById('itemPrice').textContent = priceStr;
                 //document.getElementById('itemType').textContent = dataAsObject.type;
                 document.getElementById('itemCategory').textContent = dataAsObject.category;
-                document.getElementById('itemClassID').textContent = dataAsObject.class;
+                if (dataAsObject.class) {
+                    document.getElementById('itemClassID').innerHTML = `<h6 class="font-weight-bold">Class ID</h6><p>${dataAsObject.class}</p>`;
+                }
                 document.getElementById('itemDescription').textContent = dataAsObject.description;
                 document.getElementById('userName').textContent = dataAsObject.firstname + " "+ dataAsObject.lastname;
                 // document.getElementById('userRating').textContent = dataAsObject.rating;
