@@ -27,7 +27,8 @@
 
 <body class="body-color">
     <div class="content">
-        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+        <div class="border alert-warning d-flex justify-content-center" role="alert"
+            style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
             SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
         <!-- [navbar] [theme] [backrgound theme]-->
@@ -35,11 +36,13 @@
             <!-- Logo -->
             <a class="navbar-brand" href="/">
                 <!--Below is for GatorMart actual logo when available-->
-                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top"
+                    alt="GatorMart" />
             </a>
 
             <!-- Hamburger icon -->
-            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -50,7 +53,9 @@
                     <div class="input-group">
                         <select class="form-control search-slt col-sm-2" id="category" name="category">
                         </select>
-                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40" title="Please enter up to 40 alphanumeric characters and spaces only">
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)"
+                            id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40"
+                            title="Please enter up to 40 alphanumeric characters and spaces only">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit" id="nav-bar-go"
                                 style="background-color: #231161">
@@ -72,7 +77,10 @@
                         <a href="/aboutus" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
-                        <div id="loginLogout"><form action="/users/logout" method="POST"><input type="Submit" class="btn btn-outline-secondary" role="button" value="Logout"></form></div>
+                        <div id="loginLogout">
+                            <form action="/users/logout" method="POST"><input type="Submit"
+                                    class="btn btn-outline-secondary" role="button" value="Logout"></form>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -93,7 +101,7 @@
                         <div class="sellerImage"></div>
                     </button>
                     <div class="my-2" id="userTopName">
-                        
+
                         <!-- <p class="my-0">★★★★☆</p> -->
                     </div>
                 </div>
@@ -204,21 +212,21 @@
 
     <!--Code for category pull down-->
     <script>
-        function makeOp(data){
+        function makeOp(data) {
             return ` <option value=${data.type}>${data.type}</option>`;
         }
-        function cCreate(){
+        function cCreate() {
             const cat = '/category/';
             fetch(cat)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((option) => {
-                    _html += makeOp(option);
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
                 })
-                document.getElementById('category').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
+                .catch((err) => console.log(err));
         }
         function parseDateString(dateString) {
             return dateString.split('T')[0];
@@ -226,112 +234,119 @@
         function populateUserInfo(userID) {
             const usrURL = '/users/getUserInfo';
             fetch(usrURL)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                document.getElementById('userTopName').innerHTML = `<h6 class="my-0">${dataAsObject.firstname} ${dataAsObject.lastname}</h6>`;
-                document.getElementById('fullName').innerHTML = `<p>${dataAsObject.firstname} ${dataAsObject.lastname}</p>`;
-                document.getElementById('userEmail').innerHTML = `<p>${dataAsObject.email}</p>`;
-            })
-            .catch((err) => console.log(err));
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    document.getElementById('userTopName').innerHTML = `<h6 class="my-0">${dataAsObject.firstname} ${dataAsObject.lastname}</h6>`;
+                    document.getElementById('fullName').innerHTML = `<p>${dataAsObject.firstname} ${dataAsObject.lastname}</p>`;
+                    document.getElementById('userEmail').innerHTML = `<p>${dataAsObject.email}</p>`;
+                })
+                .catch((err) => console.log(err));
         }
         function populateMessages(userID) {
             const msgURL = '/messages/getMessagesForUser';
             fetch(msgURL)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                document.getElementById('countMessages').innerHTML = `<small>Showing ${dataAsObject.length} of ${dataAsObject.length} Messages</small>`;
-                let messageTable = `<table><tr>
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    document.getElementById('countMessages').innerHTML = `<small>Showing ${dataAsObject.length} of ${dataAsObject.length} Messages</small>`;
+                    let messageTable = `<table><tr>
                     <td><h6 class="font-weight-bold">Post Title</h6></td>
                     <td><h6 class="font-weight-bold">Date</h6></td>
                     <td><h6 class="font-weight-bold">From</h6></td>
                     <td><h6 class="font-weight-bold">Message</h6></td></tr>`;
-                dataAsObject.forEach((message) => {
-                    messageTable += `<tr class="mr-5">
+                    dataAsObject.forEach((message) => {
+                        messageTable += `<tr class="mr-5">
                         <td><a href="/posts/${message.postID}">${message.postTitle}</a></td>
                         <td>${parseDateString(message.created)}</td>
                         <td>${message.email}</td>
                         <td>${message.message}</td></tr>`;
-                });
-                messageTable += '</table>';
-                document.getElementById('messageTable').innerHTML = messageTable;
-                
-                /*
-                let postTitles = "";
-                let messageDates = "";
-                let messageSenders = "";
-                let messageTexts = "";
-                dataAsObject.forEach((message) => {
-                    postTitles += `<p><a href="/posts/${message.postID}">${message.postTitle}</a></p>`;
-                    messageDates += `<p>${parseDateString(message.created)}</p>`;
-                    messageSenders += `<p>${message.email}</p>`;
-                    messageTexts += `<p>${message.message}</p>`;
-                });
-                document.getElementById('msgPostTitles').innerHTML = postTitles;
-                document.getElementById('messageDates').innerHTML = messageDates;
-                document.getElementById('messageSenders').innerHTML = messageSenders;
-                document.getElementById('messageTexts').innerHTML = messageTexts;
-                */
-            })
-            .catch((err) => console.log(err));
+                    });
+                    messageTable += '</table>';
+                    document.getElementById('messageTable').innerHTML = messageTable;
+
+                    /*
+                    let postTitles = "";
+                    let messageDates = "";
+                    let messageSenders = "";
+                    let messageTexts = "";
+                    dataAsObject.forEach((message) => {
+                        postTitles += `<p><a href="/posts/${message.postID}">${message.postTitle}</a></p>`;
+                        messageDates += `<p>${parseDateString(message.created)}</p>`;
+                        messageSenders += `<p>${message.email}</p>`;
+                        messageTexts += `<p>${message.message}</p>`;
+                    });
+                    document.getElementById('msgPostTitles').innerHTML = postTitles;
+                    document.getElementById('messageDates').innerHTML = messageDates;
+                    document.getElementById('messageSenders').innerHTML = messageSenders;
+                    document.getElementById('messageTexts').innerHTML = messageTexts;
+                    */
+                })
+                .catch((err) => console.log(err));
         }
         function deletePost(postID) {
-            fetch('/posts/delete/' + postID, {
-                method: 'DELETE'
-            })
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                if (dataAsObject.success) {
-                    populatePosts();
-                }
-            });
+            var message;
+            var confirm_delete = confirm("Are you sure you want to delete this post?");
+            if (confirm_delete == true) {
+                message = "Post deleted!"
+                fetch('/posts/delete/' + postID, {
+                    method: 'DELETE'
+                })
+                    .then((data) => data.json())
+                    .then((dataAsObject) => {
+                        if (dataAsObject.success) {
+                            populatePosts();
+                        }
+                    });
+            } else {
+                message = "You pressed cancel!";
+            }
         }
         function populatePosts() {
             const postURL = '/posts/getPostsByUser';
             fetch(postURL)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                document.getElementById('countPosts').innerHTML = `<small>Showing ${dataAsObject.length} of ${dataAsObject.length} Posts</small>`;
-                let postTable = `<table><tr>
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    document.getElementById('countPosts').innerHTML = `<small>Showing ${dataAsObject.length} of ${dataAsObject.length} Posts</small>`;
+                    let postTable = `<table><tr>
                     <td><h6 class="font-weight-bold">Post Title</h6></td>
                     <td><h6 class="font-weight-bold">Date Created</h6></td>
                     <td></td>
                     <td></td>
                     <td></td></tr>`;
-                dataAsObject.forEach((post) => {
-                    postTable += `<tr class="mr-5">
+                    dataAsObject.forEach((post) => {
+                        postTable += `<tr class="mr-5">
                         <td><a href="/posts/${post.id}">${post.title}</a></td>
                         <td>${parseDateString(post.created)}</td>
                         <td><a href="/posts/${post.id}"><button type="button" class="btn btn-primary btn-sm">View Post</button></a></td>
                         <td><button type="button" class="btn btn-danger btn-sm" onclick="deletePost(${post.id});">Delete Post</button></td>
                         <td>`;
-                    if (!post.approved) {
-                        postTable += '(Awaiting approval)';
-                    }
-                    postTable += '</td></tr>'
-                });
-                postTable += '</table>';
-                document.getElementById('postTable').innerHTML = postTable;
-                
-                /*
-                let postTitles = "";
-                let postDates = "";
-                let postViewButtons = "";
-                let postDeleteButtons = "";
-                dataAsObject.forEach((post) => {
-                    postTitles += `<p><a href="/posts/${post.id}">${post.title}</a></p>`;
-                    postDates += `<p>${parseDateString(post.created)}</p>`;
-                    postViewButtons += `<a href="/posts/${post.id}"><button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button></a>`;
-                    postDeleteButtons += `<button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>`; // TODO(Lothar): Add delete functionality
-                });
-                document.getElementById('postTitles').innerHTML = postTitles;
-                document.getElementById('postDates').innerHTML = postDates;
-                document.getElementById('postViewButtons').innerHTML = postViewButtons;
-                document.getElementById('postDeleteButtons').innerHTML = postDeleteButtons;
-                */
-            })
-            .catch((err) => console.log(err));
+                        if (!post.approved) {
+                            postTable += '(Awaiting approval)';
+                        }
+                        postTable += '</td></tr>'
+                    });
+                    postTable += '</table>';
+                    document.getElementById('postTable').innerHTML = postTable;
+
+                    /*
+                    let postTitles = "";
+                    let postDates = "";
+                    let postViewButtons = "";
+                    let postDeleteButtons = "";
+                    dataAsObject.forEach((post) => {
+                        postTitles += `<p><a href="/posts/${post.id}">${post.title}</a></p>`;
+                        postDates += `<p>${parseDateString(post.created)}</p>`;
+                        postViewButtons += `<a href="/posts/${post.id}"><button type="button" class="mt-4 btn btn-primary btn-sm">View Post</button></a>`;
+                        postDeleteButtons += `<button type="button" class="mt-4 btn btn-danger btn-sm">Delete Post</button>`; // TODO(Lothar): Add delete functionality
+                    });
+                    document.getElementById('postTitles').innerHTML = postTitles;
+                    document.getElementById('postDates').innerHTML = postDates;
+                    document.getElementById('postViewButtons').innerHTML = postViewButtons;
+                    document.getElementById('postDeleteButtons').innerHTML = postDeleteButtons;
+                    */
+                })
+                .catch((err) => console.log(err));
         }
-        window.onload = function() {
+        window.onload = function () {
             cCreate();
             populateUserInfo();
             populateMessages();
