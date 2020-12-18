@@ -38,7 +38,9 @@
     color: 4a4a4a;
     font-weight: 700;
     display: block;
-    overflow: hidden;
+    white-space:pre;
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
 
 .test-card-price-wrapper{
@@ -66,11 +68,33 @@
 
 #main-content {
     display: grid;
-    height:70vh;
+    /*height:70vh;*/
     margin: 20px auto auto auto;
     grid-template-rows: repeat(2, 0.75fr);
     grid-template-columns: repeat(5, 0.2fr);
     grid-auto-rows: 0.75fr;
     grid-auto-columns: 0.2fr;
     gap: 0rem;
+}
+
+#main-content-home {
+    display: grid;
+    /*height:40vh;*/
+    margin: 20px auto auto auto;
+    grid-template-rows: repeat(1, 0.5fr);
+    grid-template-columns: repeat(5, 0.2fr);
+    grid-auto-rows: 0.75fr;
+    grid-auto-columns: 0.2fr;
+    gap: 0rem;
+}
+
+@media screen and (max-width: 700px) {
+    #main-content-home{
+        grid-template-rows: repeat(3, 0.5fr);
+        grid-template-columns: repeat(2, 0.2fr);
+    }
+    #main-content{
+        grid-template-rows: repeat(4, 0.75fr);
+        grid-template-columns: repeat(2, 0.2fr);
+    }
 }

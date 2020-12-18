@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>Home</title>
+    <title>About Aaron</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,181 +22,183 @@
 </head>
 
 <body class="body-color">
-    <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
-        SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+    <div class="content">
+        <div class="border alert-warning d-flex justify-content-center" role="alert"
+            style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+            SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
+        </div>
+        <!-- [navbar] [theme] [backrgound theme]-->
+        <nav class="navbar navbar-expand-sm navbar-color">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <!--Below is for GatorMart actual logo when available-->
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top"
+                    alt="GatorMart" />
+            </a>
+
+            <!-- Hamburger icon -->
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Collapse navbar on smaller screens-->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <!-- Search bar code -->
+                <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
+                    <div class="input-group">
+                        <select class="form-control search-slt col-sm-2" id="category" name="category">
+                        </select>
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)"
+                            id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40"
+                            title="Please enter up to 40 alphanumeric characters and spaces only">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="nav-bar-go"
+                                style="background-color: #231161">
+                                <i class="fa fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Nav items code-->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/post" class="btn btn-outline-secondary" role="button">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/account" class="nav-link">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/aboutus" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="loginLogout"></div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="showcase">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAaron/aaron.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>Who I am</h1>
+                            <p>I'm from the Bay Area, having lived here my whole life. I knew from an early age that I
+                                wanted to be a Computer Science major and started taking classes in High School.
+                                I see the more technical aspects of the field as puzzles that need to be solved,
+                                something
+                                that drew me in very early on. I am excited to see where this field goes and optomistic
+                                to
+                                work in it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-text">
+                            <h1>My Experience</h1>
+                            <p>Projects that span my educational career have exposed me to many different coding
+                                languages,
+                                all of which are common and standard in a workplace enviorment.
+                                The different applications I have completed include a ux driven website, a full stack
+                                online
+                                messaging app, and a full stack image hosting website.
+                                These projects were done with other people, which makes me well versed in utilizing git
+                                repositories in a team setting.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="../Images/AboutAaron/aaron2.jpg">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr class="featurette-divider my-5"><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="showcase-image">
+                            <img src="..//Images/AboutAaron/aaron3.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <div class="showcase-text">
+                            <h1>Where I am now</h1>
+                            <p>I am currently a student at San Francisco State University studying Computer Science.
+                                Many of
+                                the instructors I've had were either from the industry or still working in it.
+                                I am looking forward to graduating and continuing to learning as the medium is ever
+                                evolving.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <!-- [navbar] [theme] [backrgound theme]-->
-    <nav class="navbar navbar-expand-sm navbar-color">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <!-- <i class="fa fa-cube wid" aria-hidden="true"></i>
-            GatorMart -->
-            <!--Below is for GatorMart actual logo when available-->
-            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
-            GatorMart -->
-            <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
-        </a>
 
-        <!-- Hamburger icon -->
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--Collapse navbar on smaller screens-->
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <!-- Search bar code -->
-            <form class="mx-5 d-inline w-100" id="search-parts" method="GET" action="/HTML/marketplace.html">
-                <div class="input-group">
-                    <select class="form-control search-slt col-sm-2" id="category" name="category" onchange="filteredSearch();">
-                        <option value="All">All</option>
-                        <option value="Books">Books</option>
-                        <option value="Furniture">Furniture</option>
-                        <option value="Supplies">Supplies</option>
-                        <option value="Textbooks">Textbooks</option>
-                        <option value="Tutoring">Tutoring</option>
-                        <option value="Item Request">Item Request</option>
-                    </select>
-                    <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit" id="nav-bar-go"
-                            style="background-color: #231161">
-                            <i class="fa fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Nav items code-->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="../HTML/postsubmission.html" class="btn btn-outline-secondary" role="button">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../HTML/dashboard.html" class="nav-link">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../HTML/aboutus.html" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../HTML/login.html" class="btn btn-outline-secondary" role="button">Login/Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAaron/aaron.jpg">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>Who I am</h1>
-                        <p>I'm from the Bay Area, having lived here my whole life. I knew from an early age that I
-                            wanted to be a Computer Science major and started taking classes in High School.
-                            I see the more technical aspects of the field as puzzles that need to be solved, something
-                            that drew me in very early on. I am excited to see where this field goes and optomistic to
-                            work in it.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-text">
-                        <h1>My Experience</h1>
-                        <p>Projects that span my educational career have exposed me to many different coding languages,
-                            all of which are common and standard in a workplace enviorment.
-                            The different applications I have completed include a ux driven website, a full stack online
-                            messaging app, and a full stack image hosting website.
-                            These projects were done with other people, which makes me well versed in utilizing git
-                            repositories in a team setting.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="../Images/AboutAaron/aaron2.jpg">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <hr class="featurette-divider my-5"><br>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="showcase-image">
-                        <img src="..//Images/AboutAaron/aaron3.jpg">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 ">
-                    <div class="showcase-text">
-                        <h1>Where I am now</h1>
-                        <p>I am currently a student at San Francisco State University studying Computer Science. Many of
-                            the instructors I've had were either from the industry or still working in it.
-                            I am looking forward to graduating and continuing to learning as the medium is ever
-                            evolving.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <hr class="featurette-divider my-5">
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="images">
-                    <a href="https://github.com/acolm"><img src="../Images/BrandIcons/GitHub-Mark-Light-120px-plus.png"
-                            class="icon_style"></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5 col-sm-5">
-                    <form>
-                        <div class="form-group">
-                            <label>Name: </label>
-                            <input class="form-control" type="text" name="" value="" placeholder="Enter Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Email: </label>
-                            <input class="form-control" type="text" name="" value="" placeholder="Enter Email">
-                        </div>
-                        <div class="form-group">
-                            <label>Message: </label>
-                            <textarea class="form-control" name="" value="" placeholder="Enter Message"></textarea>
-                        </div>
-                        <button class="btn btn-light">Submit</button>
-                    </form>
-                </div>
-                <div class="col-md-7 col-sm-7">
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- <hr class="featurette-divider "> -->
-
-    <footer class="footer-about">
+    <!--The footer-->
+    <footer class="footer-test">
         <span class="float-right">
             <a href="#">Back to top</a>
         </span>
         <span>
             © 2020-2021 Team 06 ・
-            <a href="#">Privacy</a>
-            <a href="#">・ Terms</a>
+            <a href="/privacy" target=" ">Privacy Policy</a>
+            <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
 
-    <!--Scrpt-->
+    <script type="text/javascript" src="../javascript/checklogin.js"></script>
+
+    <!--Code for category pull down-->
+    <script>
+        function makeOp(data) {
+            return ` <option value=${data.type}>${data.type}</option>`;
+        }
+        function cCreate() {
+            const cat = '/category/';
+            fetch(cat)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
+                })
+                .catch((err) => console.log(err));
+        }
+
+        window.onload = function () {
+            cCreate();
+            checkLogin();
+        };
+    </script>
+
+    <!--Scroll reveal script-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81EP2TSP1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-81EP2TSP1R');
+    </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

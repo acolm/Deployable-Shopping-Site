@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 .body-color{
     background-color: #f0f2f5;
 }
@@ -252,8 +263,8 @@ float: left;
 }
 
 .sfsu-text-colors{
-    background-color: #800080 !important;
-    color: #FFFF00 !important;
+    background-color: #ffcc00 !important;
+    color: #231161 !important;
 }
 .space{ /* have to figure out a way to get rid of this and find a bootstrap alternative*/
     justify-content: space-between;
@@ -262,28 +273,23 @@ float: left;
 /* HOMEPAGE CAROUSEL CSS*/
 .carousel-caption{
     color: white !important;
+    font-size: 60%;
     background-color: rgb(10, 10, 10, .6);
     border-radius: 10px;
 }
 
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: rgb(158, 158, 158);
-    color: white;
-    padding: 0 10px 0 10px;
-}
+@media (min-width: 992px) { /* Large devices (desktops, 992px and up) */
+    .carousel-caption { font-size: 100%;} 
+  }
 
-.footer-about{
+.footer{
     width: 100%;
     background-color: rgb(158, 158, 158);
     color: white;
     padding: 0 10px 0 10px;
     height: 60px;
     line-height: 60px;
+    margin-top: 50px; /* Add space between footer and bottom */
 }
 
 .footer-home{
@@ -295,6 +301,31 @@ float: left;
     background-color: rgb(158, 158, 158);
     color: white;
     padding: 0 10px 0 10px;
+    margin-top: 500px; /* Add space between footer and bottom */
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1 0 auto;
+}
+.footer-test {
+    flex-shrink: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgb(158, 158, 158);
+    color: white;
+    padding: 0 10px 0 10px;
+}
+
+.spacer{
+    height: 60px;
 }
 
 .restrict{
@@ -319,3 +350,21 @@ input::-webkit-inner-spin-button {
     color: white;
     border-color: transparent;
 }
+
+/* Error page HTML */
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.error-actions {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.error-actions .btn { 
+    margin-right:10px; 
+    border: none;
+    color: #f0f2f5 !important;
+    background-color: #231161 !important;
+}
+
+/* Privacy Page */
