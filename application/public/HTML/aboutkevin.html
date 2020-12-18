@@ -23,7 +23,8 @@
 
 <body class="body-color">
     <div class="content">
-        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+        <div class="border alert-warning d-flex justify-content-center" role="alert"
+            style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
             SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
         <!-- [navbar] [theme] [backrgound theme]-->
@@ -31,11 +32,13 @@
             <!-- Logo -->
             <a class="navbar-brand" href="/">
                 <!--Below is for GatorMart actual logo when available-->
-                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top"
+                    alt="GatorMart" />
             </a>
 
             <!-- Hamburger icon -->
-            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -46,7 +49,9 @@
                     <div class="input-group">
                         <select class="form-control search-slt col-sm-2" id="category" name="category">
                         </select>
-                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40" title="Please enter up to 40 alphanumeric characters and spaces only">
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)"
+                            id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40"
+                            title="Please enter up to 40 alphanumeric characters and spaces only">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit" id="nav-bar-go"
                                 style="background-color: #231161">
@@ -87,7 +92,8 @@
                             <h1>Who I am</h1>
                             <p>I am a 24-year-old Hispanic veteran born in Lima, Peru. I spent the majority of my
                                 preadolescence days living and
-                                studying in my country of origin alongside my siblings. In 2004, I traveled to the United
+                                studying in my country of origin alongside my siblings. In 2004, I traveled to the
+                                United
                                 States seeking better
                                 economic and educational opportunities otherwise not easily available in Peru. I learned
                                 English and took on a
@@ -105,13 +111,15 @@
                             <h1>My Experience</h1>
                             <p>I enlisted in the U.S. Marine Corps at the age of 18. My original military occupation
                                 specialty was Supply
-                                Administration Specialist. However, I spent my military contract working in various areas
+                                Administration Specialist. However, I spent my military contract working in various
+                                areas
                                 including in the
                                 maintenance of weapons, as a Customer Service representative, a Quality Assurance
                                 supervisor, an Additive
                                 Manufacturing supervisor, and a Supply and Warehouse manager. However, my most valuable
                                 experience in the military
-                                was during an overseas deployment while being the team lead of a group of Engineers to be
+                                was during an overseas deployment while being the team lead of a group of Engineers to
+                                be
                                 the Security Forces for Camp
                                 Manion at Al-Taqaddum Air Base, Iraq. This role was a new and dangerous position for the
                                 team,
@@ -139,14 +147,19 @@
                             <h1>Where I am now</h1>
                             <p>I am currently a student in San Francisco State University’s B.S. in Computer Science
                                 program. As a former student in
-                                Healthcare Management, I decided to switch to this competitive field because it aligned the
+                                Healthcare Management, I decided to switch to this competitive field because it aligned
+                                the
                                 closest to my passion
-                                and excitement for new and evolving technology in our current Technological Era. I have been
+                                and excitement for new and evolving technology in our current Technological Era. I have
+                                been
                                 blessed to acquire my
-                                first set of computer and technological devices using a portion of my saved income from the
+                                first set of computer and technological devices using a portion of my saved income from
+                                the
                                 military which has only
-                                fueled my excitement in the computer science field. I am currently set to graduate in May of
-                                2021 and am currently seeking for internship opportunities as a software developer to gain
+                                fueled my excitement in the computer science field. I am currently set to graduate in
+                                May of
+                                2021 and am currently seeking for internship opportunities as a software developer to
+                                gain
                                 experience in this
                                 competitive field. </p>
                         </div>
@@ -167,36 +180,46 @@
             <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
-    
+
     <script type="text/javascript" src="../javascript/checklogin.js"></script>
 
     <!--Code for category pull down-->
     <script>
-        function makeOp(data){
+        function makeOp(data) {
             return ` <option value=${data.type}>${data.type}</option>`;
         }
-        function cCreate(){
+        function cCreate() {
             const cat = '/category/';
             fetch(cat)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((option) => {
-                    _html += makeOp(option);
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
                 })
-                document.getElementById('category').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
+                .catch((err) => console.log(err));
         }
 
-        window.onload = function() {
+        window.onload = function () {
             cCreate();
             checkLogin();
         };
     </script>
-    
-    <!--Scrpt-->
+
+    <!--Scroll reveal script-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81EP2TSP1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-81EP2TSP1R');
+    </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

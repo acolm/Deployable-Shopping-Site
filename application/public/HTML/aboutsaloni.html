@@ -23,7 +23,8 @@
 
 <body class="body-color">
     <div class="content">
-        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+        <div class="border alert-warning d-flex justify-content-center" role="alert"
+            style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
             SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
         <!-- [navbar] [theme] [backrgound theme]-->
@@ -31,11 +32,13 @@
             <!-- Logo -->
             <a class="navbar-brand" href="/">
                 <!--Below is for GatorMart actual logo when available-->
-                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top"
+                    alt="GatorMart" />
             </a>
 
             <!-- Hamburger icon -->
-            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -46,7 +49,9 @@
                     <div class="input-group">
                         <select class="form-control search-slt col-sm-2" id="category" name="category">
                         </select>
-                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40" title="Please enter up to 40 alphanumeric characters and spaces only">
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)"
+                            id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40"
+                            title="Please enter up to 40 alphanumeric characters and spaces only">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit" id="nav-bar-go"
                                 style="background-color: #231161">
@@ -85,7 +90,8 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="showcase-text">
                             <h1>Who I am</h1>
-                            <p>I am a 21-year-old American-Indian born in California, United States. I moved back to India
+                            <p>I am a 21-year-old American-Indian born in California, United States. I moved back to
+                                India
                                 when I was in 3rd grade, and returned to that states
                                 a year ago when I transferred to SF State. </p>
                         </div>
@@ -97,11 +103,14 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="showcase-text">
                             <h1>My Experience</h1>
-                            <p> In India, I have the opportunity to have a multitude of experiences. Among my professional
+                            <p> In India, I have the opportunity to have a multitude of experiences. Among my
+                                professional
                                 experiences there, I worked for a year and half with
-                                an organization focused on enhancing global connections. We did this by creating internship
+                                an organization focused on enhancing global connections. We did this by creating
+                                internship
                                 opportunities in our city and then connect them to students
-                                and recent graduates of other countries. During my time here, I also had the opportunity to
+                                and recent graduates of other countries. During my time here, I also had the opportunity
+                                to
                                 host a large scale event surrounding global cultures. I also
                                 had an internship with a IT company located in the city that gave me a lot of hands on
                                 experience.
@@ -127,7 +136,8 @@
                             <h1>Where I am now</h1>
                             <p>Currently, I am a student in San Francisco State University’s B.S. in Computer Science
                                 program. As mentioned before, I recently transferred here from
-                                India. As I spent some of my childhood here, it was luckily easy for me to adjust. Currently
+                                India. As I spent some of my childhood here, it was luckily easy for me to adjust.
+                                Currently
                                 I'm also working part-time as a Project Manager and applying
                                 to various internship opportunities.</p>
                         </div>
@@ -148,36 +158,46 @@
             <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
-    
+
     <script type="text/javascript" src="../javascript/checklogin.js"></script>
 
     <!--Code for category pull down-->
     <script>
-        function makeOp(data){
+        function makeOp(data) {
             return ` <option value=${data.type}>${data.type}</option>`;
         }
-        function cCreate(){
+        function cCreate() {
             const cat = '/category/';
             fetch(cat)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((option) => {
-                    _html += makeOp(option);
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
                 })
-                document.getElementById('category').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
+                .catch((err) => console.log(err));
         }
 
-        window.onload = function() {
+        window.onload = function () {
             cCreate();
             checkLogin();
         };
     </script>
-    
+
     <!--Scrpt-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81EP2TSP1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-81EP2TSP1R');
+    </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

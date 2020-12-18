@@ -23,7 +23,8 @@
 
 <body class="body-color">
     <div class="content">
-        <div class="border alert-warning d-flex justify-content-center" role="alert" style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
+        <div class="border alert-warning d-flex justify-content-center" role="alert"
+            style="font-weight: bold; padding-bottom: 5px; padding-top: 5px;">
             SFSU Software Engineering Project CSC 648-848, Fall 2020. For Demonstration Only
         </div>
         <!-- [navbar] [theme] [backrgound theme]-->
@@ -31,11 +32,13 @@
             <!-- Logo -->
             <a class="navbar-brand" href="/">
                 <!--Below is for GatorMart actual logo when available-->
-                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top" alt="GatorMart" />
+                <img src="../Images/Logo/gatormart_logo.svg" height="40" class="d-inline-block align-top"
+                    alt="GatorMart" />
             </a>
 
             <!-- Hamburger icon -->
-            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -46,7 +49,9 @@
                     <div class="input-group">
                         <select class="form-control search-slt col-sm-2" id="category" name="category">
                         </select>
-                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)" id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40" title="Please enter up to 40 alphanumeric characters and spaces only">
+                        <input class="form-control" type="text" placeholder="Search for items or class ID (e.g. CSC648)"
+                            id="searchtext" name="searchtext" pattern="[\w|\s]*" maxlength="40"
+                            title="Please enter up to 40 alphanumeric characters and spaces only">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit" id="nav-bar-go"
                                 style="background-color: #231161">
@@ -87,15 +92,20 @@
                             <h1>Who I am</h1>
                             <p>I am originally from Austria, but moved to San Francisco with my family when I was eight
                                 years old.
-                                I studied mathematics as an undergrad at San Francisco State University and went on to get a
+                                I studied mathematics as an undergrad at San Francisco State University and went on to
+                                get a
                                 PhD in
-                                mathematics at the Free University of Berlin. After a postdoctoral fellowship in Waterloo,
+                                mathematics at the Free University of Berlin. After a postdoctoral fellowship in
+                                Waterloo,
                                 Ontario,
-                                I decided to change career paths from mathematics to computer science and pursued a masters
+                                I decided to change career paths from mathematics to computer science and pursued a
+                                masters
                                 degree
-                                at my old alma mater. I am currently a second semester graduate student in the department of
+                                at my old alma mater. I am currently a second semester graduate student in the
+                                department of
                                 computer
-                                science at SFSU, where I am involved in research regarding the automated generation of video
+                                science at SFSU, where I am involved in research regarding the automated generation of
+                                video
                                 captions
                                 for visually impaired users.</p>
                         </div>
@@ -137,7 +147,8 @@
                             <h1>Beyond Programming</h1>
                             <p>When I am not holed up in my room basking in the glow of my laptop, I can be found doing
                                 international
-                                folk dancing. I love the wide variety of beautiful music as well as the feeling of community
+                                folk dancing. I love the wide variety of beautiful music as well as the feeling of
+                                community
                                 it creates. I also enjoy travelling. Among my favorite trips were taking an RV through
                                 Alaska, and living
                                 at a Buddhist temple in Japan for six months.</p>
@@ -147,7 +158,7 @@
             </div>
         </section>
     </div>
-    
+
     <!--The Footer-->
     <footer class="footer-test">
         <span class="float-right">
@@ -159,36 +170,46 @@
             <a href="/terms" target=" ">・ Terms & Conditions</a>
         </span>
     </footer>
-    
+
     <script type="text/javascript" src="../javascript/checklogin.js"></script>
 
     <!--Code for category pull down-->
     <script>
-        function makeOp(data){
+        function makeOp(data) {
             return ` <option value=${data.type}>${data.type}</option>`;
         }
-        function cCreate(){
+        function cCreate() {
             const cat = '/category/';
             fetch(cat)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((option) => {
-                    _html += makeOp(option);
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((option) => {
+                        _html += makeOp(option);
+                    })
+                    document.getElementById('category').innerHTML = _html;
                 })
-                document.getElementById('category').innerHTML = _html;
-            })
-            .catch((err) => console.log(err));
+                .catch((err) => console.log(err));
         }
 
-        window.onload = function() {
+        window.onload = function () {
             cCreate();
             checkLogin();
         };
     </script>
-    
-    <!--Scrpt-->
+
+    <!--Scroll reveal script-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81EP2TSP1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-81EP2TSP1R');
+    </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
